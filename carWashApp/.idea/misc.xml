@@ -7,7 +7,7 @@
         <entry key="app/src/main/res/layout/activity_signin.xml" value="0.1962962962962963" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1962962962962963" />
         <entry key="app/src/main/res/layout/fragment_user_login.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_user_register.xml" value="0.17592592592592593" />
+        <entry key="app/src/main/res/layout/fragment_user_register.xml" value="0.25" />
       </map>
     </option>
   </component>

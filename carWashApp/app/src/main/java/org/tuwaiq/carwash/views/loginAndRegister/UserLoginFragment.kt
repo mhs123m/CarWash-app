@@ -21,20 +21,18 @@ class UserLoginFragment : Fragment() {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_user_login, container, false)
 
+        // find Sign Up textView
         var tvUserSignUp =
-            v.findViewById<Button>(R.id.button)
+            v.findViewById<TextView>(R.id.textViewUserNoAccountSignUp)
 
         tvUserSignUp.setOnClickListener {
 
             // on click, set user registration fragment
-            println("sign up is clicked")
             parentFragmentManager.commit {
                 replace<UserRegisterFragment>(R.id.mFrameLayout)
                 setReorderingAllowed(true)
                 addToBackStack("userLogInFragment")
             }
-
-
         }
         return v
     }
