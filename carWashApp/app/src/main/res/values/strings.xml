@@ -15,4 +15,11 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="sign_in">Sign In</string>
+    <string name="log_in_as_a_store">Log in as a store</string>
+    <string name="not_a_provider_yet">Not a provider yet?</string>
+    <string name="apply_now">Apply Now</string>
+    <string name="not_a_provider">Not a Provider?</string>
+    <string name="register_as_a_store">Register as a store</string>
+    <string name="store_name">Store Name</string>
+    <string name="apply">Apply</string>
 </resources>

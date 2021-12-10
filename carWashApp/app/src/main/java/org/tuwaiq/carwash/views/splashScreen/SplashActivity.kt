@@ -1,11 +1,11 @@
-package org.tuwaiq.carwash.views.splashscrean
+package org.tuwaiq.carwash.views.splashScreen
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import org.tuwaiq.carwash.R
-import org.tuwaiq.carwash.views.loginAndRegister.SigninActivity
+import org.tuwaiq.carwash.views.userLoginAndRegister.UserSignInActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
         handler.postDelayed({
 
 
-            val i = Intent(this, SigninActivity::class.java)
+            val i = Intent(this, UserSignInActivity::class.java)
             startActivity(i)
             finish()
         }, 300)

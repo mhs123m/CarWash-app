@@ -1,24 +1,22 @@
-package org.tuwaiq.carwash.views.loginAndRegister
+package org.tuwaiq.carwash.views.userLoginAndRegister
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
-import androidx.fragment.app.replace
 import org.tuwaiq.carwash.R
+import android.app.Activity
 
-class SigninActivity : AppCompatActivity() {
+
+
+
+class UserSignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin)
-
         // on create, set UserLogin fragment
         supportFragmentManager.beginTransaction().add(R.id.mFrameLayout, UserLoginFragment())
             .commit()
 
-
-
-
     }
-
 }

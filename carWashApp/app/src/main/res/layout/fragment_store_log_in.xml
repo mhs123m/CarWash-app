@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/frameLayoutUserLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#9A799E88"
-    tools:context=".views.userLoginAndRegister.UserLoginFragment">
+    tools:context=".views.storeLoginAndRegister.StoreLogInFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/textInputLayoutStoreEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -17,10 +17,10 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
+        app:layout_constraintTop_toBottomOf="@+id/textViewLoginStore">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditTextUserEmail"
+            android:id="@+id/textInputEditTextStoreEmail"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="@string/email"
@@ -28,7 +28,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+        android:id="@+id/textInputLayoutStorePassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -36,10 +36,10 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutStoreEmail">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditTextUserPassword"
+            android:id="@+id/textInputEditTextStorePassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="@string/password"
@@ -47,43 +47,43 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonLogIn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="40dp"
-        android:text="@string/log_in"
+        android:text="@string/log_in_as_a_store"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutStorePassword" />
 
     <TextView
-        android:id="@+id/textViewUserNoAccount"
+        android:id="@+id/textViewStoreNoAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="24dp"
-        android:text="@string/don_t_have_an_account"
+        android:text="@string/not_a_provider_yet"
         android:textColor="@color/textAlmostBlack"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogIn" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewUserActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginBottom="50dp"
-        android:text="@string/carwash_store"
+        android:text="@string/not_a_provider"
         android:textColor="@color/textAlmostBlack"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textViewCarWashClickHere"
+        android:id="@+id/textViewStoreClickHere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -95,15 +95,15 @@
         android:textColor="@color/textLink"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView3" />
+        app:layout_constraintStart_toEndOf="@+id/textViewUserActivity" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewLoginStore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/log_in"
+        android:layout_marginTop="32dp"
+        android:text="@string/log_in_as_a_store"
         android:textColor="@color/textAlmostBlack"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -111,7 +111,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewUserNoAccountSignUp"
+        android:id="@+id/textViewStoreApply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -119,9 +119,11 @@
         android:clickable="true"
         android:focusable="true"
         android:background="?android:attr/selectableItemBackground"
-        android:text="@string/sign_up"
+        android:text="@string/apply_now"
         android:textColor="@color/textLink"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/textViewUserNoAccount"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@+id/textViewStoreNoAccount"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogIn" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
