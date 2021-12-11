@@ -30,7 +30,6 @@ class StoreRegisterFragment : Fragment() {
                 parentFragmentManager.popBackStackImmediate()
             }
         }
-
         return v
     }
 }

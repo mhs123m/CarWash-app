@@ -114,7 +114,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonUserRegister"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -135,7 +135,7 @@
         android:textColor="@color/textAlmostBlack"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonUserRegister" />
 
     <TextView
         android:id="@+id/textViewStoreRegistSignIn"
@@ -150,6 +150,6 @@
         android:focusable="true"
         android:background="?android:attr/selectableItemBackground"
         app:layout_constraintStart_toEndOf="@+id/textViewStore"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonUserRegister" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

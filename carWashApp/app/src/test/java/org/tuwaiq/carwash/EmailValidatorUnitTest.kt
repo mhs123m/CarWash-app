@@ -7,20 +7,20 @@ import org.tuwaiq.carwash.util.HelperFunctions
 
 class EmailValidatorUnitTest {
 
-    private val hf = HelperFunctions()
+
 
     @Test
     fun correct_Email(): Unit {
-        assertEquals(hf.isValidEmail("mhs@gmail.com"),true)
+        assertEquals(HelperFunctions.isValidEmail("mhs@gmail.com"),true)
     }
 
     @Test
-    fun correct_Email_With_Two_ends(): Unit {
-        assertEquals(hf.isValidEmail("mhs@gmail.edu.sa"),true)
+    fun correct_Email_With_Two_Ends(): Unit {
+        assertEquals(HelperFunctions.isValidEmail("mhs@gmail.edu.sa"),true)
     }
 
     @Test
     fun incorrect_Email_With_Space(): Unit {
-        assertEquals(hf.isValidEmail("mh  s@gm ail.com"),false)
+        assertEquals(HelperFunctions.isValidEmail("mh  s@gm ail.com"),false)
     }
 }

@@ -8,11 +8,16 @@ import org.tuwaiq.carwash.R
 class HelperFunctions {
 
 
-    fun isValidEmail (email: String): Boolean {
-        return email.isNotEmpty() && PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()
-    }
+    companion object {
 
-    interface IOnBackPressed {
-        fun onBackPressed(): Boolean
+        fun isValidEmail(email: String): Boolean {
+            return email.isNotEmpty()
+//                    && Patterns.EMAIL_ADDRESS.matcher(email).matches()
+        }
+
+        fun isValidPhoneNumber(phone: String):Boolean {
+            return phone.isNotEmpty()
+//                    && phone.length>8 && Patterns.PHONE.matcher(phone).matches()
+        }
     }
 }
