@@ -14,12 +14,17 @@ class UserRepository {
 
     fun registerNewUser(user: User): LiveData<User>{
         val mLiveData = MutableLiveData<User>()
-        val userServices = Api.getInstance().create(UserServices::class.java)
+        val userServices = Api
+            .getInstance()
+            .create(UserServices::class.java)
         userServices.registerNewUser(user)
             .enqueue(object : Callback<User> {
                 override fun onResponse(call: Call<User>, response: Response<User>) {
+                   if (response.isSuccessful)
                     mLiveData.postValue(response.body())
-                    Log.d("USER_REGISTER_SUCCESS","success: ${response.body()}")
+                    else {
+                       Log.d("USER_REGISTER_", "fali: ${response.code()}")
+                   }
                 }
 
                 override fun onFailure(call: Call<User>, t: Throwable) {

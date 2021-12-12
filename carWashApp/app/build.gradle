@@ -50,10 +50,14 @@ dependencies {
     // retrofit converter
     implementation 'com.squareup.retrofit2:converter-gson:2.8.0'
     //viewModel
-    implementation 'androidx.fragment:fragment-ktx:1.3.2'
+    implementation 'androidx.fragment:fragment-ktx:1.4.0'
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.4.0"
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+    implementation"androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+
 
     testImplementation 'junit:junit:4.+'
     // Optional -- Robolectric environment
