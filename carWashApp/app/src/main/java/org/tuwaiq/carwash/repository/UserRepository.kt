@@ -12,23 +12,21 @@ import retrofit2.Response
 
 class UserRepository {
 
-    fun registerNewUser(user: User): LiveData<User>{
+    fun registerNewUser(user: User): LiveData<User> {
         val mLiveData = MutableLiveData<User>()
-        val userServices = Api
-            .getInstance()
-            .create(UserServices::class.java)
+        val userServices = Api.getInstance().create(UserServices::class.java)
         userServices.registerNewUser(user)
             .enqueue(object : Callback<User> {
                 override fun onResponse(call: Call<User>, response: Response<User>) {
-                   if (response.isSuccessful)
-                    mLiveData.postValue(response.body())
+                    if (response.isSuccessful)
+                        mLiveData.postValue(response.body())
                     else {
-                       Log.d("USER_REGISTER_", "fali: ${response.code()}")
-                   }
+                        Log.d("USER_REGISTER", "fail res.message: ${response.message()}")
+                    }
                 }
 
                 override fun onFailure(call: Call<User>, t: Throwable) {
-                    Log.d("USER_REGISTER_FAIL","fail: ${t.message}")
+                    Log.d("USER_REGISTER_FAIL", "fail t.message: ${t.message}")
                 }
 
             })

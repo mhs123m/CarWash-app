@@ -9,6 +9,6 @@ import retrofit2.http.POST
 interface UserServices {
 
     @POST("users/register")
-    @Headers("Content-Type: application/json")
+    @Headers("Content-Type: application/json") // to see content of the error
     fun registerNewUser(@Body user: User): Call<User>
 }

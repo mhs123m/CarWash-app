@@ -26,7 +26,9 @@ class UserRegisterFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_user_register, container, false)
         // call viewModel
         viewModel =
-            ViewModelProvider(requireActivity() as UserSignInActivity)[UserLogInViewModel::class.java]
+            ViewModelProvider(
+                requireActivity() as UserSignInActivity
+            )[UserLogInViewModel::class.java]
 
         // link views
         val textInputFullName = v.findViewById<TextInputEditText>(R.id.textInputUserRegistFullName)
@@ -35,7 +37,7 @@ class UserRegisterFragment : Fragment() {
         val textInputPassword = v.findViewById<TextInputEditText>(R.id.textInputUserRegistPassword)
         val textInputCPassword =
             v.findViewById<TextInputEditText>(R.id.textInputUserRegistConfirmPassword)
-        val registerUserBtn = v.findViewById<Button>(R.id.buttonUserRegister)
+        val registerUserBtn = v.findViewById<Button>(R.id.buttonRegisterUser)
         val tvSignIn = v.findViewById<TextView>(R.id.textViewUserRegistSignIn)
 
         // on click, register user
@@ -71,9 +73,9 @@ class UserRegisterFragment : Fragment() {
             }
             viewModel.registerNewUser(user).observe(viewLifecycleOwner, {
                 if (it) {
-                    Log.d("USER_REGISTER_SUCCESS","hell yeah")
+                    Log.d("USER_REGISTER_SUCCESS", "hell yeah")
                 } else {
-                    Log.d("USER_REGISTER_FAIL","hell Noooo")
+                    Log.d("USER_REGISTER_FAIL", "hell Noooo")
                 }
             })
         }

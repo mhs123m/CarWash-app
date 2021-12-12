@@ -1,9 +1,9 @@
 package org.tuwaiq.carwash.model
 
-data class User(
-    val id: Any?,
+data class Store(
+    val id: String?,
+    val name: String,
     val email: String,
-    val fullname: String,
     val phone: String,
     val password: String,
 )
