@@ -71,14 +71,19 @@ class UserRegisterFragment : Fragment() {
                 textInputCPassword.requestFocus()
                 return@setOnClickListener
             }
-            viewModel.registerNewUser(user).observe(viewLifecycleOwner, {
-                if (it) {
-                    Log.d("USER_REGISTER_SUCCESS", "hell yeah")
-                } else {
-                    Log.d("USER_REGISTER_FAIL", "hell Noooo")
-                }
-            })
+            viewModel.registerNewUser(user)
         }
+
+        viewModel.registerLiveData.observe(this, {
+            if (it!=null) {
+                Log.d("USER_REGISTER", "success $it")
+                // intent to user home page with current user (called back user) TODO
+            } else {
+                Log.d("USER_REGISTER", "fail $it")
+                // email or phone number might be already register.
+            }
+        })
+
         // on click get back to sign in (if already having an account)
         tvSignIn.setOnClickListener {
             parentFragmentManager.commit {

@@ -76,14 +76,16 @@ class StoreRegisterFragment : Fragment() {
                 textInputCPassword.requestFocus()
                 return@setOnClickListener
             }
-            viewModel.registerNewStore(store).observe(viewLifecycleOwner, {
-                if (it) {
-                    Log.d("USER_REGISTER_SUCCESS", "hell yeah")
-                } else {
-                    Log.d("USER_REGISTER_FAIL", "hell Noooo")
-                }
-            })
+            viewModel.registerNewStore(store)
         }
+
+        viewModel.registerLiveData.observe(viewLifecycleOwner, {
+            if (it != null) {
+                Log.d("USER_REGISTER", "success: $it")
+            } else {
+                Log.d("USER_REGISTER", "fail: $it")
+            }
+        })
 
         // on click get back to Login fragment (if already has an account)
         tvSignIn.setOnClickListener {

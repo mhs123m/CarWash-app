@@ -92,7 +92,8 @@
             android:id="@+id/textInputStoreRegistPassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="@string/password" />
+            android:hint="@string/password"
+            android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -110,7 +111,8 @@
             android:id="@+id/textInputStoreRegistConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="@string/confirm_password" />
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

@@ -24,7 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="@string/email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:text="ali@gmail.com"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -43,11 +44,12 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="@string/password"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:text="1234567"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonUserLogIn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -68,7 +70,7 @@
         android:textColor="@color/textAlmostBlack"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonUserLogIn" />
 
     <TextView
         android:id="@+id/textView3"
@@ -123,5 +125,5 @@
         android:textColor="@color/textLink"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/textViewUserNoAccount"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonUserLogIn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
