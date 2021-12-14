@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/CarWashStores"
+        android:icon="@drawable/carwash"
+        android:title="Stores"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/orders"
+        android:icon="@drawable/list"
+        android:title="Orders"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/more"
+        android:icon="@drawable/more"
+        android:title="More"
+        app:showAsAction="always" />
+</menu>

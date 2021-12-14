@@ -5,6 +5,7 @@ import org.tuwaiq.carwash.model.Store
 import org.tuwaiq.carwash.model.User
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface StoreServices {
@@ -16,4 +17,8 @@ interface StoreServices {
     // LogIn store
     @POST("stores/login")
     fun storeLogIn(@Body loginModel: LoginModel): Call<Store>
+
+    // get all stores
+    @GET("stores")
+    fun getAllStores(): Call<List<Store>>
 }

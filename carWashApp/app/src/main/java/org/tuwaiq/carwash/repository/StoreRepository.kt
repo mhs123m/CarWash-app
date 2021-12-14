@@ -15,7 +15,7 @@ import retrofit2.Response
 
 class StoreRepository {
 
-    // register user
+    // register store
     fun registerNewStore(store: Store): MutableLiveData<Store> {
         val mLiveData = MutableLiveData<Store>()
         val userServices = Api.getInstance().create(StoreServices::class.java)
@@ -60,5 +60,28 @@ class StoreRepository {
         })
 
         return loginLiveData
+    }
+
+    //get all stores
+    fun getAllStores(): MutableLiveData<List<Store>>{
+        val allStoresLiveDate = MutableLiveData<List<Store>>()
+        val storeServices = Api.getInstance().create(StoreServices::class.java)
+        storeServices.getAllStores().enqueue(object : Callback<List<Store>> {
+            override fun onResponse(call: Call<List<Store>>, response: Response<List<Store>>) {
+                if (response.isSuccessful) {
+                    allStoresLiveDate.postValue(response.body())
+                    Log.d("STORE_GET_ALL", "success res.body: ${response.body()}")
+                } else {
+                    Log.d("STORE_GET_ALL", "fail res.message: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<List<Store>>, t: Throwable) {
+                Log.d("STORE_GET_ALL", "fail t.message: ${t.message}")
+            }
+
+        })
+
+        return allStoresLiveDate
     }
 }

@@ -1,5 +1,6 @@
 package org.tuwaiq.carwash.views.storeLoginAndRegister
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -65,7 +66,12 @@ class StoreLogInFragment : Fragment() {
         viewModel.loginLiveData.observe(this,{
             if (it != null){
                 Log.d("USER_LOGIN","success: $it")
-                // intent to user home page with current user TODO
+                val pref = this.activity?.getSharedPreferences("store", Context.MODE_PRIVATE)
+                pref!!.edit().putString("sID",it._id).apply()
+                pref.edit().putString("sName",it.name).apply()
+                pref.edit().putString("sEmail",it.email).apply()
+                pref.edit().putString("sPhone",it.phone).apply()
+                // intent to user home page with current Store TODO
             } else {
                 Log.d("USER_LOGIN","fail: $it")
                 // go to ur mom he he he

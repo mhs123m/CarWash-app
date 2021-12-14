@@ -1,5 +1,6 @@
 package org.tuwaiq.carwash.views.storeLoginAndRegister
 
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,11 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Store
-import org.tuwaiq.carwash.model.User
 import org.tuwaiq.carwash.util.HelperFunctions
-import org.tuwaiq.carwash.views.userLoginAndRegister.UserLogInViewModel
-import org.tuwaiq.carwash.views.userLoginAndRegister.UserLoginFragment
-import org.tuwaiq.carwash.views.userLoginAndRegister.UserSignInActivity
 
 class StoreRegisterFragment : Fragment() {
     lateinit var viewModel: StoreLogInViewModel
@@ -79,9 +76,18 @@ class StoreRegisterFragment : Fragment() {
             viewModel.registerNewStore(store)
         }
 
-        viewModel.registerLiveData.observe(viewLifecycleOwner, {
+
+        viewModel.registerLiveData.observe(this, {
             if (it != null) {
                 Log.d("USER_REGISTER", "success: $it")
+                // saving user in shared pref
+                val pref = this.activity?.getSharedPreferences("store",MODE_PRIVATE)
+                pref!!.edit().putString("sID",it._id).apply()
+                pref.edit().putString("sName",it.name).apply()
+                pref.edit().putString("sEmail",it.email).apply()
+                pref.edit().putString("sPhone",it.phone).apply()
+                // intent to user home page with current Store TODO
+
             } else {
                 Log.d("USER_REGISTER", "fail: $it")
             }

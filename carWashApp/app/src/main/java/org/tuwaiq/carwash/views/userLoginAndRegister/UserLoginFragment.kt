@@ -1,5 +1,6 @@
 package org.tuwaiq.carwash.views.userLoginAndRegister
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import com.google.android.material.textfield.TextInputEditText
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.LoginModel
 import org.tuwaiq.carwash.views.storeLoginAndRegister.StoreSignInActivity
+import org.tuwaiq.carwash.views.userMainActivity.UserMainActivity
 import org.w3c.dom.Text
 
 
@@ -60,18 +62,28 @@ class UserLoginFragment : Fragment() {
 
             viewModel.userLogIn(LoginModel(email,password))
 
+            viewModel.loginLiveData.observe(this,{
+                if (it != null){
+                    // save current user to shared pref
+                    val pref = this.activity?.getSharedPreferences("user", Context.MODE_PRIVATE)
+                    pref!!.edit().putString("uID",it._id).apply()
+                    pref.edit().putString("uName",it.fullname).apply()
+                    pref.edit().putString("uEmail",it.email).apply()
+                    pref.edit().putString("uPhone",it.phone).apply()
+                    // intent to user home page with current user
+                    startActivity(Intent(v.context,UserMainActivity::class.java))
+                    activity?.finish()
+
+                    Log.d("USER_LOGIN","success: $it")
+                } else {
+                    Log.d("USER_LOGIN","fail: $it")
+                    // go to ur mom he he he
+                }
+            })
         }
 
 
-        viewModel.loginLiveData.observe(this,{
-            if (it != null){
-                Log.d("USER_LOGIN","success: $it")
-                // intent to user home page with current user TODO
-            } else {
-                Log.d("USER_LOGIN","fail: $it")
-                // go to ur mom he he he
-            }
-        })
+
 
         // on click, (no account) set user registration fragment
         tvUserSignUp.setOnClickListener {

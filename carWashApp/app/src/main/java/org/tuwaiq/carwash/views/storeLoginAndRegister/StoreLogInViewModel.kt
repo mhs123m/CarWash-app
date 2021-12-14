@@ -13,13 +13,20 @@ class StoreLogInViewModel: ViewModel() {
     private val storeRepository = StoreRepository()
     var registerLiveData = MutableLiveData<Store>()
     var loginLiveData = MutableLiveData<Store>()
+    var allStoresLiveData = MutableLiveData<List<Store>>()
 
+    // get live data of store from repo to view model
     fun registerNewStore(store: Store) {
         registerLiveData =  storeRepository.registerNewStore(store)
     }
 
-    // get live data of user from repo to viewmodel
+    // get live data of store from repo to view model
     fun storeLogIn(loginModel: LoginModel){
         loginLiveData = storeRepository.storeLogIn(loginModel)
+    }
+
+    // get live data of store from repo to view model
+    fun getAllStores(){
+        allStoresLiveData = storeRepository.getAllStores()
     }
 }

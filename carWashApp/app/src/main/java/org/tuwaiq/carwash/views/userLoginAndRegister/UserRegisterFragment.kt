@@ -1,5 +1,7 @@
 package org.tuwaiq.carwash.views.userLoginAndRegister
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,6 +17,7 @@ import com.google.android.material.textfield.TextInputEditText
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.User
 import org.tuwaiq.carwash.util.HelperFunctions
+import org.tuwaiq.carwash.views.userMainActivity.UserMainActivity
 
 class UserRegisterFragment : Fragment() {
     lateinit var viewModel: UserLogInViewModel
@@ -72,17 +75,28 @@ class UserRegisterFragment : Fragment() {
                 return@setOnClickListener
             }
             viewModel.registerNewUser(user)
-        }
 
-        viewModel.registerLiveData.observe(this, {
+            viewModel.registerLiveData.observe(this, {
             if (it!=null) {
-                Log.d("USER_REGISTER", "success $it")
-                // intent to user home page with current user (called back user) TODO
+                // save current user to shared pref
+                val pref = this.activity?.getSharedPreferences("user", Context.MODE_PRIVATE)
+                pref!!.edit().putString("uID",it._id).apply()
+                pref.edit().putString("uName",it.fullname).apply()
+                pref.edit().putString("uEmail",it.email).apply()
+                pref.edit().putString("uPhone",it.phone).apply()
+                // intent to user home page with current user
+                startActivity(Intent(v.context, UserMainActivity::class.java))
+                activity?.finish()
+
+                Log.d("USER_LOGIN","success fragment: $it")
             } else {
                 Log.d("USER_REGISTER", "fail $it")
                 // email or phone number might be already register.
             }
         })
+        }
+
+
 
         // on click get back to sign in (if already having an account)
         tvSignIn.setOnClickListener {
