@@ -1,4 +1,4 @@
-package org.tuwaiq.carwash.views.storeLoginAndRegister
+package org.tuwaiq.carwash.views.storeViews.storeLoginAndRegister
 
 import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
@@ -16,9 +16,10 @@ import com.google.android.material.textfield.TextInputEditText
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Store
 import org.tuwaiq.carwash.util.HelperFunctions
+import org.tuwaiq.carwash.views.storeViews.StoreViewModel
 
 class StoreRegisterFragment : Fragment() {
-    lateinit var viewModel: StoreLogInViewModel
+    lateinit var viewModel: StoreViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,7 +31,7 @@ class StoreRegisterFragment : Fragment() {
         viewModel =
             ViewModelProvider(
                 requireActivity() as StoreSignInActivity
-            )[StoreLogInViewModel::class.java]
+            )[StoreViewModel::class.java]
 
         // link views
         val textInputName = v.findViewById<TextInputEditText>(R.id.textInputRegistStoreName)
@@ -52,7 +53,7 @@ class StoreRegisterFragment : Fragment() {
             val cPassword = textInputCPassword.text.toString()
 
             // store to be registered
-            val store = Store(null,name,email,phone,password)
+            val store = Store(null,name,email,phone,password,null,null)
             if (name.isEmpty()) {
                 textInputName.error = "Store Name is required"
                 textInputName.requestFocus()

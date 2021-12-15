@@ -1,19 +1,18 @@
-package org.tuwaiq.carwash.views.storeLoginAndRegister
+package org.tuwaiq.carwash.views.storeViews
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import org.tuwaiq.carwash.model.LoginModel
 import org.tuwaiq.carwash.model.Store
-import org.tuwaiq.carwash.model.User
 import org.tuwaiq.carwash.repository.StoreRepository
 
-class StoreLogInViewModel: ViewModel() {
+class StoreViewModel: ViewModel() {
 
     private val storeRepository = StoreRepository()
     var registerLiveData = MutableLiveData<Store>()
     var loginLiveData = MutableLiveData<Store>()
     var allStoresLiveData = MutableLiveData<List<Store>>()
+    var updatedStoreLiveData = MutableLiveData<Store>()
 
     // get live data of store from repo to view model
     fun registerNewStore(store: Store) {
@@ -28,5 +27,9 @@ class StoreLogInViewModel: ViewModel() {
     // get live data of store from repo to view model
     fun getAllStores(){
         allStoresLiveData = storeRepository.getAllStores()
+    }
+
+    fun updateStoreInfo(id:String,store: Store){
+        updatedStoreLiveData = storeRepository.updateStoreInfo(id, store)
     }
 }

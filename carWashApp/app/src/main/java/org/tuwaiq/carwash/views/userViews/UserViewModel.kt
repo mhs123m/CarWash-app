@@ -1,13 +1,12 @@
-package org.tuwaiq.carwash.views.userLoginAndRegister
+package org.tuwaiq.carwash.views.userViews
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import org.tuwaiq.carwash.model.LoginModel
 import org.tuwaiq.carwash.model.User
 import org.tuwaiq.carwash.repository.UserRepository
 
-class UserLogInViewModel : ViewModel() {
+class UserViewModel : ViewModel() {
 
     private val userRepository = UserRepository()
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#9A799E88"
-    tools:context=".views.storeLoginAndRegister.StoreRegisterFragment">
+    tools:context=".views.storeViews.storeLoginAndRegister.StoreRegisterFragment">
 
     <TextView
         android:id="@+id/textViewRegisterStore"
@@ -22,6 +22,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:background="@color/inputTextBackground"
         android:id="@+id/textInputLayoutStoreName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

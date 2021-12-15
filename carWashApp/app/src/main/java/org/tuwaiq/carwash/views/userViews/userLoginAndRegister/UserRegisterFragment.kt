@@ -1,4 +1,4 @@
-package org.tuwaiq.carwash.views.userLoginAndRegister
+package org.tuwaiq.carwash.views.userViews.userLoginAndRegister
 
 import android.content.Context
 import android.content.Intent
@@ -17,10 +17,11 @@ import com.google.android.material.textfield.TextInputEditText
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.User
 import org.tuwaiq.carwash.util.HelperFunctions
-import org.tuwaiq.carwash.views.userMainActivity.UserMainActivity
+import org.tuwaiq.carwash.views.userViews.UserViewModel
+import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
 
 class UserRegisterFragment : Fragment() {
-    lateinit var viewModel: UserLogInViewModel
+    lateinit var viewModel: UserViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,7 +32,7 @@ class UserRegisterFragment : Fragment() {
         viewModel =
             ViewModelProvider(
                 requireActivity() as UserSignInActivity
-            )[UserLogInViewModel::class.java]
+            )[UserViewModel::class.java]
 
         // link views
         val textInputFullName = v.findViewById<TextInputEditText>(R.id.textInputUserRegistFullName)

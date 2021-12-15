@@ -6,4 +6,6 @@ data class Store(
     val email: String,
     val phone: String,
     val password: String?,
+    val logo: String?,
+    val location: List<String>?
 )

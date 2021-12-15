@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#9A799E88"
-    tools:context=".views.storeLoginAndRegister.StoreLogInFragment">
+    tools:context=".views.storeViews.storeLoginAndRegister.StoreLogInFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutStoreEmail"

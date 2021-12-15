@@ -1,9 +1,8 @@
-package org.tuwaiq.carwash.views.storeLoginAndRegister
+package org.tuwaiq.carwash.views.storeViews.storeLoginAndRegister
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import org.tuwaiq.carwash.R
-import org.tuwaiq.carwash.views.userLoginAndRegister.UserLoginFragment
 
 class StoreSignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

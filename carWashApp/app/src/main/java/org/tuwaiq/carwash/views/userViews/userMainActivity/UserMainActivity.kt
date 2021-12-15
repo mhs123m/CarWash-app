@@ -1,12 +1,8 @@
-package org.tuwaiq.carwash.views.userMainActivity
+package org.tuwaiq.carwash.views.userViews.userMainActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.AdapterView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
 import org.tuwaiq.carwash.R
 
 class UserMainActivity : AppCompatActivity() {

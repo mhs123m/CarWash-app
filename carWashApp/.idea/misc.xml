@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1962962962962963" />
         <entry key="app/src/main/res/layout/activity_signin.xml" value="0.1962962962962963" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1962962962962963" />
+        <entry key="app/src/main/res/layout/activity_store_info.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_store_sign_in.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_user_main.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/fragment_more.xml" value="0.22864583333333333" />
@@ -17,6 +18,7 @@
         <entry key="app/src/main/res/layout/fragment_user_register.xml" value="0.25" />
         <entry key="app/src/main/res/layout/stores_list_item_for_users.xml" value="0.45" />
         <entry key="app/src/main/res/menu/user_buttom_nav_menu.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/xml/store_setting.xml" value="0.24270833333333333" />
       </map>
     </option>
   </component>

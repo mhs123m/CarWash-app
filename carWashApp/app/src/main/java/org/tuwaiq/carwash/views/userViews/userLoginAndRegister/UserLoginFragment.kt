@@ -1,4 +1,4 @@
-package org.tuwaiq.carwash.views.userLoginAndRegister
+package org.tuwaiq.carwash.views.userViews.userLoginAndRegister
 
 import android.content.Context
 import android.content.Intent
@@ -15,13 +15,13 @@ import com.google.android.material.textfield.TextInputEditText
 
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.LoginModel
-import org.tuwaiq.carwash.views.storeLoginAndRegister.StoreSignInActivity
-import org.tuwaiq.carwash.views.userMainActivity.UserMainActivity
-import org.w3c.dom.Text
+import org.tuwaiq.carwash.views.storeViews.storeLoginAndRegister.StoreSignInActivity
+import org.tuwaiq.carwash.views.userViews.UserViewModel
+import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
 
 
 class UserLoginFragment : Fragment() {
-    lateinit var viewModel: UserLogInViewModel
+    lateinit var viewModel: UserViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,7 +32,7 @@ class UserLoginFragment : Fragment() {
         viewModel =
             ViewModelProvider(
                 requireActivity() as UserSignInActivity
-            )[UserLogInViewModel::class.java]
+            )[UserViewModel::class.java]
 
         // link views
         val textInputEmail = v.findViewById<TextInputEditText>(R.id.textInputEditTextUserEmail)

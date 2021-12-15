@@ -84,4 +84,32 @@ class StoreRepository {
 
         return allStoresLiveDate
     }
+
+    fun updateStoreInfo(id:String, store: Store): MutableLiveData<Store>{
+        val updatedStoreLiveData = MutableLiveData<Store>()
+        val storeServices = Api.getInstance().create(StoreServices::class.java)
+        storeServices.updateStoreInfo(id, store).enqueue(object : Callback<Store> {
+            override fun onResponse(call: Call<Store>, response: Response<Store>) {
+                ifResponseNotNullPostValue(updatedStoreLiveData,response)
+            }
+
+            override fun onFailure(call: Call<Store>, t: Throwable) {
+                Log.d("STORE_UPDATE", "fail t.message: ${t.message}")
+            }
+
+        })
+
+
+        return updatedStoreLiveData
+    }
+
+    private fun <T> ifResponseNotNullPostValue(liveData: MutableLiveData<T>,response: Response<T>): MutableLiveData<T>{
+        if (response.isSuccessful) {
+            liveData.postValue(response.body())
+            Log.d("STORE", "success res.body: ${response.body()}")
+        } else {
+            Log.d("STORE", "fail res.message: ${response.message()}")
+        }
+        return liveData
+    }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.userMainActivity.UserMainActivity">
+    tools:context=".views.userViews.userMainActivity.UserMainActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavViewUser"
@@ -17,7 +17,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/UserfragmentContainerView"
-        android:name="org.tuwaiq.carwash.views.userMainActivity.UserHomeFragment"
+        android:name="org.tuwaiq.carwash.views.userViews.userMainActivity.UserHomeFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavViewUser"

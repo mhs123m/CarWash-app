@@ -15,4 +15,5 @@
     <color name="textDarerkGreen">#152D35</color>
     <color name="textAlmostBlack">#152D35</color>
     <color name="textLink">#0000FF</color>
+    <color name="inputTextBackground">#D3E6DB</color>
 </resources>

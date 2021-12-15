@@ -1,13 +1,8 @@
-package org.tuwaiq.carwash.views.userLoginAndRegister
+package org.tuwaiq.carwash.views.userViews.userLoginAndRegister
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.FrameLayout
-import androidx.fragment.app.Fragment
 import org.tuwaiq.carwash.R
-import android.app.Activity
-
-
 
 
 class UserSignInActivity : AppCompatActivity() {

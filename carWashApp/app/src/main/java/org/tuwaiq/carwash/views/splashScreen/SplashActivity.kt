@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import org.tuwaiq.carwash.R
-import org.tuwaiq.carwash.views.userLoginAndRegister.UserSignInActivity
+import org.tuwaiq.carwash.views.userViews.userLoginAndRegister.UserSignInActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

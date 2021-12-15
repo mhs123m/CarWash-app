@@ -13,10 +13,16 @@
         android:theme="@style/Theme.CarWashApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".views.userMainActivity.UserMainActivity"
+            android:name=".views.storeViews.storeMainActivity.StoreMainActivity"
             android:exported="false" />
         <activity
-            android:name=".views.storeLoginAndRegister.StoreSignInActivity"
+            android:name=".views.storeViews.storeInfoActivity.StoreInfoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.userViews.userMainActivity.UserMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.storeViews.storeLoginAndRegister.StoreSignInActivity"
             android:exported="false" />
         <activity
             android:name=".views.splashScreen.SplashActivity"
@@ -28,11 +34,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.userLoginAndRegister.UserSignInActivity"
+            android:name=".views.userViews.userLoginAndRegister.UserSignInActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
