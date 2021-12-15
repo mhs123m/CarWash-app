@@ -9,6 +9,8 @@ import org.tuwaiq.carwash.model.User
 import org.tuwaiq.carwash.network.Api
 import org.tuwaiq.carwash.network.StoreServices
 import org.tuwaiq.carwash.network.UserServices
+import org.tuwaiq.carwash.util.Globals
+import org.tuwaiq.carwash.util.HelperFunctions
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +27,7 @@ class StoreRepository {
                     if (response.isSuccessful) {
                         mLiveData.postValue(response.body())
                         Log.d("USER_REGISTER", "success res.body: ${response.body()}")
+                        HelperFunctions.saveLoggedInStoreData(response)
                     }else {
                         Log.d("USER_REGISTER", "fail res.message: ${response.message()}")
                     }
@@ -48,6 +51,7 @@ class StoreRepository {
                 if (response.isSuccessful) {
                     loginLiveData.postValue(response.body())
                     Log.d("STORE_LOGIN", "success res.body: ${response.body()}")
+                    HelperFunctions.saveLoggedInStoreData(response)
                 } else {
                     Log.d("STORE_LOGIN", "fail res.message: ${response.message()}")
                 }
@@ -90,7 +94,8 @@ class StoreRepository {
         val storeServices = Api.getInstance().create(StoreServices::class.java)
         storeServices.updateStoreInfo(id, store).enqueue(object : Callback<Store> {
             override fun onResponse(call: Call<Store>, response: Response<Store>) {
-                ifResponseNotNullPostValue(updatedStoreLiveData,response)
+                HelperFunctions.ifResponseNotNullPostValue(updatedStoreLiveData,response)
+
             }
 
             override fun onFailure(call: Call<Store>, t: Throwable) {
@@ -103,13 +108,4 @@ class StoreRepository {
         return updatedStoreLiveData
     }
 
-    private fun <T> ifResponseNotNullPostValue(liveData: MutableLiveData<T>,response: Response<T>): MutableLiveData<T>{
-        if (response.isSuccessful) {
-            liveData.postValue(response.body())
-            Log.d("STORE", "success res.body: ${response.body()}")
-        } else {
-            Log.d("STORE", "fail res.message: ${response.message()}")
-        }
-        return liveData
-    }
 }

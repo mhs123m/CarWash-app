@@ -7,6 +7,7 @@ import org.tuwaiq.carwash.model.LoginModel
 import org.tuwaiq.carwash.model.User
 import org.tuwaiq.carwash.network.Api
 import org.tuwaiq.carwash.network.UserServices
+import org.tuwaiq.carwash.util.HelperFunctions
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,7 +24,8 @@ class UserRepository {
                     if (response.isSuccessful) {
                         mLiveData.postValue(response.body())
                         Log.d("USER_REGISTER", "success res.body: ${response.body()}")
-                    }else {
+                        HelperFunctions.saveLoggedInUserData(response)
+                    } else {
                         Log.d("USER_REGISTER", "fail res.message: ${response.message()}")
                     }
                 }
@@ -46,6 +48,7 @@ class UserRepository {
                 if (response.isSuccessful) {
                     mLiveData.postValue(response.body())
                     Log.d("USER_LOGIN", "success res.body: ${response.body()}")
+                    HelperFunctions.saveLoggedInUserData(response)
                 } else {
                     Log.d("USER_LOGIN", "fail res.message: ${response.message()}")
                 }

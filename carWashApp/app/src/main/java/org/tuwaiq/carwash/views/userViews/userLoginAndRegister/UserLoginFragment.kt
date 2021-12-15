@@ -64,12 +64,7 @@ class UserLoginFragment : Fragment() {
 
             viewModel.loginLiveData.observe(this,{
                 if (it != null){
-                    // save current user to shared pref
-                    val pref = this.activity?.getSharedPreferences("user", Context.MODE_PRIVATE)
-                    pref!!.edit().putString("uID",it._id).apply()
-                    pref.edit().putString("uName",it.fullname).apply()
-                    pref.edit().putString("uEmail",it.email).apply()
-                    pref.edit().putString("uPhone",it.phone).apply()
+
                     // intent to user home page with current user
                     startActivity(Intent(v.context,UserMainActivity::class.java))
                     activity?.finish()

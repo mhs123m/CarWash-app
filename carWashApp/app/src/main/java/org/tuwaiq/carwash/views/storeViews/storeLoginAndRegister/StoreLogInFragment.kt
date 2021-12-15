@@ -16,7 +16,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.LoginModel
+import org.tuwaiq.carwash.util.Globals
 import org.tuwaiq.carwash.views.storeViews.StoreViewModel
+import org.tuwaiq.carwash.views.storeViews.storeMainActivity.StoreMainActivity
 import org.tuwaiq.carwash.views.userViews.userLoginAndRegister.UserSignInActivity
 
 class StoreLogInFragment : Fragment() {
@@ -27,6 +29,8 @@ class StoreLogInFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_store_log_in, container, false)
+
+
 
         // call viewModel
         viewModel =
@@ -61,21 +65,19 @@ class StoreLogInFragment : Fragment() {
 
             viewModel.storeLogIn(LoginModel(email,password))
 
+            viewModel.loginLiveData.observe(this,{
+                if (it != null){
+                    Log.d("USER_LOGIN","success: $it")
+                    // intent to user home page with current Store
+                    startActivity(Intent(v.context,StoreMainActivity::class.java))
+                    activity?.finish()
+                } else {
+                    Log.d("USER_LOGIN","fail: $it")
+                    // go to ur mom he he he
+                }
+            })
         }
-        viewModel.loginLiveData.observe(this,{
-            if (it != null){
-                Log.d("USER_LOGIN","success: $it")
-                val pref = this.activity?.getSharedPreferences("store", Context.MODE_PRIVATE)
-                pref!!.edit().putString("sID",it._id).apply()
-                pref.edit().putString("sName",it.name).apply()
-                pref.edit().putString("sEmail",it.email).apply()
-                pref.edit().putString("sPhone",it.phone).apply()
-                // intent to user home page with current Store TODO
-            } else {
-                Log.d("USER_LOGIN","fail: $it")
-                // go to ur mom he he he
-            }
-        })
+
 
         // on click, (if no account) transaction to apply fragment
         tvApply.setOnClickListener {
