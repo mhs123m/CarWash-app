@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Store
 
@@ -25,7 +26,7 @@ class UserHomeAdapter() : RecyclerView.Adapter<UserHomeHolder>() {
     override fun onBindViewHolder(holder: UserHomeHolder, position: Int) {
         val store = data[position]
         holder.apply {
-            //Picasso.get().load(store.logo).into(imgViewStoreLogo) TODO add logo to store api
+            Picasso.get().load(store.logo).into(imgViewStoreLogo)
             tvStoreName.text = store.name
             //tvStoreDistanceInKm.text =  (store.location - currntUser.location(get it from sharePref?) TODO
 //            tvStoreRatingAverage.text = store.ratingAve TODO

@@ -4,18 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2300979B"
     tools:context=".views.storeViews.storeInfoActivity.StoreInfoActivity">
 
-    <ImageView
-        android:id="@+id/imageViewStoreLogo"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="fitXY"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:cardBackgroundColor="#02979a"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:text="@string/store_profile"
+            android:textColor="#DBF1F1"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageViewArrowBackStore"
+            android:layout_width="40dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+    </androidx.cardview.widget.CardView>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout8"
@@ -27,13 +47,14 @@
         android:layout_marginEnd="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewStoreLogo">
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputStoreName"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="name" />
+            android:hint="@string/store_name"
+            android:inputType="textPersonName"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -52,7 +73,8 @@
             android:id="@+id/textInputStoreEmail"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="email" />
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -71,7 +93,7 @@
             android:id="@+id/textInputStorePhone"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="phone" />
+            android:hint="@string/phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -90,8 +112,47 @@
             android:id="@+id/textInputStoreLocation"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="location" />
+            android:focusableInTouchMode="false"
+            android:hint="@string/location" />
+
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="145dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="#C8E4E4"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cardView2">
+
+        <ImageView
+            android:id="@+id/imageViewStoreLogo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/car_wash" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonStoreUpdateInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="85dp"
+        android:background="@drawable/btn_shape_rounded_corners"
+        android:text="@string/update_information"
+        android:textColor="#e5f8f9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout11" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

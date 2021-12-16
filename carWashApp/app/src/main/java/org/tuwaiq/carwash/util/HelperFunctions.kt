@@ -1,5 +1,8 @@
 package org.tuwaiq.carwash.util
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.util.Log
 import android.util.Patterns
 import androidx.core.util.PatternsCompat
@@ -42,12 +45,14 @@ class HelperFunctions {
             val name = response.body()!!.name
             val phone = response.body()!!.phone
             val email = response.body()!!.email
+            val logo = response.body()!!.logo
 
             prefEdit.putString("Token", token)
             prefEdit.putString("ID", id)
             prefEdit.putString("Name", name)
             prefEdit.putString("Phone", phone)
             prefEdit.putString("Email", email)
+            prefEdit.putString("Logo", logo)
 
             if (!prefEdit.commit()){
                 Log.d("prefEdit", "no edits committed for the store")
@@ -73,6 +78,13 @@ class HelperFunctions {
                 Log.d("prefEdit", "no edits committed for the store")
                 return
             }
+        }
+
+        fun decodePicFromApi(encodedString: String): Bitmap {
+
+            val imageBytes = Base64.decode(encodedString, Base64.DEFAULT)
+
+            return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
         }
 
     }

@@ -1,9 +1,11 @@
 package org.tuwaiq.carwash.views.storeViews.storeMainActivity
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.tuwaiq.carwash.R
+import org.tuwaiq.carwash.util.Globals
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserHomeFragment
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMoreFragment
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserOrdersFragment
@@ -13,12 +15,15 @@ class StoreMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_store_main)
 
+        // retrieve saved data to share pref
+        Globals.sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE)
+
         //link bottom navigation view
         val bNavigationView = findViewById<BottomNavigationView>(R.id.storebottomNavigationView)
 
         // navigate fragments through navigation item selected
         bNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.storeHomeMenu -> {
                     // set stores frag
                     supportFragmentManager.beginTransaction()

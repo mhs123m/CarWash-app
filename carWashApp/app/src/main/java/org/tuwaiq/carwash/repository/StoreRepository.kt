@@ -72,12 +72,13 @@ class StoreRepository {
         val storeServices = Api.getInstance().create(StoreServices::class.java)
         storeServices.getAllStores().enqueue(object : Callback<List<Store>> {
             override fun onResponse(call: Call<List<Store>>, response: Response<List<Store>>) {
-                if (response.isSuccessful) {
-                    allStoresLiveDate.postValue(response.body())
-                    Log.d("STORE_GET_ALL", "success res.body: ${response.body()}")
-                } else {
-                    Log.d("STORE_GET_ALL", "fail res.message: ${response.message()}")
-                }
+                HelperFunctions.ifResponseNotNullPostValue(allStoresLiveDate,response)
+//                if (response.isSuccessful) {
+//                    allStoresLiveDate.postValue(response.body())
+//                    Log.d("STORE_GET_ALL", "success res.body: ${response.body()}")
+//                } else {
+//                    Log.d("STORE_GET_ALL", "fail res.message: ${response.message()}")
+//                }
             }
 
             override fun onFailure(call: Call<List<Store>>, t: Throwable) {

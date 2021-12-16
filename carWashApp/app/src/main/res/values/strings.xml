@@ -22,4 +22,7 @@
     <string name="register_as_a_store">Register as a store</string>
     <string name="store_name">Store Name</string>
     <string name="apply">Apply</string>
+    <string name="store_profile">STORE PROFILE</string>
+    <string name="location">location</string>
+    <string name="update_information">Update information</string>
 </resources>

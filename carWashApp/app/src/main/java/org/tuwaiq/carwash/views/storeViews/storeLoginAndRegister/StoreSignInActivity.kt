@@ -11,9 +11,7 @@ class StoreSignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_store_sign_in)
 
-        // retrive saved data to share pref
 
-        Globals.sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE)
 
                 // on create, set StoreLogin fragment
         supportFragmentManager.beginTransaction().add(R.id.storeFrameLayout, StoreLogInFragment())
