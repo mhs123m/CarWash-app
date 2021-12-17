@@ -16,7 +16,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class StoreRepository {
-
     // register store
     fun registerNewStore(store: Store): MutableLiveData<Store> {
         val mLiveData = MutableLiveData<Store>()
@@ -24,23 +23,16 @@ class StoreRepository {
         userServices.registerNewStore(store)
             .enqueue(object : Callback<Store> {
                 override fun onResponse(call: Call<Store>, response: Response<Store>) {
-                    if (response.isSuccessful) {
-                        mLiveData.postValue(response.body())
-                        Log.d("USER_REGISTER", "success res.body: ${response.body()}")
-                        HelperFunctions.saveLoggedInStoreData(response)
-                    }else {
-                        Log.d("USER_REGISTER", "fail res.message: ${response.message()}")
-                    }
+                    HelperFunctions.ifResponseNotNullPostValue(mLiveData, response)
+                    if (response.isSuccessful) HelperFunctions.saveLoggedInStoreData(response)
                 }
+
                 override fun onFailure(call: Call<Store>, t: Throwable) {
                     Log.d("USER_REGISTER_FAIL", "fail t.message: ${t.message}")
                 }
-
             })
-
         return mLiveData
     }
-
 
     //logIn store
     fun storeLogIn(loginModel: LoginModel): MutableLiveData<Store> {
@@ -48,64 +40,46 @@ class StoreRepository {
         val storeServices = Api.getInstance().create(StoreServices::class.java)
         storeServices.storeLogIn(loginModel).enqueue(object : Callback<Store> {
             override fun onResponse(call: Call<Store>, response: Response<Store>) {
-                if (response.isSuccessful) {
-                    loginLiveData.postValue(response.body())
-                    Log.d("STORE_LOGIN", "success res.body: ${response.body()}")
-                    HelperFunctions.saveLoggedInStoreData(response)
-                } else {
-                    Log.d("STORE_LOGIN", "fail res.message: ${response.message()}")
-                }
+                HelperFunctions.ifResponseNotNullPostValue(loginLiveData, response)
+                if (response.isSuccessful) HelperFunctions.saveLoggedInStoreData(response)
             }
 
             override fun onFailure(call: Call<Store>, t: Throwable) {
                 Log.d("STORE_LOGIN", "fail t.message: ${t.message}")
             }
-
         })
-
         return loginLiveData
     }
 
     //get all stores
-    fun getAllStores(): MutableLiveData<List<Store>>{
+    fun getAllStores(): MutableLiveData<List<Store>> {
         val allStoresLiveDate = MutableLiveData<List<Store>>()
         val storeServices = Api.getInstance().create(StoreServices::class.java)
         storeServices.getAllStores().enqueue(object : Callback<List<Store>> {
             override fun onResponse(call: Call<List<Store>>, response: Response<List<Store>>) {
-                HelperFunctions.ifResponseNotNullPostValue(allStoresLiveDate,response)
-//                if (response.isSuccessful) {
-//                    allStoresLiveDate.postValue(response.body())
-//                    Log.d("STORE_GET_ALL", "success res.body: ${response.body()}")
-//                } else {
-//                    Log.d("STORE_GET_ALL", "fail res.message: ${response.message()}")
-//                }
+                HelperFunctions.ifResponseNotNullPostValue(allStoresLiveDate, response)
             }
 
             override fun onFailure(call: Call<List<Store>>, t: Throwable) {
                 Log.d("STORE_GET_ALL", "fail t.message: ${t.message}")
             }
-
         })
-
         return allStoresLiveDate
     }
 
-    fun updateStoreInfo(id:String, store: Store): MutableLiveData<Store>{
+    fun updateStoreInfo(id: String, store: Store): MutableLiveData<Store> {
         val updatedStoreLiveData = MutableLiveData<Store>()
         val storeServices = Api.getInstance().create(StoreServices::class.java)
         storeServices.updateStoreInfo(id, store).enqueue(object : Callback<Store> {
             override fun onResponse(call: Call<Store>, response: Response<Store>) {
-                HelperFunctions.ifResponseNotNullPostValue(updatedStoreLiveData,response)
-
+                HelperFunctions.ifResponseNotNullPostValue(updatedStoreLiveData, response)
+                if (response.isSuccessful) HelperFunctions.saveLoggedInStoreData(response)
             }
 
             override fun onFailure(call: Call<Store>, t: Throwable) {
                 Log.d("STORE_UPDATE", "fail t.message: ${t.message}")
             }
-
         })
-
-
         return updatedStoreLiveData
     }
 

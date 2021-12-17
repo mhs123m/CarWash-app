@@ -21,6 +21,6 @@ interface StoreServices {
     fun getAllStores(): Call<List<Store>>
 
     // update store info
-    @PUT("stores/{id}")
-    fun updateStoreInfo (@Path("id") id:String, @Body store: Store ): Call<Store>
+    @PATCH("stores/{storeId}")
+    fun updateStoreInfo (@Path("storeId") id:String, @Body store: Store ): Call<Store>
 }

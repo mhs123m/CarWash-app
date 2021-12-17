@@ -1,6 +1,7 @@
 package org.tuwaiq.carwash.views.storeViews.storeInfoActivity
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -51,11 +52,12 @@ class StoreInfoActivity : AppCompatActivity() {
         textInputStoreEmail.setText(Globals.sharedPreferences.getString("Email", null))
         textInputStorePhone.setText(Globals.sharedPreferences.getString("Phone", null))
         Globals.sharedPreferences.getString("Logo", null)?.let {
-           // encodedPic = it
+            encodedPic = it
+            imgViewStoreLogo.setImageBitmap(HelperFunctions.decodePicFromApi(encodedPic))
         }
 
 
-        // set encodedPic to null before taking a pic (no result yet)
+
 
         // on img click open imgPicker
         imgViewStoreLogo.setOnClickListener {
@@ -71,6 +73,7 @@ class StoreInfoActivity : AppCompatActivity() {
         }
 
 
+
         // once this intent to take a picture, onActivityResult would be have called, so
         // encodedPic would be set to new taken picture encoded
         // here we click the btn update
@@ -83,18 +86,7 @@ class StoreInfoActivity : AppCompatActivity() {
                 textInputStorePhone.text.toString(),
                 null, encodedPic, null
             )
-            viewModel.updateStoreInfo(
-                currentStore._id!!,
-                Store(
-                    null,
-                    currentStore.name,
-                    currentStore.email,
-                    currentStore.phone,
-                    null,
-                    encodedPic,
-                    null
-                )
-            )
+            viewModel.updateStoreInfo(currentStore._id!!,currentStore)
             viewModel.updatedStoreLiveData.observe(this){
                 Log.d("STORE_UPDATE","btn pressed: $it")
             }
