@@ -25,4 +25,5 @@
     <string name="store_profile">STORE PROFILE</string>
     <string name="location">location</string>
     <string name="update_information">Update information</string>
+    <string name="title_activity_store_maps">StoreMapsActivity</string>
 </resources>

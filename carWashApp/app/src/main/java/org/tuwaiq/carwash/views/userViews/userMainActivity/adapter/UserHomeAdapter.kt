@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Store
+import org.tuwaiq.carwash.util.HelperFunctions
 
 class UserHomeAdapter() : RecyclerView.Adapter<UserHomeHolder>() {
     private var data: List<Store>
@@ -26,7 +27,7 @@ class UserHomeAdapter() : RecyclerView.Adapter<UserHomeHolder>() {
     override fun onBindViewHolder(holder: UserHomeHolder, position: Int) {
         val store = data[position]
         holder.apply {
-            Picasso.get().load(store.logo).into(imgViewStoreLogo)
+            imgViewStoreLogo.setImageBitmap(store.logo?.let { HelperFunctions.decodePicFromApi(it) })
             tvStoreName.text = store.name
             //tvStoreDistanceInKm.text =  (store.location - currntUser.location(get it from sharePref?) TODO
 //            tvStoreRatingAverage.text = store.ratingAve TODO
@@ -35,7 +36,7 @@ class UserHomeAdapter() : RecyclerView.Adapter<UserHomeHolder>() {
     }
 
     override fun getItemCount(): Int {
-       return data.size
+        return data.size
     }
 
     fun setData(list: List<Store>) {
@@ -46,7 +47,7 @@ class UserHomeAdapter() : RecyclerView.Adapter<UserHomeHolder>() {
 
 class UserHomeHolder(v: View) : RecyclerView.ViewHolder(v) {
     val imgViewRatingIcon = v.findViewById<ImageView>(R.id.imageViewRowRatingIcon)
-    val imgViewStoreLogo = v.findViewById<ImageView>(R.id.imageViewRowRatingIcon)
+    val imgViewStoreLogo = v.findViewById<ImageView>(R.id.imageViewRowStoreLogo)
     val tvStoreName = v.findViewById<TextView>(R.id.textViewRowStoreName)
     val tvStoreDistanceInKm = v.findViewById<TextView>(R.id.textViewRowDistanceKM)
     val tvStoreRatingAverage = v.findViewById<TextView>(R.id.textViewRowRatingAverage)

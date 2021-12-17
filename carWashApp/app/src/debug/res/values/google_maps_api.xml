@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=C9:0D:98:66:EC:81:CE:8A:0D:26:A8:42:37:45:16:E8:C3:DB:B9:DB%3Borg.tuwaiq.carwash.views.storeViews.storeInfoActivity
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    org.tuwaiq.carwash.views.storeViews.storeInfoActivity
+
+    SHA-1 certificate fingerprint:
+    C9:0D:98:66:EC:81:CE:8A:0D:26:A8:42:37:45:16:E8:C3:DB:B9:DB
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBWAz7Fv9qOLndbLI7ZU21dI_vEAXrDiQ0</string>
+</resources>
