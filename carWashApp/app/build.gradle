@@ -59,7 +59,11 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
     //imgPicker
     implementation 'com.github.dhaval2404:imagepicker:2.1'
-    implementation 'com.google.android.gms:play-services-maps:18.0.0'
+    // google maps
+    implementation 'com.google.android.gms:play-services-maps:18.0.1'
+//    implementation 'com.google.android.gms:play-services-location:19.0.0'
+//    implementation 'com.google.api-client:google-api-client:1.23.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
 
     testImplementation 'junit:junit:4.+'
     // Optional -- Robolectric environment

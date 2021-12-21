@@ -1,20 +1,29 @@
 package org.tuwaiq.carwash.views.storeViews.storeInfoActivity
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.location.Location
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.Settings
 import android.util.Base64
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.app.ActivityCompat
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.material.textfield.TextInputEditText
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Store
@@ -26,7 +35,8 @@ import java.io.ByteArrayOutputStream
 
 class StoreInfoActivity : AppCompatActivity() {
     // call viewModel and views here to access them in functions
-    private lateinit var encodedPic: String
+
+    private var encodedPic: String? = null
     private val viewModel: StoreViewModel by viewModels()
     private lateinit var imgViewStoreLogo: ImageView
     private lateinit var textInputStoreName: TextInputEditText
@@ -53,7 +63,7 @@ class StoreInfoActivity : AppCompatActivity() {
         textInputStorePhone.setText(Globals.sharedPreferences.getString("Phone", null))
         Globals.sharedPreferences.getString("Logo", null)?.let {
             encodedPic = it
-            imgViewStoreLogo.setImageBitmap(HelperFunctions.decodePicFromApi(encodedPic))
+            imgViewStoreLogo.setImageBitmap(HelperFunctions.decodePicFromApi(encodedPic!!))
         }
 
 
@@ -61,6 +71,8 @@ class StoreInfoActivity : AppCompatActivity() {
 
         // on img click open imgPicker
         imgViewStoreLogo.setOnClickListener {
+            // once this intent to take a picture is done, onActivityResult would be have called, so
+            // encodedPic would be set to new taken picture encoded
             onActivityResult(0, 0, intent)
             ImagePicker.with(this)
                 .crop()    //Crop image(Optional), Check Customization for more option
@@ -72,10 +84,18 @@ class StoreInfoActivity : AppCompatActivity() {
                 .start()
         }
 
+        // on location text input click, open map activity
+        textInputStoreLocation.setOnClickListener {
+
+            // get current location to set map view marker as the current.
+            val i = Intent(this,StoreMapsActivity::class.java)
+
+            startActivity(i)
+        }
 
 
-        // once this intent to take a picture, onActivityResult would be have called, so
-        // encodedPic would be set to new taken picture encoded
+
+
         // here we click the btn update
         btnUpdateInfo.setOnClickListener {
             // updated info
@@ -126,5 +146,25 @@ class StoreInfoActivity : AppCompatActivity() {
 
         // return encoded string
         return Base64.encodeToString(bytes, Base64.DEFAULT)
+    }
+
+    private fun checkPermissionAndGetLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // request permission dialog
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ), 11
+            )
+        }
     }
 }
