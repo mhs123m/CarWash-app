@@ -2,6 +2,7 @@ package org.tuwaiq.carwash.views.storeViews.storeInfoActivity
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
@@ -19,13 +20,13 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.databinding.ActivityStoreMapsBinding
+import java.util.*
 
 class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback {
-
-    var fusedLocationProviderClient: FusedLocationProviderClient? = null
+    // declare a global variable of FusedLocationProviderClient
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
     var mapMarker: Marker? = null
     var currentLocation: Location? = null
-//    lateinit var latLng: LatLng
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityStoreMapsBinding
 
@@ -35,16 +36,13 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityStoreMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-        fetchLocation()
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        getLastKnownLocation()
+
     }
 
-    private fun fetchLocation() {
+    private fun getLastKnownLocation() {
         if (ActivityCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -61,15 +59,48 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     Manifest.permission.ACCESS_COARSE_LOCATION
                 ), 11
             )
+
             return
         }
-        val task = fusedLocationProviderClient?.lastLocation
-        task?.addOnSuccessListener { location ->
-            this.currentLocation = location
-            Log.d("Location", "$currentLocation")
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location ->
+                if (location != null) {
+                    currentLocation = location
+                    // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+                    val mapFragment = supportFragmentManager
+                        .findFragmentById(R.id.map) as SupportMapFragment
+                    mapFragment.getMapAsync(this)
 
-        }
+                    Log.d("LOCATION", "$currentLocation")
+                }
+
+            }
+
     }
+
+    /*
+     private fun fetchLocation() {
+          if (ActivityCompat.checkSelfPermission(
+                  this,
+                  Manifest.permission.ACCESS_FINE_LOCATION
+              ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                  this,
+                  Manifest.permission.ACCESS_COARSE_LOCATION
+              ) != PackageManager.PERMISSION_GRANTED
+          ) {
+              // request permission dialog
+              ActivityCompat.requestPermissions(
+                  this,
+                  arrayOf(
+                      Manifest.permission.ACCESS_FINE_LOCATION,
+                      Manifest.permission.ACCESS_COARSE_LOCATION
+                  ), 11
+              )
+              return
+          }
+      }
+
+     */
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -81,7 +112,8 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback {
             11 -> if (grantResults.isNotEmpty() &&
                 grantResults[0] == PackageManager.PERMISSION_GRANTED
             ) {
-                fetchLocation()
+
+                getLastKnownLocation()
             }
         }
 
@@ -91,30 +123,15 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        if (currentLocation != null) {
-            drawMarker(LatLng(currentLocation!!.latitude, currentLocation!!.longitude))
-        } else {
-            // set marker in riyadh if location not granted.
-            val riyadh = LatLng(24.7136, 46.6753)
-            drawMarker(riyadh)
-        }
 
-        mMap.setOnMarkerDragListener(object : GoogleMap.OnMarkerDragListener {
-            override fun onMarkerDrag(p0: Marker) {
-            }
+//        if (currentLocation == null) {
+//            // set marker in riyadh if location not granted.
+//            val riyadh = LatLng(24.7136, 46.6753)
+//            drawMarker(riyadh)
+//            return
+//        }
+        drawMarker(LatLng(currentLocation?.latitude!!, currentLocation?.longitude!!))
 
-            override fun onMarkerDragEnd(marker: Marker) {
-                if (mapMarker != null) {
-                    mapMarker?.remove()
-                }
-                val newLatLng = LatLng(marker.position.latitude, marker.position.longitude)
-                drawMarker(newLatLng)
-            }
-
-            override fun onMarkerDragStart(p0: Marker) {
-            }
-
-        })
 
         // Add a marker in Sydney and move the camera
 //
@@ -123,14 +140,21 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun drawMarker(latLng: LatLng) {
-        mMap.clear()
-        val markerOptions = MarkerOptions().draggable(true)
-        markerOptions.position(latLng)
-        markerOptions.title("Store Location")
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+        val markerOptions = MarkerOptions().position(latLng).title("Store Location")
+            .snippet(getAddress(latLng.latitude,latLng.longitude))
+
+        //markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+
+        mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,15f))
+        mMap.uiSettings.isZoomControlsEnabled = true
         mMap.addMarker(markerOptions)
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(12f))
+    }
+
+    private fun getAddress(lat: Double, lng: Double): String{
+        val geocoder = Geocoder(this, Locale.getDefault())
+        val addresses = geocoder.getFromLocation(lat,lng,1)
+        return addresses[0].getAddressLine(0).toString()
     }
 
 }
