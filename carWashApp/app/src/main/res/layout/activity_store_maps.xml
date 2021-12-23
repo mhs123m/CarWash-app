@@ -16,23 +16,6 @@
         map:layout_constraintTop_toTopOf="parent"
         tools:context=".views.storeViews.storeInfoActivity.StoreMapsActivity" />
 
-    <ImageButton
-        android:id="@+id/maps_back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/ic_baseline_arrow_back_ios_24"
-        android:clickable="true"
-        android:elevation="4dp"
-        android:focusable="true"
-        android:foreground="?selectableItemBackground"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        map:layout_constraintStart_toStartOf="parent"
-        map:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <Button
         android:id="@+id/buttonConfirmStoreLocation"
         android:layout_width="0dp"
@@ -44,5 +27,17 @@
         map:layout_constraintBottom_toBottomOf="parent"
         map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintStart_toStartOf="parent" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="#6DDAC5C5"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
