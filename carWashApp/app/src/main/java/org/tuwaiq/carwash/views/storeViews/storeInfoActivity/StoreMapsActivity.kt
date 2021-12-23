@@ -1,36 +1,32 @@
 package org.tuwaiq.carwash.views.storeViews.storeInfoActivity
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
-import android.location.Location
 import android.os.Bundle
-import android.util.Log
 import android.widget.SearchView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.databinding.ActivityStoreMapsBinding
+import org.tuwaiq.carwash.model.Coordinates
+import org.tuwaiq.carwash.model.Geometry
+import org.tuwaiq.carwash.util.LocationHelperFunctions
 import java.io.IOException
 import java.util.*
 
 class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     // declare a global variable of FusedLocationProviderClient
 //    var fusedLocationClient: FusedLocationProviderClient? = null
-    var mapMarker: Marker? = null
 
-    //    var currentLocation: Location? = null
+    private lateinit var storeLocationMarker: Marker
+    private lateinit var locationHelperFunctions: LocationHelperFunctions
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityStoreMapsBinding
 
@@ -40,6 +36,7 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityStoreMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        locationHelperFunctions = LocationHelperFunctions.getInstance()
         //Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -47,8 +44,25 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // on confirm -> finish
         binding.buttonConfirmStoreLocation.setOnClickListener {
+            // if (storeLocationMarker != null) {
+            // storeLocationMarker
+            // update location in data base before finishing TODO
             finish()
+//            } else {
+//                AlertDialog.Builder(this)
+//                    .setMessage("no location selected")
+//                    .setPositiveButton("Select Location") { dialog, _ ->
+//                        dialog.dismiss()
+//
+//                    }
+//                    .setNegativeButton("Later") { _, _ ->
+//                        finish()
+//                    }
+//                    .show()
+//            }
+
         }
+        // search view
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 // on below line we are getting the
@@ -92,47 +106,8 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         })
 
-//        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-//        getLastKnownLocation()
-
     }
 
-//    private fun getLastKnownLocation() {
-//        if (ActivityCompat.checkSelfPermission(
-//                this,
-//                Manifest.permission.ACCESS_FINE_LOCATION
-//            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-//                this,
-//                Manifest.permission.ACCESS_COARSE_LOCATION
-//            ) != PackageManager.PERMISSION_GRANTED
-//        ) {
-//            // request permission dialog
-//            ActivityCompat.requestPermissions(
-//                this,
-//                arrayOf(
-//                    Manifest.permission.ACCESS_FINE_LOCATION,
-//                    Manifest.permission.ACCESS_COARSE_LOCATION
-//                ), 11
-//            )
-//
-//            return
-//        }
-//
-////        fusedLocationClient!!.lastLocation
-////            .addOnSuccessListener {
-////                   // currentLocation = it
-////
-////
-////                // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-////                val mapFragment = supportFragmentManager
-////                    .findFragmentById(R.id.map) as SupportMapFragment
-////                mapFragment.getMapAsync(this)
-////
-////                Log.d("LOCATION", "$currentLocation")
-////
-////            }
-//
-//    }
 
     /*
      private fun fetchLocation() {
@@ -158,71 +133,48 @@ class StoreMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
      */
 
-//    override fun onRequestPermissionsResult(
-//        requestCode: Int,
-//        permissions: Array<out String>,
-//        grantResults: IntArray
-//    ) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-//        when (requestCode) {
-//            11 -> if (grantResults.isNotEmpty() &&
-//                grantResults[0] == PackageManager.PERMISSION_GRANTED
-//            ) {
-//
-//                getLastKnownLocation()
-//            }
-//        }
-//
-//    }
-
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-//        if (currentLocation != null) {
-//            drawMarker(LatLng(currentLocation?.latitude!!, currentLocation?.longitude!!))
-//        }
-//        else{
-        // set marker in riyadh if location not granted.
-        val riyadh = LatLng(24.7136, 46.6753)
-        drawMarker(riyadh)
 
-//        if (currentLocation == null) {
-//
-//            return
-//        }
+        drawMarker(getLastKnownLocation())
+
 
         onLongPressMap(mMap)
 
-        // Add a marker in Sydney and move the camera
-//
-//        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+    }
+
+
+    private fun getLastKnownLocation(): LatLng {
+        val lastKnownLocation = locationHelperFunctions.getLastKnownLocation(this)
+        return LatLng(lastKnownLocation.latitude, lastKnownLocation.longitude)
     }
 
     private fun drawMarker(latLng: LatLng) {
         mMap.clear()
         val markerOptions = MarkerOptions().position(latLng).title("Store Location")
-            .snippet(getAddress(latLng.latitude, latLng.longitude))
+            .snippet(
+                locationHelperFunctions.getAddress(
+                    latLng.latitude, latLng.longitude, this
+                )
+            )
 
         //markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
 
         mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
         mMap.uiSettings.isZoomControlsEnabled = true
-        mapMarker = mMap.addMarker(markerOptions)
-    }
-
-    private fun getAddress(lat: Double, lng: Double): String {
-        val geocoder = Geocoder(this, Locale.getDefault())
-        val addresses = geocoder.getFromLocation(lat, lng, 1)
-        return addresses[0].getAddressLine(0).toString()
+        storeLocationMarker = mMap.addMarker(markerOptions)!!
     }
 
     private fun onLongPressMap(map: GoogleMap) {
         map.setOnMapLongClickListener {
             drawMarker(it)
-            mapMarker// update location in data base from here TODO
+            val address = locationHelperFunctions.getAddress(
+                it.latitude, it.longitude, this
+            )
+            locationHelperFunctions.setGeometry(it,this)
         }
     }
 

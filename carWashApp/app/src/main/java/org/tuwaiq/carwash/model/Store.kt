@@ -7,5 +7,6 @@ data class Store(
     val phone: String,
     val password: String?,
     val logo: String?,
-    val location: Geometry?
+    val geometry: Geometry?,
+
 )

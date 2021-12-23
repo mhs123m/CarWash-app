@@ -24,7 +24,7 @@ class Api {
         private val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:3000/")
             .addConverterFactory(GsonConverterFactory.create())
-//            .client(getClient())
+            .client(getClient())
             .build()
 
         fun getInstance(): Retrofit {

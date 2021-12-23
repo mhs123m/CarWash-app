@@ -29,6 +29,7 @@ import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Store
 import org.tuwaiq.carwash.util.Globals
 import org.tuwaiq.carwash.util.HelperFunctions
+import org.tuwaiq.carwash.util.LocationHelperFunctions
 import org.tuwaiq.carwash.views.storeViews.StoreViewModel
 import java.io.ByteArrayOutputStream
 
@@ -36,6 +37,7 @@ import java.io.ByteArrayOutputStream
 class StoreInfoActivity : AppCompatActivity() {
     // call viewModel and views here to access them in functions
 
+    lateinit var locationHelperFunctions: LocationHelperFunctions
     private var encodedPic: String? = null
     private val viewModel: StoreViewModel by viewModels()
     private lateinit var imgViewStoreLogo: ImageView
@@ -47,7 +49,8 @@ class StoreInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_store_info)
-
+        // get instance of location helper
+        locationHelperFunctions = LocationHelperFunctions.getInstance()
 
         //link views
         imgViewStoreLogo = findViewById(R.id.imageViewStoreLogo)
@@ -98,13 +101,14 @@ class StoreInfoActivity : AppCompatActivity() {
 
         // here we click the btn update
         btnUpdateInfo.setOnClickListener {
+            val geometry = locationHelperFunctions.getGeometry()
             // updated info
             currentStore = Store(
                 Globals.sharedPreferences.getString("ID", null),
                 textInputStoreName.text.toString(),
                 textInputStoreEmail.text.toString(),
                 textInputStorePhone.text.toString(),
-                null, encodedPic, null
+                null, encodedPic, geometry
             )
             viewModel.updateStoreInfo(currentStore._id!!,currentStore)
             viewModel.updatedStoreLiveData.observe(this){
@@ -146,25 +150,5 @@ class StoreInfoActivity : AppCompatActivity() {
 
         // return encoded string
         return Base64.encodeToString(bytes, Base64.DEFAULT)
-    }
-
-    private fun checkPermissionAndGetLocation() {
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            // request permission dialog
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                ), 11
-            )
-        }
     }
 }
