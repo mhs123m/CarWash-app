@@ -67,6 +67,24 @@ class StoreRepository {
         return allStoresLiveDate
     }
 
+    //get a store by id
+    fun getStoreById(id: String): MutableLiveData<Store>{
+        val oneStoreLiveData = MutableLiveData<Store>()
+        val storeServices = Api.getInstance().create(StoreServices::class.java)
+        storeServices.getStoreById(id).enqueue(object : Callback<Store> {
+            override fun onResponse(call: Call<Store>, response: Response<Store>) {
+                HelperFunctions.ifResponseNotNullPostValue(oneStoreLiveData,response)
+            }
+
+            override fun onFailure(call: Call<Store>, t: Throwable) {
+                Log.d("STORE_BY_ID", "fail t.message: ${t.message}")
+            }
+        })
+
+        return oneStoreLiveData
+    }
+
+    // update store
     fun updateStoreInfo(id: String, store: Store): MutableLiveData<Store> {
         val updatedStoreLiveData = MutableLiveData<Store>()
         val storeServices = Api.getInstance().create(StoreServices::class.java)

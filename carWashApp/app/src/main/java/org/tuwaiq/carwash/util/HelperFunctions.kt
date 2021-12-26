@@ -40,7 +40,7 @@ class HelperFunctions {
 
         fun saveLoggedInStoreData (response: Response<Store>){
             val prefEdit = Globals.sharedPreferences.edit()
-            val token = response.headers().get("x-auth")
+            val token = response.headers()["x-auth"]
             val id = response.body()!!._id
             val name = response.body()!!.name
             val phone = response.body()!!.phone
@@ -53,6 +53,7 @@ class HelperFunctions {
             prefEdit.putString("Phone", phone)
             prefEdit.putString("Email", email)
             prefEdit.putString("Logo", logo)
+            prefEdit.putBoolean("IsStore", true)
 
             if (!prefEdit.commit()){
                 Log.d("prefEdit", "no edits committed for the store")
@@ -73,11 +74,17 @@ class HelperFunctions {
             prefEdit.putString("Name", name)
             prefEdit.putString("Phone", phone)
             prefEdit.putString("Email", email)
+            prefEdit.putBoolean("IsUser", true)
 
             if (!prefEdit.commit()){
                 Log.d("prefEdit", "no edits committed for the store")
                 return
             }
+        }
+
+        fun clearPref (){
+            val prefClear = Globals.sharedPreferences.edit()
+            prefClear.clear().apply()
         }
 
         fun decodePicFromApi(encodedString: String): Bitmap {

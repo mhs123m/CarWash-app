@@ -27,8 +27,6 @@ class UserHomeFragment : Fragment() {
             requireActivity() as UserMainActivity
         )[StoreViewModel::class.java]
 
-
-
         return v
     }
 

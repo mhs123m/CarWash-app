@@ -84,7 +84,7 @@ class LocationHelperFunctions {
     fun getAddress(lat: Double, lng: Double, context: Context): String {
         val geocoder = Geocoder(context, Locale.getDefault())
         val addresses = geocoder.getFromLocation(lat, lng, 1)
-        return addresses[0].getAddressLine(0).toString()
+        return "${addresses[0].adminArea}, ${addresses[0].countryName}"
     }
 
     fun setGeometry(latLng: LatLng, context: Context) {

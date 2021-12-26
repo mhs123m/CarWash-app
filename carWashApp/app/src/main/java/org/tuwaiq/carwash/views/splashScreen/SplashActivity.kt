@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.os.Handler
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.util.Globals
+import org.tuwaiq.carwash.views.storeViews.storeMainActivity.StoreMainActivity
 import org.tuwaiq.carwash.views.userViews.userLoginAndRegister.UserSignInActivity
+import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,11 +21,20 @@ class SplashActivity : AppCompatActivity() {
         var handler = Handler()
 
         handler.postDelayed({
+            if (Globals.sharedPreferences.getString("Token", null) != null &&
+                Globals.sharedPreferences.getBoolean("IsUser",false)
+            ) {
+                startActivity(Intent(this, UserMainActivity::class.java))
+                finish()
+            } else if (Globals.sharedPreferences.getString("Token", null) != null &&
+                Globals.sharedPreferences.getBoolean("IsStore",false)) {
+                startActivity(Intent(this, StoreMainActivity::class.java))
+                finish()
+            } else {
+                startActivity(Intent(this, UserSignInActivity::class.java))
+                finish()
+            }
 
-
-            val i = Intent(this, UserSignInActivity::class.java)
-            startActivity(i)
-            finish()
         }, 300)
     }
 }

@@ -20,6 +20,11 @@ interface StoreServices {
     @GET("stores")
     fun getAllStores(): Call<List<Store>>
 
+    // get one user by id
+    @GET("stores/{storeId}")
+    fun getStoreById(@Path("storeId")id: String): Call<Store>
+
+
     // update store info
     @PATCH("stores/{storeId}")
     fun updateStoreInfo (@Path("storeId") id:String, @Body store: Store ): Call<Store>

@@ -13,6 +13,7 @@ class StoreViewModel: ViewModel() {
     var loginLiveData = MutableLiveData<Store>()
     var allStoresLiveData = MutableLiveData<List<Store>>()
     var updatedStoreLiveData = MutableLiveData<Store>()
+    var oneStoreLiveData = MutableLiveData<Store>()
 
     // get live data of store from repo to view model
     fun registerNewStore(store: Store) {
@@ -28,8 +29,12 @@ class StoreViewModel: ViewModel() {
     fun getAllStores(){
         allStoresLiveData = storeRepository.getAllStores()
     }
-
+    //update updated data with response from repo
     fun updateStoreInfo(id:String,store: Store){
         updatedStoreLiveData = storeRepository.updateStoreInfo(id, store)
+    }
+    // set live data of one store by id
+    fun getStoreById (id: String){
+        oneStoreLiveData = storeRepository.getStoreById(id)
     }
 }

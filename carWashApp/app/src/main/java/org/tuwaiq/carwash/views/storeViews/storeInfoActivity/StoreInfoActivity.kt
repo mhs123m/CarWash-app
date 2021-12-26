@@ -36,8 +36,8 @@ import java.io.ByteArrayOutputStream
 
 class StoreInfoActivity : AppCompatActivity() {
     // call viewModel and views here to access them in functions
-
-    lateinit var locationHelperFunctions: LocationHelperFunctions
+    private var loggedInStore: Store? = null
+    private lateinit var locationHelperFunctions: LocationHelperFunctions
     private var encodedPic: String? = null
     private val viewModel: StoreViewModel by viewModels()
     private lateinit var imgViewStoreLogo: ImageView
@@ -59,16 +59,22 @@ class StoreInfoActivity : AppCompatActivity() {
         textInputStorePhone = findViewById(R.id.textInputStorePhone)
         textInputStoreLocation = findViewById(R.id.textInputStoreLocation)
         val btnUpdateInfo = findViewById<Button>(R.id.buttonStoreUpdateInfo)
-
-        // set textInput with info of current logged in store
-        textInputStoreName.setText(Globals.sharedPreferences.getString("Name", null))
-        textInputStoreEmail.setText(Globals.sharedPreferences.getString("Email", null))
-        textInputStorePhone.setText(Globals.sharedPreferences.getString("Phone", null))
-        Globals.sharedPreferences.getString("Logo", null)?.let {
-            encodedPic = it
-            imgViewStoreLogo.setImageBitmap(HelperFunctions.decodePicFromApi(encodedPic!!))
+        // call view model
+        viewModel.getStoreById(Globals.sharedPreferences.getString("ID", null)!!)
+        viewModel.oneStoreLiveData.observe(this) { store ->
+            loggedInStore = store
+            // set textInput with info of current logged in store
+            textInputStoreName.setText(loggedInStore?.name)
+            textInputStoreEmail.setText(loggedInStore?.email)
+            textInputStorePhone.setText(loggedInStore?.phone)
+            loggedInStore?.logo?.let {
+                encodedPic = it
+                imgViewStoreLogo.setImageBitmap(HelperFunctions.decodePicFromApi(encodedPic!!))
+            }
+            loggedInStore?.geometry?.let {
+                textInputStoreLocation.setText(it.formattedAddress)
+            }
         }
-
 
 
 
@@ -91,12 +97,10 @@ class StoreInfoActivity : AppCompatActivity() {
         textInputStoreLocation.setOnClickListener {
 
             // get current location to set map view marker as the current.
-            val i = Intent(this,StoreMapsActivity::class.java)
+            val i = Intent(this, StoreMapsActivity::class.java)
 
             startActivity(i)
         }
-
-
 
 
         // here we click the btn update
@@ -104,15 +108,15 @@ class StoreInfoActivity : AppCompatActivity() {
             val geometry = locationHelperFunctions.getGeometry()
             // updated info
             currentStore = Store(
-                Globals.sharedPreferences.getString("ID", null),
+                loggedInStore?._id,
                 textInputStoreName.text.toString(),
                 textInputStoreEmail.text.toString(),
                 textInputStorePhone.text.toString(),
                 null, encodedPic, geometry
             )
-            viewModel.updateStoreInfo(currentStore._id!!,currentStore)
-            viewModel.updatedStoreLiveData.observe(this){
-                Log.d("STORE_UPDATE","btn pressed: $it")
+            viewModel.updateStoreInfo(currentStore._id!!, currentStore)
+            viewModel.updatedStoreLiveData.observe(this) {
+                Log.d("STORE_UPDATE", "btn pressed: $it")
             }
         }
 
