@@ -26,4 +26,5 @@
     <string name="location">location</string>
     <string name="update_information">Update information</string>
     <string name="title_activity_store_maps">StoreMapsActivity</string>
+    <string name="log_out">Log out</string>
 </resources>

@@ -17,7 +17,7 @@
         <entry key="app/src/main/res/layout/fragment_orders.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/fragment_store_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_store_log_in.xml" value="0.22864583333333333" />
-        <entry key="app/src/main/res/layout/fragment_store_more.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/layout/fragment_store_more.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_store_preview.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/fragment_store_register.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/fragment_user_home.xml" value="0.2" />

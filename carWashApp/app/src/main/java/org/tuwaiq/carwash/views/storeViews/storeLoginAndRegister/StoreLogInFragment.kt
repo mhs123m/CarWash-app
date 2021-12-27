@@ -31,7 +31,6 @@ class StoreLogInFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_store_log_in, container, false)
 
 
-
         // call viewModel
         viewModel =
             ViewModelProvider(
@@ -52,27 +51,33 @@ class StoreLogInFragment : Fragment() {
             val email = textInputEmail.text.toString()
             val password = textInputPassword.text.toString()
 
-            if (email.isEmpty()){
+            if (email.isEmpty()) {
                 textInputEmail.error = "Please enter email"
                 textInputEmail.requestFocus()
                 return@setOnClickListener
             }
-            if (password.isEmpty()){
+            if (password.isEmpty()) {
                 textInputPassword.error = "Please enter password"
                 textInputPassword.requestFocus()
                 return@setOnClickListener
             }
 
-            viewModel.storeLogIn(LoginModel(email,password))
+            viewModel.storeLogIn(LoginModel(email, password))
 
-            viewModel.loginLiveData.observe(this,{
-                if (it != null){
-                    Log.d("USER_LOGIN","success: $it")
+            viewModel.loginLiveData.observe(this, {
+                if (it != null) {
+                    Log.d("STORE_LOGIN", "success: $it")
                     // intent to user home page with current Store
-                    startActivity(Intent(v.context,StoreMainActivity::class.java))
-                    activity?.finish()
+                    val i = Intent(v.context, StoreMainActivity::class.java)
+
+                    i.addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK
+                                or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                                or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    )
+                    startActivity(i)
                 } else {
-                    Log.d("USER_LOGIN","fail: $it")
+                    Log.d("USER_LOGIN", "fail: $it")
                     // go to ur mom he he he
                 }
             })
@@ -92,11 +97,13 @@ class StoreLogInFragment : Fragment() {
         //on click, (if not a car wash provider)
         // intent to log in as a user and finish() store and user activities
         tvNotProviderClickHere.setOnClickListener {
-            val i = Intent(v.context,UserSignInActivity::class.java)
+            val i = Intent(v.context, UserSignInActivity::class.java)
 
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                    or Intent.FLAG_ACTIVITY_CLEAR_TOP
-                    or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            i.addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK
+                        or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            )
             startActivity(i)
 
         }

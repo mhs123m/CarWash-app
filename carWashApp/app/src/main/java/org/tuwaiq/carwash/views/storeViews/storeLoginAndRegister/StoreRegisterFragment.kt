@@ -55,7 +55,7 @@ class StoreRegisterFragment : Fragment() {
             val cPassword = textInputCPassword.text.toString()
 
             // store to be registered
-            val store = Store(null,name,email,phone,password,null,null)
+            val store = Store(null, name, email, phone, password, null, null)
             if (name.isEmpty()) {
                 textInputName.error = "Store Name is required"
                 textInputName.requestFocus()
@@ -79,19 +79,22 @@ class StoreRegisterFragment : Fragment() {
             viewModel.registerNewStore(store)
 
             viewModel.registerLiveData.observe(this, {
-            if (it != null) {
-                Log.d("USER_REGISTER", "success: $it")
-                // intent to user home page with current Store
-                startActivity(Intent(v.context, StoreMainActivity::class.java))
-                activity?.finish()
+                if (it != null) {
+                    Log.d("USER_REGISTER", "success: $it")
+                    // intent to user home page with current Store
+                    val i = Intent(v.context, StoreMainActivity::class.java)
+                    i.addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK
+                                or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                                or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    )
+                    startActivity(i)
 
-            } else {
-                Log.d("USER_REGISTER", "fail: $it")
-            }
-        })
+                } else {
+                    Log.d("USER_REGISTER", "fail: $it")
+                }
+            })
         }
-
-
 
 
         // on click get back to Login fragment (if already has an account)
