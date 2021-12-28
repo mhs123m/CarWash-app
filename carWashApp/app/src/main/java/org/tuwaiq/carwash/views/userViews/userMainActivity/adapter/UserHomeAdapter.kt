@@ -26,7 +26,8 @@ class UserHomeAdapter() : RecyclerView.Adapter<UserHomeHolder>() {
     override fun onBindViewHolder(holder: UserHomeHolder, position: Int) {
         val store = data[position]
         holder.apply {
-            imgViewStoreLogo.setImageBitmap(store.logo?.let { HelperFunctions.decodePicFromApi(it) })
+            imgViewStoreLogo.setImageBitmap(store.logo?.let {
+                HelperFunctions.decodePicFromApi(it) })
             tvStoreName.text = store.name
             //tvStoreDistanceInKm.text =  (store.location - currntUser.location(get it from sharePref?) TODO
 //            tvStoreRatingAverage.text = store.ratingAve TODO
