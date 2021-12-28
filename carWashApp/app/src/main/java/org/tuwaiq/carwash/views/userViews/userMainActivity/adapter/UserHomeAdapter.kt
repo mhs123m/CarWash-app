@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Store
 import org.tuwaiq.carwash.util.HelperFunctions
@@ -20,7 +19,7 @@ class UserHomeAdapter() : RecyclerView.Adapter<UserHomeHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserHomeHolder {
         val v = LayoutInflater.from(parent.context)
-            .inflate(R.layout.stores_list_item_for_users, parent, false)
+            .inflate(R.layout.stores_list_item_for_users_row, parent, false)
         return UserHomeHolder(v)
     }
 

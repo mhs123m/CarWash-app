@@ -23,7 +23,9 @@
         <entry key="app/src/main/res/layout/fragment_user_home.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_user_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_user_register.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/services_row.xml" value="0.273322776474025" />
         <entry key="app/src/main/res/layout/stores_list_item_for_users.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/stores_list_item_for_users_row.xml" value="0.1" />
         <entry key="app/src/main/res/menu/store_bottom_nav_bar.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/menu/user_buttom_nav_menu.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/xml/store_setting.xml" value="0.24270833333333333" />
