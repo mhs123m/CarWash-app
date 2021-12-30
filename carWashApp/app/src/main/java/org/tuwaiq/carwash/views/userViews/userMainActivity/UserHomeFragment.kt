@@ -34,13 +34,14 @@ class UserHomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //link recyclerview
         val userHomeRecyclerView = view.findViewById<RecyclerView>(R.id.userHomeRecyclerView)
-        userHomeRecyclerView.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+        userHomeRecyclerView.layoutManager =
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
         userHomeAdapter = UserHomeAdapter()
 
         // get data of stores and set to adapter
         viewModel.getAllStores()
-        viewModel.allStoresLiveData.observe(this,{
+        viewModel.allStoresLiveData.observe(this, {
             userHomeAdapter.setData(it)
             userHomeRecyclerView.adapter = userHomeAdapter
         })

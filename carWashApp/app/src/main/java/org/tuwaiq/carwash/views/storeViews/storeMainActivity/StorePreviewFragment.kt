@@ -20,7 +20,7 @@ import org.tuwaiq.carwash.views.userViews.userLoginAndRegister.UserSignInActivit
 class StorePreviewFragment : Fragment() {
 
     lateinit var viewModel: ServiceViewModel
-    lateinit var adapter: StorePreviewAdapter
+   // lateinit var adapter: StorePreviewAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,29 +34,35 @@ class StorePreviewFragment : Fragment() {
                 requireActivity() as StoreMainActivity
             )[ServiceViewModel::class.java]
 
-        return v
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        // initialize adapter
-        adapter = StorePreviewAdapter()
         // link recyclerView
-        val storePrevRecyclerView = view.findViewById<RecyclerView>(R.id.storePreviewRecyclerView)
+        val storePrevRecyclerView = v.findViewById<RecyclerView>(R.id.storePreviewRecyclerView)
         storePrevRecyclerView.layoutManager =
             StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL)
 
+        // initialize adapter
+      //  adapter = StorePreviewAdapter()
         // get token and store Id
         val xAuthHeader = Globals.sharedPreferences.getString("Token", null)
         val storeId = Globals.sharedPreferences.getString("ID", null)
         viewModel.getAllServicesOfStore(xAuthHeader!!, storeId!!)
 
         viewModel.allServicesOfStoreLiveData.observe(this) { serviceList ->
-                adapter.setData(serviceList)
-                storePrevRecyclerView.adapter = adapter
+            var ad=StorePreviewAdapter()
+            ad.setData(serviceList)
+            storePrevRecyclerView.adapter = ad
+
+
+
+            println("Data IS initialized"+ serviceList.size)
+            //storePrevRecyclerView.adapter = adapter
         }
+        return v
+    }
 
 
+    companion object {
+        @JvmStatic
+        fun newInstance() = StorePreviewFragment()
     }
 
 

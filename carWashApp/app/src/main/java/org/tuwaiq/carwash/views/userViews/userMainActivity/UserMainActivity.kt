@@ -2,8 +2,12 @@ package org.tuwaiq.carwash.views.userViews.userMainActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.tuwaiq.carwash.R
+import org.tuwaiq.carwash.views.storeViews.storeMainActivity.StoreHomeFragment
+import org.tuwaiq.carwash.views.storeViews.storeMainActivity.StoreMoreFragment
+import org.tuwaiq.carwash.views.storeViews.storeMainActivity.StorePreviewFragment
 
 class UserMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,33 +16,49 @@ class UserMainActivity : AppCompatActivity() {
 
         //link bottom navigation view
         val bNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavViewUser)
+
+        // get instance of fragments
+        val userHomeFragment = UserHomeFragment()
+        val userOrdersFragment = UserOrdersFragment()
+        val userMoreFragment = UserMoreFragment()
+
         // navigate fragments through navigation item selected
         bNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
+            var fragment: Fragment? = null
+            when (it.itemId) {
                 R.id.CarWashStores -> {
                     // set stores frag
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.UserfragmentContainerView,UserHomeFragment()).commit()
-                    true
+                    fragment = userHomeFragment
+
                 }
                 R.id.orders -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.UserfragmentContainerView,UserOrdersFragment()).commit()
-                    true
+                    fragment = userOrdersFragment
+
                 }
                 R.id.more -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.UserfragmentContainerView,UserMoreFragment()).commit()
-                    true
+                    fragment = userMoreFragment
+
                 }
                 else -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.UserfragmentContainerView, UserHomeFragment()).commit()
-                    false
+                    fragment = userHomeFragment
+
                 }
 
             }
+            loadFragment(fragment)
         }
 
+    }
+
+    private fun loadFragment(fragment: Fragment?): Boolean {
+        //switching fragment
+        if (fragment != null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.UserfragmentContainerView, fragment)
+                .commit()
+            return true
+        }
+        return false
     }
 }

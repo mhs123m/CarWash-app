@@ -40,4 +40,8 @@ class StoreMoreFragment : Fragment() {
 
         return v
     }
+    companion object {
+        @JvmStatic
+        fun newInstance() = StoreMoreFragment()
+    }
 }

@@ -3,6 +3,7 @@ package org.tuwaiq.carwash.util
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
+import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
@@ -10,6 +11,7 @@ import androidx.core.app.ActivityCompat
 import com.google.android.gms.maps.model.LatLng
 import org.tuwaiq.carwash.model.Coordinates
 import org.tuwaiq.carwash.model.Geometry
+import java.io.IOException
 import java.util.*
 
 class LocationHelperFunctions {
@@ -82,9 +84,19 @@ class LocationHelperFunctions {
     }
 
     fun getAddress(lat: Double, lng: Double, context: Context): String {
-        val geocoder = Geocoder(context, Locale.getDefault())
-        val addresses = geocoder.getFromLocation(lat, lng, 1)
-        return "${addresses[0].adminArea}, ${addresses[0].countryName}"
+        val geocoder = Geocoder(context)
+        var address: String? = null
+        try {
+            val addresses: List<Address> =
+                geocoder.getFromLocation(lat, lng, 1)
+            if (addresses.isNotEmpty()) {
+                address = addresses[0].getAddressLine(0)
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
+        return address ?: "no address found"
     }
 
     fun setGeometry(latLng: LatLng, context: Context) {

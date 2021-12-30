@@ -16,4 +16,8 @@ class StoreHomeFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_store_home, container, false)
     }
+    companion object {
+        @JvmStatic
+        fun newInstance() = StoreHomeFragment()
+    }
 }

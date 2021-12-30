@@ -22,7 +22,7 @@ class Api {
         }
 
         private val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:3000/")
+            .baseUrl("https://shiny-wash.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
            // .client(getClient())
             .build()
