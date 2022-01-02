@@ -19,4 +19,12 @@ class ServiceRepository {
         return serviceServices.getAllServicesOfStore(xAuthHeader, storeId)
     }
 
+    // post new service
+    suspend fun addNewService (
+        xAuthHeader: String,
+        serviceModel: ServiceModel
+    ): Response<ServiceModel>{
+
+        return serviceServices.addNewService(xAuthHeader, serviceModel)
+    }
 }

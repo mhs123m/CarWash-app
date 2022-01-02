@@ -2,9 +2,7 @@ package org.tuwaiq.carwash.network
 
 import org.tuwaiq.carwash.model.ServiceModel
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ServiceServices {
 
@@ -16,4 +14,12 @@ interface ServiceServices {
         @Header("x-auth") xAuthHeader: String,
         @Path("storeId") storeId: String
     ): Response<List<ServiceModel>>
+
+    // POST new service by store
+    // /services/new
+    @POST("/services/new")
+    suspend fun addNewService(
+        @Header("x-auth") xAuthHeader: String,
+        @Body serviceModel: ServiceModel
+    ): Response<ServiceModel>
 }

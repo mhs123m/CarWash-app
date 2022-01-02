@@ -3,7 +3,7 @@
     package="org.tuwaiq.carwash">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -15,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarWashApp"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".views.storeViews.AddServiceActivity"
+            android:exported="false" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

@@ -1,5 +1,6 @@
 package org.tuwaiq.carwash.views.storeViews.storeMainActivity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,9 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.util.Globals
 import org.tuwaiq.carwash.views.ServiceViewModel
+import org.tuwaiq.carwash.views.storeViews.AddServiceActivity
 import org.tuwaiq.carwash.views.storeViews.storeMainActivity.adapter.StorePreviewAdapter
 import org.tuwaiq.carwash.views.userViews.UserViewModel
 import org.tuwaiq.carwash.views.userViews.userLoginAndRegister.UserSignInActivity
@@ -20,7 +23,7 @@ import org.tuwaiq.carwash.views.userViews.userLoginAndRegister.UserSignInActivit
 class StorePreviewFragment : Fragment() {
 
     lateinit var viewModel: ServiceViewModel
-   // lateinit var adapter: StorePreviewAdapter
+    lateinit var adapter: StorePreviewAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,23 +42,24 @@ class StorePreviewFragment : Fragment() {
         storePrevRecyclerView.layoutManager =
             StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL)
 
-        // initialize adapter
-      //  adapter = StorePreviewAdapter()
+//         initialize adapter
+        adapter = StorePreviewAdapter()
         // get token and store Id
         val xAuthHeader = Globals.sharedPreferences.getString("Token", null)
         val storeId = Globals.sharedPreferences.getString("ID", null)
         viewModel.getAllServicesOfStore(xAuthHeader!!, storeId!!)
 
         viewModel.allServicesOfStoreLiveData.observe(this) { serviceList ->
-            var ad=StorePreviewAdapter()
-            ad.setData(serviceList)
-            storePrevRecyclerView.adapter = ad
 
-
-
-            println("Data IS initialized"+ serviceList.size)
-            //storePrevRecyclerView.adapter = adapter
+            adapter.setData(serviceList)
+            storePrevRecyclerView.adapter = adapter
         }
+
+        //link fab btn -> on click, open add activity
+        v.findViewById<FloatingActionButton>(R.id.FABaddService).setOnClickListener {
+            startActivity(Intent(v.context, AddServiceActivity::class.java))
+        }
+
         return v
     }
 

@@ -27,4 +27,10 @@
     <string name="update_information">Update information</string>
     <string name="title_activity_store_maps">StoreMapsActivity</string>
     <string name="log_out">Log out</string>
+    <string name="more">More</string>
+    <string name="ex_waxing_regular_wash">e.g. Waxing, Regular Wash</string>
+    <string name="price">Price</string>
+    <string name="duration">Duration</string>
+    <string name="optional">Optional</string>
+    <string name="service_title">Service Title:</string>
 </resources>

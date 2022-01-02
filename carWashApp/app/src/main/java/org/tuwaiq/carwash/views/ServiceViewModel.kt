@@ -11,14 +11,22 @@ import org.tuwaiq.carwash.util.HelperFunctions
 
 class ServiceViewModel : ViewModel() {
 
-    val allServicesOfStoreLiveData = MutableLiveData<List<ServiceModel>>()
     private val serviceRepository = ServiceRepository()
+    val allServicesOfStoreLiveData = MutableLiveData<List<ServiceModel>>()
+    val newServiceLiveData = MutableLiveData<ServiceModel>()
 
     fun getAllServicesOfStore(xAuthHeader: String, storeId: String) {
 
         CoroutineScope(Dispatchers.IO).launch {
             val response = serviceRepository.getAllServicesOfStore(xAuthHeader, storeId)
             HelperFunctions.ifResponseNotNullPostValue(allServicesOfStoreLiveData,response)
+        }
+    }
+
+    fun addNewService (xAuthHeader: String, serviceModel: ServiceModel){
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = serviceRepository.addNewService(xAuthHeader, serviceModel)
+            HelperFunctions.ifResponseNotNullPostValue(newServiceLiveData,response)
         }
     }
 }

@@ -5,11 +5,13 @@ data class ServiceModel(
     val _id: String?,
     val logo: String?,
     val title: String,
-    val durationInMin: Double,
-    val description: String,
-    val available: Boolean = false,
+    val description: String?,
     val price: Double,
-    val createdAt: String,
-    val updatedAt: String,
+    val durationInMin: Double,
+    val available: Boolean = false,
+    val createdAt: String?,
+    val updatedAt: String?,
     val storeId: String,
-)
+){
+
+}
