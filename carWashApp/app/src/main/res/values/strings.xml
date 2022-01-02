@@ -33,4 +33,11 @@
     <string name="duration">Duration</string>
     <string name="optional">Optional</string>
     <string name="service_title">Service Title:</string>
+    <string name="add_service">Add service</string>
+    <string name="turn_on_if_you_would_like_the_service_to_be_seen_by_customers">turn on if you would like the service to be seen by customers</string>
+    <string name="update">update</string>
+    <string name="delete">delete</string>
+    <string name="service_availability">Service Availability</string>
+    <string name="minutes">minutes</string>
+    <string name="sar">SAR</string>
 </resources>

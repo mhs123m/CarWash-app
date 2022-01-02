@@ -22,4 +22,21 @@ interface ServiceServices {
         @Header("x-auth") xAuthHeader: String,
         @Body serviceModel: ServiceModel
     ): Response<ServiceModel>
+
+    //PATCH
+    // /services/:serviceId
+    @PATCH("/services/{serviceId}")
+    suspend fun editService(
+        @Header("x-auth") xAuthHeader: String,
+        @Path("serviceId") serviceId: String,
+        @Body serviceModel: ServiceModel
+    ): Response<ServiceModel>
+
+    // DELETE
+    // // /services/:serviceId
+    @DELETE("/services/{serviceId}")
+    suspend fun deleteService(
+        @Header("x-auth") xAuthHeader: String,
+        @Path("serviceId") serviceId: String
+    ): Response<ServiceModel>
 }

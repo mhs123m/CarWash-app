@@ -16,6 +16,9 @@
         android:theme="@style/Theme.CarWashApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".views.storeViews.EditServiceActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.storeViews.AddServiceActivity"
             android:exported="false" />
         <!--

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.storeViews.AddServiceActivity">
+    tools:context=".views.storeViews.EditServiceActivity">
 
     <TextView
         android:id="@+id/textView12"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextServiceTitle"
+        android:id="@+id/editTextServiceTitleEdit"
         style="@android:style/Widget.DeviceDefault.Light.EditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -33,23 +33,23 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <ImageView
-        android:id="@+id/imageViewServiceLogo"
+        android:id="@+id/imageViewServiceLogoEdit"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextServiceTitle"
+        app:layout_constraintTop_toBottomOf="@+id/editTextServiceTitleEdit"
         app:srcCompat="@drawable/add_image" />
 
     <ImageView
-        android:id="@+id/imageViewChangeServicePictureOnClick"
+        android:id="@+id/imageViewChangeServicePictureOnClickEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
         android:layout_marginTop="94dp"
-        app:layout_constraintStart_toStartOf="@+id/imageViewServiceLogo"
-        app:layout_constraintTop_toTopOf="@+id/imageViewServiceLogo"
+        app:layout_constraintStart_toStartOf="@+id/imageViewServiceLogoEdit"
+        app:layout_constraintTop_toTopOf="@+id/imageViewServiceLogoEdit"
         app:srcCompat="@drawable/changes__1_" />
 
     <TextView
@@ -60,10 +60,10 @@
         android:layout_marginTop="38dp"
         android:text="Service Description:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewServiceLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewServiceLogoEdit" />
 
     <EditText
-        android:id="@+id/editTextServiceDescription"
+        android:id="@+id/editTextServiceDescriptionEdit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -84,10 +84,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextServiceDescription">
+        app:layout_constraintTop_toBottomOf="@+id/editTextServiceDescriptionEdit">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputServicePrice"
+            android:id="@+id/textInputServicePriceEdit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/price" />
@@ -104,7 +104,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout12">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputServiceDuration"
+            android:id="@+id/textInputServiceDurationEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/duration" />
@@ -116,7 +116,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="16dp"
-        android:text="@string/sar"
+        android:text="SAR"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout12"
         app:layout_constraintTop_toTopOf="@+id/textInputLayout12" />
 
@@ -126,12 +126,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="16dp"
-        android:text="@string/minutes"
+        android:text="minutes"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout13"
         app:layout_constraintTop_toTopOf="@+id/textInputLayout13" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/switchServiceAvailable"
+        android:id="@+id/switchServiceAvailableEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -165,7 +165,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="@string/service_availability"
+        android:text="Service Availability"
         android:textColor="@color/textAlmostBlack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
@@ -177,17 +177,29 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
         android:text="@string/turn_on_if_you_would_like_the_service_to_be_seen_by_customers"
-        app:layout_constraintEnd_toStartOf="@+id/switchServiceAvailable"
+        app:layout_constraintEnd_toStartOf="@+id/switchServiceAvailableEdit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <Button
-        android:id="@+id/buttonAddService"
+        android:id="@+id/buttonUpdateService"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="110dp"
+        android:text="@string/update"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+    <Button
+        android:id="@+id/buttonDeleteService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="42dp"
-        android:text="@string/add_service"
+        android:layout_marginEnd="51dp"
+        android:text="@string/delete"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextServiceDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextServiceDescriptionEdit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

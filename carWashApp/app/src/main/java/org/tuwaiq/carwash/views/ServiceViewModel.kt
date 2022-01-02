@@ -14,19 +14,35 @@ class ServiceViewModel : ViewModel() {
     private val serviceRepository = ServiceRepository()
     val allServicesOfStoreLiveData = MutableLiveData<List<ServiceModel>>()
     val newServiceLiveData = MutableLiveData<ServiceModel>()
+    val editedServiceLiveData = MutableLiveData<ServiceModel>()
+    val deletedServiceLiveData = MutableLiveData<ServiceModel>()
 
     fun getAllServicesOfStore(xAuthHeader: String, storeId: String) {
 
         CoroutineScope(Dispatchers.IO).launch {
             val response = serviceRepository.getAllServicesOfStore(xAuthHeader, storeId)
-            HelperFunctions.ifResponseNotNullPostValue(allServicesOfStoreLiveData,response)
+            HelperFunctions.ifResponseNotNullPostValue(allServicesOfStoreLiveData, response)
         }
     }
 
-    fun addNewService (xAuthHeader: String, serviceModel: ServiceModel){
+    fun addNewService(xAuthHeader: String, serviceModel: ServiceModel) {
         CoroutineScope(Dispatchers.IO).launch {
             val response = serviceRepository.addNewService(xAuthHeader, serviceModel)
-            HelperFunctions.ifResponseNotNullPostValue(newServiceLiveData,response)
+            HelperFunctions.ifResponseNotNullPostValue(newServiceLiveData, response)
+        }
+    }
+
+    fun editService(xAuthHeader: String, serviceId: String, serviceModel: ServiceModel) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = serviceRepository.editService(xAuthHeader, serviceId, serviceModel)
+            HelperFunctions.ifResponseNotNullPostValue(editedServiceLiveData, response)
+        }
+    }
+
+    fun deleteService(xAuthHeader: String, serviceId: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = serviceRepository.deleteService(xAuthHeader, serviceId)
+            HelperFunctions.ifResponseNotNullPostValue(deletedServiceLiveData, response)
         }
     }
 }

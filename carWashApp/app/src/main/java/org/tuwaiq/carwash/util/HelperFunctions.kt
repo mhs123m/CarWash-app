@@ -31,9 +31,9 @@ class HelperFunctions {
         fun <T> ifResponseNotNullPostValue(liveData: MutableLiveData<T>, response: Response<T>): MutableLiveData<T> {
             if (response.isSuccessful) {
                 liveData.postValue(response.body())
-                Log.d("STORE", "success res.body: ${response.body()}")
+                Log.d("$liveData", "success res.body: ${response.body()}")
             } else {
-                Log.d("STORE", "fail res.message: ${response.message()}")
+                Log.d("$liveData", "fail res.message: ${response.message()}")
             }
             return liveData
         }

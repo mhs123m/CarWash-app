@@ -1,5 +1,7 @@
 package org.tuwaiq.carwash.model
 
+import java.io.Serializable
+
 data class ServiceModel(
 
     val _id: String?,
@@ -12,6 +14,6 @@ data class ServiceModel(
     val createdAt: String?,
     val updatedAt: String?,
     val storeId: String,
-){
+): Serializable{
 
 }
