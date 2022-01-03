@@ -1,4 +1,4 @@
-package org.tuwaiq.carwash.views.userViews.userMainActivity
+package org.tuwaiq.carwash.views.userViews.userMainActivity.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.views.storeViews.StoreViewModel
-import org.tuwaiq.carwash.views.userViews.userMainActivity.adapter.UserHomeAdapter
+import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
 
 class UserHomeFragment : Fragment() {
     lateinit var userHomeAdapter: UserHomeAdapter

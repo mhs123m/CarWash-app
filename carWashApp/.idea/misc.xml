@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable/btn_shape_rounded_corners.xml" value="0.25885416666666666" />
         <entry key="app/src/main/res/layout-v23/activity_store_maps.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_add_service.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_display_services.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_edit_service.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1962962962962963" />
         <entry key="app/src/main/res/layout/activity_signin.xml" value="0.1962962962962963" />

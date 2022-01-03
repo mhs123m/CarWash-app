@@ -11,7 +11,6 @@ interface ServiceServices {
     // get all services of a store
     @GET("/stores/{storeId}/services")
     suspend fun getAllServicesOfStore(
-        @Header("x-auth") xAuthHeader: String,
         @Path("storeId") storeId: String
     ): Response<List<ServiceModel>>
 

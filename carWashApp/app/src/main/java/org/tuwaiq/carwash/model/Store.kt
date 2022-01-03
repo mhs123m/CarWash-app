@@ -1,5 +1,7 @@
 package org.tuwaiq.carwash.model
 
+import java.io.Serializable
+
 data class Store(
     val _id: String?,
     val name: String,
@@ -9,4 +11,4 @@ data class Store(
     val logo: String?,
     val geometry: Geometry?,
 
-)
+    ) : Serializable

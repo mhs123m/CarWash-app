@@ -1,4 +1,4 @@
-package org.tuwaiq.carwash.views.storeViews
+package org.tuwaiq.carwash.views.storeViews.addServiceActivity
 
 import android.app.Activity
 import android.content.Intent
@@ -12,7 +12,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.github.dhaval2404.imagepicker.ImagePicker
-import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.databinding.ActivityAddServiceBinding
 import org.tuwaiq.carwash.model.ServiceModel
 import org.tuwaiq.carwash.util.Globals

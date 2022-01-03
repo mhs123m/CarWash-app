@@ -1,5 +1,6 @@
-package org.tuwaiq.carwash.views.userViews.userMainActivity.adapter
+package org.tuwaiq.carwash.views.userViews.userMainActivity.fragments
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Store
 import org.tuwaiq.carwash.util.HelperFunctions
+import org.tuwaiq.carwash.views.userViews.displayServices.DisplayServicesActivity
 
 class UserHomeAdapter() : RecyclerView.Adapter<UserHomeHolder>() {
     private var data: List<Store>
@@ -27,11 +29,17 @@ class UserHomeAdapter() : RecyclerView.Adapter<UserHomeHolder>() {
         val store = data[position]
         holder.apply {
             imgViewStoreLogo.setImageBitmap(store.logo?.let {
-                HelperFunctions.decodePicFromApi(it) })
+                HelperFunctions.decodePicFromApi(it)
+            })
             tvStoreName.text = store.name
             //tvStoreDistanceInKm.text =  (store.location - currntUser.location(get it from sharePref?) TODO
 //            tvStoreRatingAverage.text = store.ratingAve TODO
 //            tvStoreRatingNumberOfRating.text = store.numberOfRating TODO
+        }
+        holder.itemView.setOnClickListener {
+            val i = Intent(it.context, DisplayServicesActivity::class.java)
+            i.putExtra("store", store)
+            it.context.startActivity(i)
         }
     }
 

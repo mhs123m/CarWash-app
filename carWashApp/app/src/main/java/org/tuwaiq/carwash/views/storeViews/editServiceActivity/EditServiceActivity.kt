@@ -1,4 +1,4 @@
-package org.tuwaiq.carwash.views.storeViews
+package org.tuwaiq.carwash.views.storeViews.editServiceActivity
 
 import android.app.Activity
 import android.content.Intent
@@ -16,7 +16,6 @@ import androidx.activity.viewModels
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
-import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.databinding.ActivityEditServiceBinding
 import org.tuwaiq.carwash.model.ServiceModel
 import org.tuwaiq.carwash.util.Globals

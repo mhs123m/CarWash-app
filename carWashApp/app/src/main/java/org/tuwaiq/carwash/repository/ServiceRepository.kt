@@ -12,11 +12,10 @@ class ServiceRepository {
 
     // get all services of one store
     suspend fun getAllServicesOfStore(
-        xAuthHeader: String,
         storeId: String
     ): Response<List<ServiceModel>> {
 
-        return serviceServices.getAllServicesOfStore(xAuthHeader, storeId)
+        return serviceServices.getAllServicesOfStore(storeId)
     }
 
     // post new service

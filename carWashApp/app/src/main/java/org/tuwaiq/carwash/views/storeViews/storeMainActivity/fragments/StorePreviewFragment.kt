@@ -1,4 +1,4 @@
-package org.tuwaiq.carwash.views.storeViews.storeMainActivity
+package org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,10 +14,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.util.Globals
 import org.tuwaiq.carwash.views.ServiceViewModel
-import org.tuwaiq.carwash.views.storeViews.AddServiceActivity
-import org.tuwaiq.carwash.views.storeViews.storeMainActivity.adapter.StorePreviewAdapter
-import org.tuwaiq.carwash.views.userViews.UserViewModel
-import org.tuwaiq.carwash.views.userViews.userLoginAndRegister.UserSignInActivity
+import org.tuwaiq.carwash.views.storeViews.addServiceActivity.AddServiceActivity
+import org.tuwaiq.carwash.views.storeViews.storeMainActivity.StoreMainActivity
 
 class StorePreviewFragment : Fragment() {
 
@@ -44,10 +41,9 @@ class StorePreviewFragment : Fragment() {
 
 //         initialize adapter
         adapter = StorePreviewAdapter()
-        // get token and store Id
-        val xAuthHeader = Globals.sharedPreferences.getString("Token", null)
+        // get   store Id
         val storeId = Globals.sharedPreferences.getString("ID", null)
-        viewModel.getAllServicesOfStore(xAuthHeader!!, storeId!!)
+        viewModel.getAllServicesOfStore(storeId!!)
 
         viewModel.allServicesOfStoreLiveData.observe(this) { serviceList ->
 

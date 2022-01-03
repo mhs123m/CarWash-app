@@ -5,12 +5,14 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.util.Globals
 import org.tuwaiq.carwash.util.LocationHelperFunctions
+import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.StoreHomeFragment
+import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.StoreMoreFragment
+import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.StorePreviewFragment
 
 
 class StoreMainActivity : AppCompatActivity() {

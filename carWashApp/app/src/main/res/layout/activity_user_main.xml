@@ -17,7 +17,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/UserfragmentContainerView"
-        android:name="org.tuwaiq.carwash.views.userViews.userMainActivity.UserHomeFragment"
+        android:name="org.tuwaiq.carwash.views.userViews.userMainActivity.fragments.UserHomeFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavViewUser"

@@ -17,10 +17,10 @@ class ServiceViewModel : ViewModel() {
     val editedServiceLiveData = MutableLiveData<ServiceModel>()
     val deletedServiceLiveData = MutableLiveData<ServiceModel>()
 
-    fun getAllServicesOfStore(xAuthHeader: String, storeId: String) {
+    fun getAllServicesOfStore(storeId: String) {
 
         CoroutineScope(Dispatchers.IO).launch {
-            val response = serviceRepository.getAllServicesOfStore(xAuthHeader, storeId)
+            val response = serviceRepository.getAllServicesOfStore(storeId)
             HelperFunctions.ifResponseNotNullPostValue(allServicesOfStoreLiveData, response)
         }
     }
