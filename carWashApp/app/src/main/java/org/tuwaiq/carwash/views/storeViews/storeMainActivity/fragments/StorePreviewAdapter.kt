@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.ServiceModel
 import org.tuwaiq.carwash.util.HelperFunctions
-import org.tuwaiq.carwash.views.storeViews.editServiceActivity.EditServiceActivity
+import org.tuwaiq.carwash.views.storeViews.serviceActivities.EditServiceActivity
 
 class StorePreviewAdapter :
     RecyclerView.Adapter<StorePreviewHolder>() {

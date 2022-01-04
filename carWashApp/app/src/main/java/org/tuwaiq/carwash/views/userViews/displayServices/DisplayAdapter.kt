@@ -8,11 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import org.tuwaiq.carwash.R
-import org.tuwaiq.carwash.databinding.ServicesRowBinding
 import org.tuwaiq.carwash.model.ServiceModel
 import org.tuwaiq.carwash.util.HelperFunctions
-import org.tuwaiq.carwash.views.storeViews.editServiceActivity.EditServiceActivity
-import org.tuwaiq.carwash.views.userViews.BookAppointmentActivity
+import org.tuwaiq.carwash.views.userViews.bookAppointmentActivity.BookAppointmentActivity
 
 class DisplayAdapter(private var data: List<ServiceModel>) : RecyclerView.Adapter<DisplayHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DisplayHolder {

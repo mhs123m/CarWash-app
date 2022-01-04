@@ -1,4 +1,4 @@
-package org.tuwaiq.carwash.views.storeViews.addServiceActivity
+package org.tuwaiq.carwash.views.storeViews.serviceActivities
 
 import android.app.Activity
 import android.content.Intent

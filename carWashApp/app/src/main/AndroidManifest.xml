@@ -16,16 +16,16 @@
         android:theme="@style/Theme.CarWashApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".views.userViews.BookAppointmentActivity"
+            android:name=".views.userViews.bookAppointmentActivity.BookAppointmentActivity"
             android:exported="false" />
         <activity
             android:name=".views.userViews.displayServices.DisplayServicesActivity"
             android:exported="false" />
         <activity
-            android:name=".views.storeViews.editServiceActivity.EditServiceActivity"
+            android:name=".views.storeViews.serviceActivities.EditServiceActivity"
             android:exported="false" />
         <activity
-            android:name=".views.storeViews.addServiceActivity.AddServiceActivity"
+            android:name=".views.storeViews.serviceActivities.AddServiceActivity"
             android:exported="false" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

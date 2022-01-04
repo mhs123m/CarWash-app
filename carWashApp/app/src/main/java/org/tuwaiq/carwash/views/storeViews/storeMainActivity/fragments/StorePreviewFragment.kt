@@ -14,7 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.util.Globals
 import org.tuwaiq.carwash.views.ServiceViewModel
-import org.tuwaiq.carwash.views.storeViews.addServiceActivity.AddServiceActivity
+import org.tuwaiq.carwash.views.storeViews.serviceActivities.AddServiceActivity
 import org.tuwaiq.carwash.views.storeViews.storeMainActivity.StoreMainActivity
 
 class StorePreviewFragment : Fragment() {

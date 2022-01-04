@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Store
-import org.tuwaiq.carwash.util.Globals
 import org.tuwaiq.carwash.views.ServiceViewModel
-import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.StorePreviewAdapter
 
 class DisplayServicesActivity : AppCompatActivity() {
     lateinit var store: Store
