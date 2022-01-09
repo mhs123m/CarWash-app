@@ -36,10 +36,11 @@ class BookAppointmentActivity : AppCompatActivity() {
 
 
 
+
         calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
+
             loadTimeSlots()
         }
-
 
 
     }

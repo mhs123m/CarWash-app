@@ -25,7 +25,7 @@
             android:layout_height="50dp"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:text="ali@gmail.com"/>
+            android:text="m77emd@gmail.com"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

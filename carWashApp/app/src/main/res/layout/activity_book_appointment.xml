@@ -20,12 +20,14 @@
             android:id="@+id/calendarView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:background="#1EC1D8AB"
             android:elevation="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/timeSlotsrecyclerView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <TextView
             android:id="@+id/textViewSelectedTime"
@@ -53,12 +55,24 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/timeSlotsrecyclerView"
             android:layout_width="0dp"
-            android:layout_height="306dp"
+            android:layout_height="0dp"
             android:layout_marginTop="8dp"
-            android:visibility="gone"
+            android:layout_marginBottom="39dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTimeSelectedResult" />
+            app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/tick_mark__1_"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
