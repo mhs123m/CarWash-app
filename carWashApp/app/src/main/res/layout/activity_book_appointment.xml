@@ -21,10 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:background="#1EC1D8AB"
             android:elevation="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/timeSlotsrecyclerView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -36,7 +34,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:text="Selected Time:"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
@@ -48,31 +46,209 @@
             android:layout_marginTop="8dp"
             android:text="00:00"
             android:textColor="@color/textAlmostBlack"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewSelectedTime" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/timeSlotsrecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="39dp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:src="@drawable/tick_mark__1_"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="100dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@+id/divider3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/dry_clean__1_" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:text="select time"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="409dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/buttonPreviousTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Previous" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonConfirmTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:text="confirm" />
+        </LinearLayout>
+
+
+        <RadioGroup
+            android:id="@+id/chip_group"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:padding="2dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTimeSelectedResult">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/chip3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10:00 - 10:30" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/chip4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10:30 - 11:00" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/chip5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="11:00 - 11:30" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/chip6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="11:30 - 12:00" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/chip7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12:00 - 12:30" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12:30 - 13:00" />
+            </LinearLayout>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13:00 - 13:30" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13:30 - 14:00" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="14:00 - 14:30" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="14:30 - 15:00" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15:00 - 15:30" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15:30 - 16:00" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="16:00 - 16:30" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="16:30 - 17:00" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17:00 - 17:30" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17:30 - 18:00" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18:00 - 18:30" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18:30 - 19:00" />
+        </RadioGroup>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
