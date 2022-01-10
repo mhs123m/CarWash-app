@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.databinding.ActivityBookAppointmentBinding
 import org.tuwaiq.carwash.model.ServiceModel
+import kotlin.properties.Delegates
 
 class BookAppointmentActivity : AppCompatActivity() {
     private lateinit var service: ServiceModel
@@ -18,7 +19,8 @@ class BookAppointmentActivity : AppCompatActivity() {
     private lateinit var tvSelectedTime: TextView
     private lateinit var tvSelectedTimeResult: TextView
     private lateinit var timeSlotRecyclerView: RecyclerView
-//    private lateinit var adapter: TimeSlotsAdapter
+    private lateinit var adapter: TimeSlotsAdapter
+    private var indexOfAppointment: Int? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBookAppointmentBinding.inflate(layoutInflater)
@@ -45,9 +47,16 @@ class BookAppointmentActivity : AppCompatActivity() {
     }
 
     private fun loadTimeSlots() {
-//        adapter = TimeSlotsAdapter()
-//        timeSlotRecyclerView.adapter = adapter
+
+
+        timeSlotRecyclerView.adapter = TimeSlotsAdapter{ time: String, index: Int ->
+            tvSelectedTimeResult.text = time
+            indexOfAppointment = index
+            println(index.toString())
+        }
     }
+
+
 
 
 }
