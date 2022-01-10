@@ -16,12 +16,15 @@ import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.StorePrev
 
 
 class StoreMainActivity : AppCompatActivity() {
-
+    private lateinit var locationHelperFunctions: LocationHelperFunctions
     private lateinit var navigation: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_store_main)
+        locationHelperFunctions = LocationHelperFunctions.getInstance()
 
+        // get location permission
+        getLastKnownLocation()
 
         // retrieve saved data to share pref
         Globals.sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE)
@@ -75,5 +78,8 @@ class StoreMainActivity : AppCompatActivity() {
         }
         return false
     }
-
+    private fun getLastKnownLocation(): LatLng {
+        val lastKnownLocation = locationHelperFunctions.getLastKnownLocation(this)
+        return LatLng(lastKnownLocation.latitude, lastKnownLocation.longitude)
+    }
 }
