@@ -77,11 +77,12 @@
                 android:layout_weight="1"
                 android:text="Previous" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonAppConfirm"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:enabled="false"
                 android:text="Confirm" />
         </LinearLayout>
 

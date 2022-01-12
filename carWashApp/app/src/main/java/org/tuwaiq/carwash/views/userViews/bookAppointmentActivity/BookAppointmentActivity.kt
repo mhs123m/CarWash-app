@@ -1,9 +1,11 @@
 package org.tuwaiq.carwash.views.userViews.bookAppointmentActivity
 
+import android.icu.util.Calendar
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.CalendarView
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -19,8 +21,7 @@ import org.tuwaiq.carwash.model.Slot
 import org.tuwaiq.carwash.model.enums.SlotStatus
 import org.tuwaiq.carwash.util.Globals
 import org.tuwaiq.carwash.views.AppointmentViewModel
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
+import java.util.*
 
 class BookAppointmentActivity : AppCompatActivity() {
     private val viewModel: AppointmentViewModel by viewModels()
@@ -35,8 +36,10 @@ class BookAppointmentActivity : AppCompatActivity() {
     private lateinit var day: Day
     private lateinit var slot: Slot
     private lateinit var date: String
+    private lateinit var btnConfirm: Button
 
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBookAppointmentBinding.inflate(layoutInflater)
@@ -46,7 +49,7 @@ class BookAppointmentActivity : AppCompatActivity() {
 
         // link views
         val btnPrevious = binding.buttonAppPrevious
-        val btnConfirm = binding.buttonAppConfirm
+        btnConfirm = binding.buttonAppConfirm
         calendarView = binding.calendarView
         tvSelectedTime = binding.textViewSelectedTime
         tvSelectedTimeResult = binding.textViewTimeSelectedResult
@@ -55,16 +58,12 @@ class BookAppointmentActivity : AppCompatActivity() {
             StaggeredGridLayoutManager(3, GridLayoutManager.VERTICAL)
 
 
-
-
+        loadTimeSlots()
         calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            loadTimeSlots()
             date = "$year-$month-$dayOfMonth"
 //            val firstApiFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 //            val date = LocalDate.parse(d, firstApiFormat)
 //            Log.d("date testing", "${date.dayOfMonth}")
-
-
 
 
         }
@@ -72,8 +71,21 @@ class BookAppointmentActivity : AppCompatActivity() {
         btnPrevious.setOnClickListener {
             finish()
         }
+
+
         btnConfirm.setOnClickListener {
             val userId = Globals.sharedPreferences.getString("ID", null)
+
+            slot = Slot(null, false, 30, indexOfAppointment!!, SlotStatus.Pending)
+            if (!this::date.isInitialized){
+                val d = Calendar.getInstance()
+                val y = d.get(Calendar.YEAR)
+                val m = d.get(Calendar.MONTH)
+                val day = d.get(Calendar.DAY_OF_MONTH)
+                date = "$y-$m-$day"
+            }
+            day = Day(null, date, slot)
+
             appointment = Appointment(
                 null,
                 day,
@@ -83,6 +95,7 @@ class BookAppointmentActivity : AppCompatActivity() {
                 null,
                 null
             )
+
 
             bookAppointment(appointment)
         }
@@ -96,8 +109,11 @@ class BookAppointmentActivity : AppCompatActivity() {
         timeSlotRecyclerView.adapter = TimeSlotsAdapter { time: String, index: Int ->
             tvSelectedTimeResult.text = time
             indexOfAppointment = index
-            slot = Slot(null, false, 30, indexOfAppointment!!, SlotStatus.PENDING)
-            day = Day(null, date.toString(), slot)
+            println(indexOfAppointment.toString())
+            if (indexOfAppointment != null) {
+                btnConfirm.isEnabled = true
+            }
+
 
         }
     }
@@ -109,6 +125,5 @@ class BookAppointmentActivity : AppCompatActivity() {
         }
 
     }
-
 
 }

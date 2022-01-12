@@ -24,7 +24,7 @@ class Api {
         private val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://shiny-wash.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
-           // .client(getClient())
+            .client(getClient()) // logger for api
             .build()
 
         fun getInstance(): Retrofit {
