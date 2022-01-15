@@ -6,4 +6,6 @@ data class User(
     val fullname: String,
     val phone: String,
     val password: String?,
-)
+) {
+
+}

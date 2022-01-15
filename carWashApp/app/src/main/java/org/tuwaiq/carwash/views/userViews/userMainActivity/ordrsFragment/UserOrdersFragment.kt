@@ -1,4 +1,4 @@
-package org.tuwaiq.carwash.views.userViews.userMainActivity.fragments
+package org.tuwaiq.carwash.views.userViews.userMainActivity.ordrsFragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,13 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import org.tuwaiq.carwash.R
+import org.tuwaiq.carwash.util.Globals
 import org.tuwaiq.carwash.views.AppointmentViewModel
-import org.tuwaiq.carwash.views.storeViews.StoreViewModel
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
 
 class UserOrdersFragment : Fragment() {
-    lateinit var viewModel: AppointmentViewModel
+    lateinit var viewModel: UserOrdersViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,13 +25,25 @@ class UserOrdersFragment : Fragment() {
         // call viewModel
         viewModel = ViewModelProvider(
             requireActivity() as UserMainActivity
-        )[AppointmentViewModel::class.java]
+        )[UserOrdersViewModel::class.java]
 
         return v
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // link recycler
+        val mRecyclerView = view.findViewById<RecyclerView>(R.id.userOrdersRecyclerView)
+        mRecyclerView.layoutManager = LinearLayoutManager(view.context)
+
+        //get userId
+        val userId = Globals.sharedPreferences.getString("ID",null)
+        viewModel.getUserOrders(userId!!)
+        viewModel.ordersLiveData.observe(this){
+            mRecyclerView.adapter = UserOrdersAdapter(it)
+        }
+
+
 
 
     }

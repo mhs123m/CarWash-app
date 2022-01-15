@@ -124,7 +124,7 @@ class BookAppointmentActivity : AppCompatActivity() {
             null,
             day,
             service._id!!,
-            service.storeId,
+            service.storeId!!,
             userId!!,
             null,
             null

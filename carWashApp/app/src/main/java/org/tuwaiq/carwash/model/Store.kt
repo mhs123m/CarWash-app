@@ -21,4 +21,5 @@ data class Store(
         null,
         geometry
     )
+
 }

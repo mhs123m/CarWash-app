@@ -1,4 +1,4 @@
-package org.tuwaiq.carwash.views.userViews.userMainActivity.fragments
+package org.tuwaiq.carwash.views.userViews.userMainActivity.moreFragment
 
 import android.content.Intent
 import android.os.Bundle

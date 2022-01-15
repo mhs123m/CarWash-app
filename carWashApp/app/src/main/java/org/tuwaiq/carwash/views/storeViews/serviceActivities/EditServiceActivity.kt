@@ -116,7 +116,7 @@ class EditServiceActivity : AppCompatActivity() {
             encodedPic = it
             HelperFunctions.decodePicFromApi(it)
         })
-        available.isChecked = service.available
+        available.isChecked = service.available!!
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

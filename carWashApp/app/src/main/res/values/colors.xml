@@ -16,4 +16,7 @@
     <color name="textAlmostBlack">#152D35</color>
     <color name="textLink">#0000FF</color>
     <color name="inputTextBackground">#D3E6DB</color>
+    <color name="constraintBackgroundPending">#7E878E</color>
+    <color name="constraintBackgroundDone">#228B22</color>
+    <color name="constraintBackgroundCancelled">#C70039</color>
 </resources>

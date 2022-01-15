@@ -5,12 +5,14 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.userViews.userMainActivity.fragments.UserOrdersFragment">
+    android:background="#001221"
+    tools:context=".views.userViews.userMainActivity.ordrsFragment.UserOrdersFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/userOrdersRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#E8E4E5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
