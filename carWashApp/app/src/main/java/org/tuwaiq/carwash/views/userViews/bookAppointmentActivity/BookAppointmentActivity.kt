@@ -22,6 +22,9 @@ import org.tuwaiq.carwash.model.enums.SlotStatus
 import org.tuwaiq.carwash.util.Globals
 import org.tuwaiq.carwash.views.AppointmentViewModel
 import java.util.*
+import android.content.Intent
+import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
+
 
 class BookAppointmentActivity : AppCompatActivity() {
     private val viewModel: AppointmentViewModel by viewModels()
@@ -64,39 +67,12 @@ class BookAppointmentActivity : AppCompatActivity() {
 //            val firstApiFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 //            val date = LocalDate.parse(d, firstApiFormat)
 //            Log.d("date testing", "${date.dayOfMonth}")
-
-
         }
 
-        btnPrevious.setOnClickListener {
-            finish()
-        }
-
+        btnPrevious.setOnClickListener { finish() }
 
         btnConfirm.setOnClickListener {
-            val userId = Globals.sharedPreferences.getString("ID", null)
-
-            slot = Slot(null, false, 30, indexOfAppointment!!, SlotStatus.Pending)
-            if (!this::date.isInitialized){
-                val d = Calendar.getInstance()
-                val y = d.get(Calendar.YEAR)
-                val m = d.get(Calendar.MONTH)
-                val day = d.get(Calendar.DAY_OF_MONTH)
-                date = "$y-$m-$day"
-            }
-            day = Day(null, date, slot)
-
-            appointment = Appointment(
-                null,
-                day,
-                service._id!!,
-                service.storeId,
-                userId!!,
-                null,
-                null
-            )
-
-
+            getAppointmentInfo() // fill appointment info
             bookAppointment(appointment)
         }
 
@@ -121,9 +97,38 @@ class BookAppointmentActivity : AppCompatActivity() {
     private fun bookAppointment(appointment: Appointment) {
         viewModel.newAppointment(appointment)
         viewModel.newAppointmentLiveData.observe(this) {
+            val intent = Intent(this, UserMainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
             Log.d("APPOINTMENT", "$it")
         }
 
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun getAppointmentInfo() {
+        val userId = Globals.sharedPreferences.getString("ID", null)
+
+        slot = Slot(null, false, 30, indexOfAppointment!!, SlotStatus.Pending)
+        if (!this::date.isInitialized) {
+            val d = Calendar.getInstance()
+            val y = d.get(Calendar.YEAR)
+            val m = d.get(Calendar.MONTH)
+            val day = d.get(Calendar.DAY_OF_MONTH)
+            date = "$y-$m-$day"
+        }
+        day = Day(null, date, slot)
+
+        appointment = Appointment(
+            null,
+            day,
+            service._id!!,
+            service.storeId,
+            userId!!,
+            null,
+            null
+        )
     }
 
 }

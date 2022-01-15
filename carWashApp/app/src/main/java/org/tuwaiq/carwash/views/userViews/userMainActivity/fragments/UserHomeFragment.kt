@@ -37,7 +37,7 @@ class UserHomeFragment : Fragment() {
         userHomeRecyclerView.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
-        userHomeAdapter = UserHomeAdapter()
+        userHomeAdapter = UserHomeAdapter(activity!!)
 
         // get data of stores and set to adapter
         viewModel.getAllStores()

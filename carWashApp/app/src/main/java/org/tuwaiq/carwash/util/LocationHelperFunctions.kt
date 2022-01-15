@@ -90,7 +90,7 @@ class LocationHelperFunctions {
             val addresses: List<Address> =
                 geocoder.getFromLocation(lat, lng, 1)
             if (addresses.isNotEmpty()) {
-                address = addresses[0].getAddressLine(0)
+                address = addresses[0].adminArea
             }
         } catch (e: IOException) {
             e.printStackTrace()
