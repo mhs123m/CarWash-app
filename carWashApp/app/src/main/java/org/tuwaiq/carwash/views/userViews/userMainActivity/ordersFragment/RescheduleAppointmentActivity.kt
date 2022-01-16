@@ -16,11 +16,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import org.tuwaiq.carwash.R
-import org.tuwaiq.carwash.databinding.ActivityBookAppointmentBinding
 import org.tuwaiq.carwash.databinding.ActivityRescheduleAppointmentBinding
 import org.tuwaiq.carwash.model.*
 import org.tuwaiq.carwash.model.enums.SlotStatus
 import org.tuwaiq.carwash.util.Globals
+import org.tuwaiq.carwash.util.TimeSlotsHelperFunctions
 import org.tuwaiq.carwash.views.AppointmentViewModel
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
 import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.bookAppointmentActivity.TimeSlotsAdapter
@@ -56,11 +56,13 @@ class RescheduleAppointmentActivity : AppCompatActivity() {
         timeSlotRecyclerView = binding.timeSlotsrecyclerViewReschedule
         timeSlotRecyclerView.layoutManager =
             StaggeredGridLayoutManager(3, GridLayoutManager.VERTICAL)
+        tvSelectedTimeResult.text =
+            TimeSlotsHelperFunctions.convertIndexToTime(order.day.slot.index)
 
 
         loadTimeSlots()
         calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            date = "$year-$month-$dayOfMonth"
+            date = "$year-${month + 1}-$dayOfMonth"
 //            val firstApiFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 //            val date = LocalDate.parse(d, firstApiFormat)
 //            Log.d("date testing", "${date.dayOfMonth}")

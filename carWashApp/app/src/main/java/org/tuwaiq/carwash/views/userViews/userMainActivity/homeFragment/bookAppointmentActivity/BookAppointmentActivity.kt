@@ -65,7 +65,7 @@ class BookAppointmentActivity : AppCompatActivity() {
 
         loadTimeSlots()
         calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            date = "$year-$month-$dayOfMonth"
+            date = "$year-${month+1}-$dayOfMonth"
 //            val firstApiFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 //            val date = LocalDate.parse(d, firstApiFormat)
 //            Log.d("date testing", "${date.dayOfMonth}")

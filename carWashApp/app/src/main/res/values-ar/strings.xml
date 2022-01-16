@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- do you speak in English?, do you understand the words that coming out of ma mouth? -->
+    <!-- ARABIC -->
+    <string name="app_name">Shiny</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="sign_up">التسجيل</string>
+    <string name="log_in">تسجيل الدخول</string>
+    <string name="don_t_have_an_account">لا تملك حساب؟</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="password">الرقم السري</string>
+    <string name="click_here">اضغط هنا</string>
+    <string name="carwash_store">موفر خدمة؟</string>
+    <string name="register">سجل</string>
+    <string name="full_name">الاسم الكامل</string>
+    <string name="phone">رقم الهاتف</string>
+    <string name="confirm_password">تأكيد كلمة المرور</string>
+    <string name="already_have_an_account">لديك حساب مسبقاً؟</string>
+    <string name="sign_in">سجل دخولك</string>
+    <string name="log_in_as_a_store">سجل دخول كموفر خدمة</string>
+    <string name="not_a_provider_yet">لست مسجلا بعد؟</string>
+    <string name="apply_now">قدم الآن</string>
+    <string name="not_a_provider">لست موفر خدمة؟</string>
+    <string name="register_as_a_store">سجل كموفر خدمة</string>
+    <string name="store_name">اسم المتجر</string>
+    <string name="apply">التقديم</string>
+    <string name="store_profile">ملف المتجر</string>
+    <string name="location">الموقع</string>
+    <string name="update_information">تحديث</string>
+    <string name="log_out">تسجيل الخروج</string>
+    <string name="more">المزيد</string>
+    <string name="ex_waxing_regular_wash">مثال: تلميع, غسيل</string>
+    <string name="price">السعر</string>
+    <string name="duration">المدة</string>
+    <string name="optional">اختياري</string>
+    <string name="service_title">عنوان الخدمة:</string>
+    <string name="add_service">اضف خدمة</string>
+    <string name="turn_on_if_you_would_like_the_service_to_be_seen_by_customers">فعّل اذا كنت تريد ان تكون الخدمة مرئية للعملاء</string>
+    <string name="update">تحديث</string>
+    <string name="delete">حذف</string>
+    <string name="service_availability">توفر الخدمة</string>
+    <string name="minutes">دقائق</string>
+    <string name="sar">ريال</string>
+    <string name="confirm">تأكيد</string>
+    <string name="previous">السابق</string>
+    <string name="reschedule">إعادة جدولة</string>
+</resources>

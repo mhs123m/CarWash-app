@@ -66,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="2dp"
+                android:fontFamily="@font/quicksand_bold"
                 android:text="store Name"
                 android:textColor="@color/textAlmostBlack"
                 android:textSize="20sp"
@@ -90,6 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="2dp"
+                android:fontFamily="@font/quicksand"
                 android:text="time"
                 android:textColor="@color/textAlmostBlack"
                 android:textSize="16sp"
@@ -102,6 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="2dp"
+                android:fontFamily="@font/quicksand"
                 android:text="@string/location"
                 android:textColor="@color/textAlmostBlack"
                 android:textSize="16sp"
@@ -123,7 +126,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
                 app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -158,11 +161,13 @@
                     android:layout_weight="1"
                     android:drawableStart="@drawable/icon_reschedule_10"
                     android:drawablePadding="10dp"
+                    android:fontFamily="@font/quicksand_bold"
                     android:paddingStart="40dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
                     android:text="RESCHEDULE"
-                    android:textColor="@color/primaryGreen" />
+                    android:textColor="@color/primaryGreen"
+                    android:textSize="16sp" />
 
                 <View
                     android:id="@+id/divider3"
@@ -178,11 +183,13 @@
                     android:layout_weight="1"
                     android:drawableStart="@drawable/icon_cancelled_10"
                     android:drawablePadding="10dp"
+                    android:fontFamily="@font/quicksand_bold"
                     android:paddingStart="40dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
                     android:text="CANCEL"
-                    android:textColor="@color/primaryRed" />
+                    android:textColor="@color/primaryRed"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <View
