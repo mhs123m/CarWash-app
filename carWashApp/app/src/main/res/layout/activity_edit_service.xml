@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primaryLightGrey"
     tools:context=".views.storeViews.serviceActivities.EditServiceActivity">
 
     <TextView
@@ -13,6 +14,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/service_title"
+        android:fontFamily="@font/quicksand_bold"
+        android:textColor="@color/textAlmostBlack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,7 +53,7 @@
         android:layout_marginTop="94dp"
         app:layout_constraintStart_toStartOf="@+id/imageViewServiceLogoEdit"
         app:layout_constraintTop_toTopOf="@+id/imageViewServiceLogoEdit"
-        app:srcCompat="@drawable/changes__1_" />
+        app:srcCompat="@drawable/change_pic_icon" />
 
     <TextView
         android:id="@+id/textView14"
@@ -59,6 +62,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="38dp"
         android:text="Service Description:"
+        android:fontFamily="@font/quicksand_bold"
+        android:textColor="@color/textAlmostBlack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewServiceLogoEdit" />
 
@@ -80,7 +85,7 @@
         android:id="@+id/textInputLayout12"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="120dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +102,7 @@
         android:id="@+id/textInputLayout13"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="120dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -167,6 +172,7 @@
         android:layout_marginTop="8dp"
         android:text="Service Availability"
         android:textColor="@color/textAlmostBlack"
+        android:fontFamily="@font/quicksand_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
@@ -181,25 +187,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
-    <Button
-        android:id="@+id/buttonUpdateService"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="110dp"
-        android:text="@string/update"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
-    <Button
-        android:id="@+id/buttonDeleteService"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="51dp"
-        android:text="@string/delete"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="409dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/primaryLightGrey"
+        android:orientation="horizontal"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextServiceDescriptionEdit" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonUpdateService"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="2.5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_cancel"
+            android:elevation="2dp"
+            android:fontFamily="@font/quicksand_medium"
+            android:stateListAnimator="@null"
+            android:text="@string/delete"
+            android:textAllCaps="false"
+            android:textColor="@color/primaryBackground"
+            android:textSize="18sp"
+            android:translationZ="2dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonDeleteService"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2.5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_only_stroke"
+            android:elevation="2dp"
+            android:enabled="false"
+            android:fontFamily="@font/quicksand_medium"
+            android:stateListAnimator="@null"
+            android:text="@string/update"
+            android:textAllCaps="false"
+            android:textColor="@color/primaryGreen"
+            android:textSize="18sp"
+            android:translationZ="2dp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

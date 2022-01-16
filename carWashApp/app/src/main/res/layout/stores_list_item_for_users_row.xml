@@ -10,6 +10,7 @@
         android:id="@+id/listRowCardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -37,6 +38,7 @@
 
             <LinearLayout
                 android:id="@+id/constraintLayout"
+                android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="1dp"
@@ -50,7 +52,7 @@
 
                 <TextView
                     android:id="@+id/textViewRowStoreName"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/primaryBackground"
@@ -61,9 +63,16 @@
                     android:paddingStart="10dp"
                     android:text="@string/store_name" />
 
+                <View
+                    android:id="@+id/divider8"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="0"
+                    android:background="@color/primaryLightGrey" />
+
                 <TextView
                     android:id="@+id/textViewRowDistanceKM"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/primaryBackground"

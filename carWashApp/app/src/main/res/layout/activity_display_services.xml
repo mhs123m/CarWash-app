@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primaryLightGrey"
     tools:context=".views.userViews.userMainActivity.homeFragment.displayServices.DisplayServicesActivity">
 
     <TextView
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/quicksand_bold"
         android:text="Select Service:"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent" />

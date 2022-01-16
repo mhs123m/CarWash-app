@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primaryLightGrey"
     tools:context=".views.storeViews.serviceActivities.AddServiceActivity">
 
     <TextView
@@ -13,6 +14,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/service_title"
+        android:fontFamily="@font/quicksand_bold"
+        android:textColor="@color/textAlmostBlack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,7 +53,7 @@
         android:layout_marginTop="94dp"
         app:layout_constraintStart_toStartOf="@+id/imageViewServiceLogo"
         app:layout_constraintTop_toTopOf="@+id/imageViewServiceLogo"
-        app:srcCompat="@drawable/changes__1_" />
+        app:srcCompat="@drawable/change_pic_icon" />
 
     <TextView
         android:id="@+id/textView14"
@@ -58,6 +61,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="38dp"
+        android:fontFamily="@font/quicksand_bold"
+        android:textColor="@color/textAlmostBlack"
         android:text="Service Description:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewServiceLogo" />
@@ -80,7 +85,7 @@
         android:id="@+id/textInputLayout12"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="120dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +102,7 @@
         android:id="@+id/textInputLayout13"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="120dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -166,6 +171,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/service_availability"
+        android:fontFamily="@font/quicksand_bold"
         android:textColor="@color/textAlmostBlack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
@@ -181,13 +187,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonAddService"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="42dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/btn_enabled"
+        android:textColor="@color/primaryBackground"
+        android:layout_marginBottom="24dp"
         android:text="@string/add_service"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextServiceDescription" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

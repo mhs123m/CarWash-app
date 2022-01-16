@@ -3,16 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/primaryLightGrey">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/serviceRowCardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,8 +35,9 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_launcher_background" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:id="@+id/constraintLayout"
+                android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="1dp"
@@ -50,32 +53,35 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_bold"
                     android:text="regular wash"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/textViewRowServicePrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
                     android:layout_marginEnd="3dp"
+                    android:fontFamily="@font/quicksand_bold"
                     android:text="30.00"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/textView8"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_weight="0"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:text="SAR"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:fontFamily="@font/quicksand"
+                    android:layout_weight="1"
+                    android:text="SAR" />
 
                 <TextView
                     android:id="@+id/textViewServicesRowDuration"
@@ -83,10 +89,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/quicksand_bold"
                     android:text="30.0"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    android:textSize="20sp"
+                    android:gravity="end"
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:id="@+id/textView13"
@@ -94,11 +101,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
                     android:layout_marginBottom="8dp"
+                    android:paddingEnd="10dp"
+                    android:fontFamily="@font/quicksand"
                     android:text="minutes"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textViewServicesRowDuration" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_weight="0" />
+                </LinearLayout>
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

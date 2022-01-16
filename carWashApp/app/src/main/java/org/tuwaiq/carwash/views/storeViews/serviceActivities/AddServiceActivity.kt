@@ -33,7 +33,7 @@ class AddServiceActivity : AppCompatActivity() {
             onActivityResult(0, 0, intent)
             ImagePicker.with(this)
                 .crop()    //Crop image(Optional), Check Customization for more option
-                .compress(50)//Final image size will be less than 1 MB(Optional)
+                .compress(1024)//Final image size will be less than 1 MB(Optional)
                 .maxResultSize(
                     1080,
                     1080
