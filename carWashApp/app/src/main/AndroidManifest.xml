@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.tuwaiq.carwash" >
+    package="org.tuwaiq.carwash">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -14,7 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CarWashApp"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".views.userViews.userMainActivity.ordersFragment.AppointmentDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.userViews.userMainActivity.ordersFragment.CancelAppointmentActivity"
+            android:exported="false" />
         <activity
             android:name=".views.userViews.userMainActivity.ordersFragment.RescheduleAppointmentActivity"
             android:exported="false" />
@@ -63,7 +69,7 @@
             android:exported="false" />
         <activity
             android:name=".views.splashScreen.SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

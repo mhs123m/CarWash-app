@@ -49,9 +49,7 @@ class UserHomeAdapter(var activity: Activity) : RecyclerView.Adapter<UserHomeHol
                 HelperFunctions.decodePicFromApi(it)
             })
             tvStoreName.text = store.name
-            tvStoreDistanceInKm.text =  distanceAway.toString()
-//            tvStoreRatingAverage.text = store.ratingAve TODO
-//            tvStoreRatingNumberOfRating.text = store.numberOfRating TODO
+            tvStoreDistanceInKm.text =  "$distanceAway km"
         }
         holder.itemView.setOnClickListener {
             val i = Intent(it.context, DisplayServicesActivity::class.java)
@@ -89,10 +87,7 @@ class UserHomeAdapter(var activity: Activity) : RecyclerView.Adapter<UserHomeHol
 }
 
 class UserHomeHolder(v: View) : RecyclerView.ViewHolder(v) {
-    val imgViewRatingIcon = v.findViewById<ImageView>(R.id.imageViewRowRatingIcon)
     val imgViewStoreLogo = v.findViewById<ImageView>(R.id.imageViewRowStoreLogo)
     val tvStoreName = v.findViewById<TextView>(R.id.textViewRowStoreName)
     val tvStoreDistanceInKm = v.findViewById<TextView>(R.id.textViewRowDistanceKM)
-    val tvStoreRatingAverage = v.findViewById<TextView>(R.id.textViewRowRatingAverage)
-    val tvStoreRatingNumberOfRating = v.findViewById<TextView>(R.id.textViewRowNumberOfRating)
 }

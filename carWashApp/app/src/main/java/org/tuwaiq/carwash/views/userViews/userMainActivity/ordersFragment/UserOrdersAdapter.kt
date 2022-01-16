@@ -1,7 +1,6 @@
 package org.tuwaiq.carwash.views.userViews.userMainActivity.ordersFragment
 
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Order
@@ -34,15 +32,12 @@ class UserOrdersAdapter(var data: List<Order> = mutableListOf()) :
 
         holder.apply {
 
-//            order.serviceId?.let {
-//                serviceTitle.text = order.serviceId.title
-//                servicePrice.text = order.serviceId.price.toString()
-//            }
             order.storeId?.let {
                 storeName.text = order.storeId.name
                 storeLocation.text = storeAddress
             }
-            appointmentTime.text = time
+            val dashIndex = time.indexOf('-')
+            appointmentTime.text = time.substring(0, dashIndex-1)
 
             when (status) {
                 SlotStatus.Done -> {
@@ -71,12 +66,10 @@ class UserOrdersAdapter(var data: List<Order> = mutableListOf()) :
         }
 
         holder.tvReschedule.setOnClickListener {
-            if (holder.appointmentStatus.text.toString() == SlotStatus.Pending.toString()) {
-                // inflate bottom sheet and cancel option is disabled
                 val i = Intent(context, RescheduleAppointmentActivity::class.java)
                 i.putExtra("order", order)
                 context.startActivity(i)
-            }
+
         }
         // start navigation to store
         holder.imgNavigation.setOnClickListener {
@@ -89,7 +82,15 @@ class UserOrdersAdapter(var data: List<Order> = mutableListOf()) :
         }
 
         holder.tvCancelled.setOnClickListener {
+            val i = Intent(context, CancelAppointmentActivity::class.java)
+            i.putExtra("order", order)
+            context.startActivity(i)
+        }
 
+        holder.itemView.setOnClickListener {
+            val i = Intent(context, AppointmentDetailsActivity::class.java)
+            i.putExtra("order", order)
+            context.startActivity(i)
         }
 
 

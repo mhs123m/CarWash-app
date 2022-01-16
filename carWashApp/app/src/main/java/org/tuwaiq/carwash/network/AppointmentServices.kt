@@ -23,4 +23,10 @@ interface AppointmentServices {
         @Path("appointmentId") appointmentId: String,
         @Body appointment: Appointment
     ) : Response<Appointment>
+
+    // delete appointment (cancel)
+    @DELETE("/appointments/{appointmentId}")
+    suspend fun deleteOrder(
+        @Path("appointmentId") appointmentId: String
+    ) : Response<Appointment>
 }

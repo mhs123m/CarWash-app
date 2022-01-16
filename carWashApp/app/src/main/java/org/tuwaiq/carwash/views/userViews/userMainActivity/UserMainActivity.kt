@@ -2,6 +2,7 @@ package org.tuwaiq.carwash.views.userViews.userMainActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.tuwaiq.carwash.R
@@ -14,8 +15,12 @@ class UserMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_main)
 
-        //link bottom navigation view
+        //link bottom navigation and tool bar
         val bNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavViewUser)
+        val mainToolBar = findViewById<Toolbar>(R.id.mainToolBar)
+        // set tool bar
+        setSupportActionBar(mainToolBar)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         // get instance of fragments
         val userHomeFragment = UserHomeFragment()

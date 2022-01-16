@@ -28,4 +28,9 @@ class AppointmentRepository {
     ): Response<Appointment> {
         return appointmentServices.updateOrder(appointmentId, appointment)
     }
+
+    // delete appointment
+    suspend fun deleteAppointment(appointmentId: String) : Response<Appointment> {
+        return appointmentServices.deleteOrder(appointmentId)
+    }
 }

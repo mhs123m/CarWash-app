@@ -14,6 +14,7 @@ class UserOrdersViewModel: ViewModel() {
     private val appointmentRepository = AppointmentRepository()
     val ordersLiveData = MutableLiveData<List<Order>>()
     val updatedAppointment = MutableLiveData<Appointment>()
+    val deletedAppointment = MutableLiveData<Appointment>()
 
     // get userOrders
     fun getUserOrders(userId: String){
@@ -28,6 +29,14 @@ class UserOrdersViewModel: ViewModel() {
         CoroutineScope(Dispatchers.IO).launch {
             val response = appointmentRepository.updateAppointment(appointmentId, appointment)
             HelperFunctions.ifResponseNotNullPostValue(updatedAppointment,response)
+        }
+    }
+
+    // delete appointment
+    fun cancelAppointment(appointmentId: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = appointmentRepository.deleteAppointment(appointmentId)
+            HelperFunctions.ifResponseNotNullPostValue(deletedAppointment,response)
         }
     }
 }
