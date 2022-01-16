@@ -40,4 +40,7 @@
     <string name="service_availability">Service Availability</string>
     <string name="minutes">minutes</string>
     <string name="sar">SAR</string>
+    <string name="confirm">Confirm</string>
+    <string name="previous">Previous</string>
+    <string name="reschedule">Reschedule</string>
 </resources>

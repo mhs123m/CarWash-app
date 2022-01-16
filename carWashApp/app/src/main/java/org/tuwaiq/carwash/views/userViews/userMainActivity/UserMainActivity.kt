@@ -7,7 +7,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.UserHomeFragment
 import org.tuwaiq.carwash.views.userViews.userMainActivity.moreFragment.UserMoreFragment
-import org.tuwaiq.carwash.views.userViews.userMainActivity.ordrsFragment.UserOrdersFragment
+import org.tuwaiq.carwash.views.userViews.userMainActivity.ordersFragment.UserOrdersFragment
 
 class UserMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

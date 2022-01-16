@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.tuwaiq.carwash">
+    package="org.tuwaiq.carwash" >
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -14,12 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CarWashApp"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true" >
         <activity
-            android:name=".views.userViews.bookAppointmentActivity.BookAppointmentActivity"
+            android:name=".views.userViews.userMainActivity.ordersFragment.RescheduleAppointmentActivity"
             android:exported="false" />
         <activity
-            android:name=".views.userViews.displayServices.DisplayServicesActivity"
+            android:name=".views.userViews.userMainActivity.homeFragment.bookAppointmentActivity.BookAppointmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.userViews.userMainActivity.homeFragment.displayServices.DisplayServicesActivity"
             android:exported="false" />
         <activity
             android:name=".views.storeViews.serviceActivities.EditServiceActivity"
@@ -38,6 +41,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name=".views.storeViews.storeInfoActivity.StoreMapsActivity"
@@ -57,7 +63,7 @@
             android:exported="false" />
         <activity
             android:name=".views.splashScreen.SplashActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

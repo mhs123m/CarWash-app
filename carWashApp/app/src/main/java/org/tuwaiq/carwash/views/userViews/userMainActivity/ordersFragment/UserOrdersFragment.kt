@@ -1,4 +1,4 @@
-package org.tuwaiq.carwash.views.userViews.userMainActivity.ordrsFragment
+package org.tuwaiq.carwash.views.userViews.userMainActivity.ordersFragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.tuwaiq.carwash.R
+import org.tuwaiq.carwash.model.enums.SlotStatus
 import org.tuwaiq.carwash.util.Globals
-import org.tuwaiq.carwash.views.AppointmentViewModel
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
 
 class UserOrdersFragment : Fragment() {
@@ -37,13 +37,18 @@ class UserOrdersFragment : Fragment() {
         mRecyclerView.layoutManager = LinearLayoutManager(view.context)
 
         //get userId
-        val userId = Globals.sharedPreferences.getString("ID",null)
+        val userId = Globals.sharedPreferences.getString("ID", null)
         viewModel.getUserOrders(userId!!)
-        viewModel.ordersLiveData.observe(this){
-            mRecyclerView.adapter = UserOrdersAdapter(it)
+        viewModel.ordersLiveData.observe(this) { ordersList ->
+            val sorted = ordersList.sortedWith(
+                compareBy(
+                    { it.day.slot.status.compareTo(SlotStatus.Pending) },
+                    { it.day.slot.status.compareTo(SlotStatus.Cancelled) },
+                    { it.day.slot.status.compareTo(SlotStatus.Done) },
+                )
+            )
+            mRecyclerView.adapter = UserOrdersAdapter(sorted)
         }
-
-
 
 
     }

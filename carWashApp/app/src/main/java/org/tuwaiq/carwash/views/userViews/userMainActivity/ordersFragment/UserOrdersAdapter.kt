@@ -1,5 +1,6 @@
-package org.tuwaiq.carwash.views.userViews.userMainActivity.ordrsFragment
+package org.tuwaiq.carwash.views.userViews.userMainActivity.ordersFragment
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +10,11 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import org.tuwaiq.carwash.R
-import org.tuwaiq.carwash.model.Orders
+import org.tuwaiq.carwash.model.Order
 import org.tuwaiq.carwash.model.enums.SlotStatus
 import org.tuwaiq.carwash.util.TimeSlotsHelperFunctions
 
-class UserOrdersAdapter(var data: List<Orders> = mutableListOf()) :
+class UserOrdersAdapter(var data: List<Order> = mutableListOf()) :
     RecyclerView.Adapter<UserOrdersHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserOrdersHolder {
         val v = LayoutInflater.from(parent.context)
@@ -23,16 +24,17 @@ class UserOrdersAdapter(var data: List<Orders> = mutableListOf()) :
 
     override fun onBindViewHolder(holder: UserOrdersHolder, position: Int) {
         val order = data[position]
+        val context = holder.itemView.context
         val storeAddress = order.storeId.geometry?.formattedAddress
         val status = order.day.slot.status
         val time = TimeSlotsHelperFunctions.convertIndexToTime(order.day.slot.index)
 
         holder.apply {
 
-            order.serviceId?.let {
-                serviceTitle.text = order.serviceId.title
-                servicePrice.text = order.serviceId.price.toString()
-            }
+//            order.serviceId?.let {
+//                serviceTitle.text = order.serviceId.title
+//                servicePrice.text = order.serviceId.price.toString()
+//            }
             order.storeId?.let {
                 storeName.text = order.storeId.name
                 storeLocation.text = storeAddress
@@ -44,7 +46,7 @@ class UserOrdersAdapter(var data: List<Orders> = mutableListOf()) :
                     appointmentStatus.text = SlotStatus.Done.toString()
                     constraintLayout.setBackgroundColor(
                         ContextCompat
-                            .getColor(itemView.context, R.color.constraintBackgroundDone)
+                            .getColor(itemView.context, R.color.primaryGreen)
                     )
                     imgStatusIcon.setImageResource(R.drawable.done_icon)
 
@@ -53,7 +55,7 @@ class UserOrdersAdapter(var data: List<Orders> = mutableListOf()) :
                     appointmentStatus.text = SlotStatus.Cancelled.toString()
                     constraintLayout.setBackgroundColor(
                         ContextCompat
-                            .getColor(itemView.context, R.color.constraintBackgroundCancelled)
+                            .getColor(itemView.context, R.color.primaryRed)
                     )
                     imgStatusIcon.setImageResource(R.drawable.cancelled_icon)
 
@@ -65,6 +67,15 @@ class UserOrdersAdapter(var data: List<Orders> = mutableListOf()) :
 
         }
 
+        holder.tvReschedule.setOnClickListener {
+            if (holder.appointmentStatus.text.toString() == SlotStatus.Pending.toString()) {
+                // inflate bottom sheet and cancel option is disabled
+                val i = Intent(context, RescheduleAppointmentActivity::class.java)
+                i.putExtra("order",order)
+                context.startActivity(i)
+            }
+        }
+
 
     }
 
@@ -73,9 +84,10 @@ class UserOrdersAdapter(var data: List<Orders> = mutableListOf()) :
 
 class UserOrdersHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val storeName = itemView.findViewById<TextView>(R.id.textViewStoreNameRow)
-    val serviceTitle = itemView.findViewById<TextView>(R.id.textViewServiceNameRow)
+    val tvReschedule = itemView.findViewById<TextView>(R.id.textViewRescheduleRow)
+    val tvCancelled = itemView.findViewById<TextView>(R.id.textViewCancelRow)
     val appointmentTime = itemView.findViewById<TextView>(R.id.textViewTimeRow)
-    val servicePrice = itemView.findViewById<TextView>(R.id.textViewPriceRow)
+    val imgNavigation = itemView.findViewById<ImageView>(R.id.imageViewNavigationRow)
     val storeLocation = itemView.findViewById<TextView>(R.id.textViewStoreLocationRow)
     val appointmentStatus = itemView.findViewById<TextView>(R.id.textViewStatusRow)
     val constraintLayout = itemView.findViewById<ConstraintLayout>(R.id.constraintBackGroundRow)

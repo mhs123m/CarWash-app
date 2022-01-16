@@ -1,4 +1,4 @@
-package org.tuwaiq.carwash.views.userViews.displayServices
+package org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.displayServices
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.ServiceModel
 import org.tuwaiq.carwash.util.HelperFunctions
-import org.tuwaiq.carwash.views.userViews.bookAppointmentActivity.BookAppointmentActivity
+import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.bookAppointmentActivity.BookAppointmentActivity
 
 class DisplayAdapter(private var data: List<ServiceModel>) : RecyclerView.Adapter<DisplayHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DisplayHolder {

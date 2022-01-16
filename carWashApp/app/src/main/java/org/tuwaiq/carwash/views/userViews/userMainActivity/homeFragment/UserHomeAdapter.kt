@@ -14,7 +14,7 @@ import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Store
 import org.tuwaiq.carwash.util.HelperFunctions
 import org.tuwaiq.carwash.util.LocationHelperFunctions
-import org.tuwaiq.carwash.views.userViews.displayServices.DisplayServicesActivity
+import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.displayServices.DisplayServicesActivity
 import java.math.RoundingMode
 import java.text.DecimalFormat
 

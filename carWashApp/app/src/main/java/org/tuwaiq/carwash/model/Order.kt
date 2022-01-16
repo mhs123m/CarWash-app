@@ -1,6 +1,8 @@
 package org.tuwaiq.carwash.model
 
-data class Orders(
+import java.io.Serializable
+
+data class Order(
     val _id: String,
     val day: Day,
     val serviceId: ServiceModel,
@@ -8,4 +10,4 @@ data class Orders(
     val userId: User,
     val createdAt: String,
     val updatedAt: String,
-)
+) : Serializable

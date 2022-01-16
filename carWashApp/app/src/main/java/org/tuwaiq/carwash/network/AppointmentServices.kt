@@ -1,12 +1,9 @@
 package org.tuwaiq.carwash.network
 
 import org.tuwaiq.carwash.model.Appointment
-import org.tuwaiq.carwash.model.Orders
+import org.tuwaiq.carwash.model.Order
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface AppointmentServices {
 
@@ -18,6 +15,12 @@ interface AppointmentServices {
     @GET("/users/appointments/{userId}")
     suspend fun getUserOrders(
         @Path("userId") userId: String,
-        ): Response<List<Orders>>
+    ): Response<List<Order>>
 
+    // patch an appointment (reschedule or cancel)
+    @PATCH("/appointments/{appointmentId}")
+    suspend fun updateOrder(
+        @Path("appointmentId") appointmentId: String,
+        @Body appointment: Appointment
+    ) : Response<Appointment>
 }

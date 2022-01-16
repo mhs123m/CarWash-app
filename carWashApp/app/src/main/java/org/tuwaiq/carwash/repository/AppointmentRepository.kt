@@ -1,8 +1,7 @@
 package org.tuwaiq.carwash.repository
 
 import org.tuwaiq.carwash.model.Appointment
-import org.tuwaiq.carwash.model.Orders
-import org.tuwaiq.carwash.model.ServiceModel
+import org.tuwaiq.carwash.model.Order
 import org.tuwaiq.carwash.network.Api
 import org.tuwaiq.carwash.network.AppointmentServices
 import retrofit2.Response
@@ -18,7 +17,15 @@ class AppointmentRepository {
     }
 
     // get all orders of a users (appointment)
-    suspend fun getUserOrders(userId: String) : Response<List<Orders>>{
+    suspend fun getUserOrders(userId: String): Response<List<Order>> {
         return appointmentServices.getUserOrders(userId)
+    }
+
+    // patch appointment (reschedule or cancel)
+    suspend fun updateAppointment(
+        appointmentId: String,
+        appointment: Appointment
+    ): Response<Appointment> {
+        return appointmentServices.updateOrder(appointmentId, appointment)
     }
 }

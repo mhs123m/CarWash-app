@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryLightGrey"
+    tools:context=".views.userViews.userMainActivity.ordersFragment.RescheduleAppointmentActivity">
+
+    <CalendarView
+        android:id="@+id/calendarViewReschedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@color/primaryBackground"
+        android:elevation="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewSelectedTimeReschedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/quicksand_medium"
+        android:text="Selected Time:"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarViewReschedule" />
+
+    <TextView
+        android:id="@+id/textViewTimeSelectedResultReschedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="00:00"
+        android:textColor="@color/textAlmostBlack"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSelectedTimeReschedule" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/timeSlotsrecyclerViewReschedule"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTimeSelectedResultReschedule" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="409dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/primaryLightGrey"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonAppPreviousReschedule"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="2.5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_previous"
+            android:elevation="2dp"
+            android:fontFamily="@font/quicksand_light"
+            android:stateListAnimator="@null"
+            android:text="@string/previous"
+            android:textAllCaps="false"
+            android:textColor="@color/primaryGreen"
+            android:textSize="18sp"
+            android:translationZ="2dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonAppConfirmReschedule"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2.5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_disabled"
+            android:elevation="2dp"
+            android:enabled="false"
+            android:fontFamily="@font/quicksand"
+            android:stateListAnimator="@null"
+            android:text="@string/reschedule"
+            android:textAllCaps="false"
+            android:textColor="#A6ADB3"
+            android:textSize="18sp"
+            android:translationZ="2dp" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

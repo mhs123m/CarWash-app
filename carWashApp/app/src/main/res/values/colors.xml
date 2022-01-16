@@ -19,4 +19,8 @@
     <color name="constraintBackgroundPending">#7E878E</color>
     <color name="constraintBackgroundDone">#228B22</color>
     <color name="constraintBackgroundCancelled">#C70039</color>
+    <color name="primaryGreen">#1F9E9F</color>
+    <color name="primaryBackground">#f4f5f9</color>
+    <color name="primaryRed">#b53958</color>
+    <color name="primaryLightGrey">#dde7f0</color>
 </resources>

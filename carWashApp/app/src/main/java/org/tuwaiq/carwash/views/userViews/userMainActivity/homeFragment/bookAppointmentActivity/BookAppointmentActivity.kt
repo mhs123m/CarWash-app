@@ -1,4 +1,4 @@
-package org.tuwaiq.carwash.views.userViews.bookAppointmentActivity
+package org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.bookAppointmentActivity
 
 import android.icu.util.Calendar
 import android.os.Build
@@ -23,6 +23,8 @@ import org.tuwaiq.carwash.util.Globals
 import org.tuwaiq.carwash.views.AppointmentViewModel
 import java.util.*
 import android.content.Intent
+import androidx.appcompat.content.res.AppCompatResources
+import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
 
 
@@ -88,6 +90,14 @@ class BookAppointmentActivity : AppCompatActivity() {
             println(indexOfAppointment.toString())
             if (indexOfAppointment != null) {
                 btnConfirm.isEnabled = true
+                btnConfirm.background =
+                    AppCompatResources.getDrawable(this, R.drawable.btn_enabled)
+                btnConfirm.setTextColor(
+                    AppCompatResources.getColorStateList(
+                        this,
+                        R.color.primaryBackground
+                    )
+                )
             }
 
 
