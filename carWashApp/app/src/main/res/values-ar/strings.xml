@@ -39,14 +39,15 @@
     <string name="update">تحديث</string>
     <string name="delete">حذف</string>
     <string name="service_availability">توفر الخدمة</string>
-    <string name="minutes">دقائق</string>
+    <string name="minutes">دقيقة</string>
     <string name="sar">ريال</string>
     <string name="confirm">تأكيد</string>
     <string name="previous">السابق</string>
     <string name="reschedule">إعادة جدولة</string>
-    <string name="back">Back</string>
-    <string name="my_services">My Services</string>
-    <string name="client_name">Client Name:</string>
-    <string name="appointment_details">Appointment Details</string>
-    <string name="ali_alatyeah">Ali Alatyeah</string>
+    <string name="back">العودة</string>
+    <string name="my_services">خدماتي</string>
+    <string name="client_name">اسم العميل</string>
+    <string name="appointment_details">تفاصيل الموعد</string>
+    <string name="ali_alatyeah">علي العطية</string>
+    <string name="received">RECEIVED</string>
 </resources>

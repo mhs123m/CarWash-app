@@ -1,22 +1,22 @@
-package org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.storeAppointments
+package org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.storeHomeFragment.upcomingPast
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import org.tuwaiq.carwash.databinding.ActivityStorePastOrderBinding
+import org.tuwaiq.carwash.databinding.ActivityUpcomingOrderDetailsBinding
 import org.tuwaiq.carwash.model.Order
 import org.tuwaiq.carwash.util.TimeSlotsHelperFunctions
 
-class StorePastOrderActivity : AppCompatActivity() {
+class UpcomingOrderDetailsActivity : AppCompatActivity() {
     private lateinit var order: Order
-    private lateinit var binding: ActivityStorePastOrderBinding
+    private lateinit var binding: ActivityUpcomingOrderDetailsBinding
     private lateinit var tvUserName: TextView
     private lateinit var tvDateAndTime: TextView
     private lateinit var tvServiceTitle: TextView
     private lateinit var tvServicePrice: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityStorePastOrderBinding.inflate(layoutInflater)
+        binding = ActivityUpcomingOrderDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         order = intent.getSerializableExtra("order") as Order
@@ -26,19 +26,26 @@ class StorePastOrderActivity : AppCompatActivity() {
         setViewsWithData()
 
 
-        binding.buttonBackDetails.setOnClickListener {
-            finish()
-        }
         binding.imageViewBackBtn.setOnClickListener {
             finish()
         }
+
+        binding.textViewReceived.setOnClickListener {
+            // TODO update status from Pending to Done
+        }
+
+        binding.textViewUnattended.setOnClickListener {
+            // TODO update status from pending to cancelled, or delete it
+        }
+
+
     }
 
     private fun initializeViews() {
-        tvUserName = binding.textViewPastStoreNameDetails
-        tvDateAndTime = binding.textViewPastStoreDateTime
-        tvServiceTitle = binding.textViewPastServiceTitleDetails
-        tvServicePrice = binding.textViewPastStoreServicePriceDetails
+        tvUserName = binding.textViewUpcomingStoreNameDetails
+        tvDateAndTime = binding.textViewUpcomingStoreDateTime
+        tvServiceTitle = binding.textViewStoreUpcomingServiceTitleDetails
+        tvServicePrice = binding.textViewStoreUpcomingServicePriceDetails
     }
 
 

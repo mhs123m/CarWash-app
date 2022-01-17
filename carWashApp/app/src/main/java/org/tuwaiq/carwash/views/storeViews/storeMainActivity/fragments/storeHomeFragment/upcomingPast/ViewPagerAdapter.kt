@@ -1,12 +1,10 @@
-package org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.storeAppointments.upcomingPast
+package org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.storeHomeFragment.upcomingPast
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.storeAppointments.PastFragment
-import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.storeAppointments.UpcomingFragment
 
-class FragmentAdapter(Activity:FragmentActivity):FragmentStateAdapter(Activity) {
+class ViewPagerAdapter(Activity:FragmentActivity):FragmentStateAdapter(Activity) {
     override fun getItemCount(): Int {
         return 2
     }

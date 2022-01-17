@@ -1,4 +1,4 @@
-package org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.storeAppointments
+package org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.storeHomeFragment
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Order
 import org.tuwaiq.carwash.util.TimeSlotsHelperFunctions
+import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.storeHomeFragment.upcomingPast.PastOrderDetailsActivity
 
 class PastAdapter(var data: List<Order> = mutableListOf()) : RecyclerView.Adapter<PastHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PastHolder {
@@ -20,9 +21,9 @@ class PastAdapter(var data: List<Order> = mutableListOf()) : RecyclerView.Adapte
     override fun onBindViewHolder(holder: PastHolder, position: Int) {
         val order = data[position]
         val context = holder.itemView.context
-        val name = order.userId.fullname
-        val t = TimeSlotsHelperFunctions.getStartTime(order.day.slot.index)
-        val title = order.serviceId.title
+        val name: String? = order.userId.fullname
+        val t: String? = TimeSlotsHelperFunctions.getStartTime(order.day.slot.index)
+        val title: String? = order.serviceId.title
         holder.apply {
             name?.let { userName.text = it }
             t?.let { serviceTime.text = it }
@@ -30,7 +31,7 @@ class PastAdapter(var data: List<Order> = mutableListOf()) : RecyclerView.Adapte
         }
 
         holder.itemView.setOnClickListener {
-            val i = Intent(context,StorePastOrderActivity::class.java)
+            val i = Intent(context, PastOrderDetailsActivity::class.java)
             i.putExtra("order", order)
             context.startActivity(i)
         }

@@ -11,6 +11,8 @@ interface AppointmentServices {
     @POST("/appointments/new")
     suspend fun newAppointmentByUser(@Body appointment: Appointment): Response<Appointment>
 
+    // USER APPOINTMENTS ROUTES
+
     // get all appointments of a user (previous, current orders of a user)
     @GET("/users/appointments/{userId}")
     suspend fun getUserOrders(
@@ -29,4 +31,12 @@ interface AppointmentServices {
     suspend fun deleteOrder(
         @Path("appointmentId") appointmentId: String
     ) : Response<Appointment>
+
+    // STORE APPOINTMENTS ROUTES
+
+    // get all appointments of a store (previous, current orders of a user)
+    @GET("/appointments/{storeId}")
+    suspend fun getStoreOrders(
+        @Path("storeId") storeId: String,
+    ): Response<List<Order>>
 }

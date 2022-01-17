@@ -10,6 +10,9 @@ import retrofit2.Response
 class AppointmentRepository {
     private val appointmentServices = Api.getInstance().create(AppointmentServices::class.java)
 
+
+    // USER REPO
+
     // post new appointment
     suspend fun newAppointment(appointment: Appointment): Response<Appointment> {
 
@@ -32,5 +35,12 @@ class AppointmentRepository {
     // delete appointment
     suspend fun deleteAppointment(appointmentId: String) : Response<Appointment> {
         return appointmentServices.deleteOrder(appointmentId)
+    }
+
+    // STORE REPO
+
+    // get all appointments of a store (previous, current orders of a user)
+    suspend fun getStoreOrders(storeId: String): Response<List<Order>> {
+        return appointmentServices.getStoreOrders(storeId)
     }
 }

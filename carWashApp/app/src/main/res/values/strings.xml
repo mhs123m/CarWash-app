@@ -45,8 +45,8 @@
     <string name="back">Back</string>
     <string name="my_services">My Services</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="client_name">Client Name:</string>
     <string name="appointment_details">Appointment Details</string>
     <string name="ali_alatyeah">Ali Alatyeah</string>
+    <string name="received">RECEIVED</string>
 </resources>

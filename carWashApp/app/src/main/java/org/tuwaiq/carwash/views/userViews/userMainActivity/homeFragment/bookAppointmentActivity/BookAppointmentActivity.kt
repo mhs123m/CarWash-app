@@ -126,7 +126,7 @@ class BookAppointmentActivity : AppCompatActivity() {
             val y = d.get(Calendar.YEAR)
             val m = d.get(Calendar.MONTH)
             val day = d.get(Calendar.DAY_OF_MONTH)
-            date = "$y-$m-$day"
+            date = "$y-${m+1}-$day"
         }
         day = Day(null, date, slot)
 

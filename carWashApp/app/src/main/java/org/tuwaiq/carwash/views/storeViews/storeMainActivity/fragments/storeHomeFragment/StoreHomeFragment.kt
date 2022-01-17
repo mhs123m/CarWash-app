@@ -1,4 +1,4 @@
-package org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.storeAppointments
+package org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.storeHomeFragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import org.tuwaiq.carwash.R
-import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.storeAppointments.upcomingPast.FragmentAdapter
+import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.storeHomeFragment.upcomingPast.ViewPagerAdapter
 
 class StoreHomeFragment : Fragment() {
 
@@ -28,7 +28,7 @@ class StoreHomeFragment : Fragment() {
 
         var titles = arrayOf("Upcoming", "Past")
         var iconsofTabs = arrayOf(R.drawable.calendar_grey_icon,R.drawable.past_icon)
-        viewPager2.adapter = FragmentAdapter(activity!!)
+        viewPager2.adapter = ViewPagerAdapter(activity!!)
 
 
         TabLayoutMediator(mTabLayout, viewPager2) { tab, position ->
