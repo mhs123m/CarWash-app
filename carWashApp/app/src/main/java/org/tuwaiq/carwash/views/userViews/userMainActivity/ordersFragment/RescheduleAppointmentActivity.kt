@@ -82,7 +82,6 @@ class RescheduleAppointmentActivity : AppCompatActivity() {
         timeSlotRecyclerView.adapter = TimeSlotsAdapter { time: String, index: Int ->
             tvSelectedTimeResult.text = time
             indexOfAppointment = index
-            println(indexOfAppointment.toString())
             if (indexOfAppointment != null) {
                 btnConfirm.isEnabled = true
                 btnConfirm.background =

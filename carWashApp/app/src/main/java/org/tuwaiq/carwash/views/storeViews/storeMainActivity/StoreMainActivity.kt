@@ -71,7 +71,6 @@ class StoreMainActivity : AppCompatActivity() {
         if (fragment != null) {
             supportFragmentManager
                 .beginTransaction()
-                .addToBackStack("aa")
                 .replace(R.id.storefragmentContainerView, fragment)
                 .commit()
             return true
