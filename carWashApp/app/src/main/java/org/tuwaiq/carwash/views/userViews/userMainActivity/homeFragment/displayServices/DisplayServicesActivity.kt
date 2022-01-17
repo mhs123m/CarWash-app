@@ -22,7 +22,7 @@ class DisplayServicesActivity : AppCompatActivity() {
         // link recyclerView
         val displayRecyclerView = findViewById<RecyclerView>(R.id.DisplayrecyclerView)
         displayRecyclerView.layoutManager =
-            StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL)
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
 
         viewModel.getAllServicesOfStore(store._id!!)

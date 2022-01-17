@@ -24,19 +24,24 @@
         <entry key="app/src/main/res/layout/activity_store_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_store_main.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_store_maps.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/layout/activity_store_past_order.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_store_sign_in.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_user_main.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/fragment_more.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/fragment_orders.xml" value="0.22864583333333333" />
-        <entry key="app/src/main/res/layout/fragment_store_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_past.xml" value="0.22864583333333333" />
+        <entry key="app/src/main/res/layout/fragment_store_home.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_store_log_in.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/fragment_store_more.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_store_preview.xml" value="0.22864583333333333" />
+        <entry key="app/src/main/res/layout/fragment_store_preview.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_store_register.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/layout/fragment_upcomming.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/fragment_user_home.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_user_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_user_register.xml" value="0.25" />
         <entry key="app/src/main/res/layout/services_row.xml" value="0.273322776474025" />
+        <entry key="app/src/main/res/layout/store_order_row.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/store_past_order_row.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/stores_list_item_for_users.xml" value="0.45" />
         <entry key="app/src/main/res/layout/stores_list_item_for_users_row.xml" value="0.335" />
         <entry key="app/src/main/res/layout/time_slots_row.xml" value="0.45" />

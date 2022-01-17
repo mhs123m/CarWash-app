@@ -10,7 +10,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.util.Globals
 import org.tuwaiq.carwash.util.LocationHelperFunctions
-import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.StoreHomeFragment
+import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.storeAppointments.StoreHomeFragment
 import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.StoreMoreFragment
 import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.StorePreviewFragment
 

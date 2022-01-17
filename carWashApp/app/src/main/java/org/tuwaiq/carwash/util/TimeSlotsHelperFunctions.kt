@@ -5,7 +5,7 @@ import java.util.*
 class TimeSlotsHelperFunctions {
 
     companion object {
-        //TODO do a function to calculate timeSlots for each store
+
         fun convertIndexToTime(index: Int): String {
             return when (index) {
                 0 -> "09:00 - 09:30"
@@ -31,6 +31,12 @@ class TimeSlotsHelperFunctions {
                 else -> "closed"
             }
 
+        }
+
+        fun getStartTime(index: Int): String{
+            val t = convertIndexToTime(index)
+            val indexOfDash = t.indexOf('-')
+            return t.substring(0,indexOfDash-1)
         }
     }
 }

@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Shiny</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sign_up">Sign Up</string>
     <string name="log_in">Log in</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
@@ -23,9 +22,9 @@
     <string name="store_name">Store Name</string>
     <string name="apply">Apply</string>
     <string name="store_profile">STORE PROFILE</string>
-    <string name="location">location</string>
+    <string name="location">Location</string>
     <string name="update_information">Update information</string>
-    <string name="title_activity_store_maps">StoreMapsActivity</string>
+    <string name="title_activity_store_maps" translatable="false">StoreMapsActivity</string>
     <string name="log_out">Log out</string>
     <string name="more">More</string>
     <string name="ex_waxing_regular_wash">e.g. Waxing, Regular Wash</string>
@@ -35,8 +34,8 @@
     <string name="service_title">Service Title:</string>
     <string name="add_service">Add service</string>
     <string name="turn_on_if_you_would_like_the_service_to_be_seen_by_customers">turn on if you would like the service to be seen by customers</string>
-    <string name="update">update</string>
-    <string name="delete">delete</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
     <string name="service_availability">Service Availability</string>
     <string name="minutes">minutes</string>
     <string name="sar">SAR</string>
@@ -44,4 +43,10 @@
     <string name="previous">Previous</string>
     <string name="reschedule">Reschedule</string>
     <string name="back">Back</string>
+    <string name="my_services">My Services</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="client_name">Client Name:</string>
+    <string name="appointment_details">Appointment Details</string>
+    <string name="ali_alatyeah">Ali Alatyeah</string>
 </resources>

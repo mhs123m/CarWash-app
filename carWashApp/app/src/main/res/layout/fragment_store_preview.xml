@@ -5,15 +5,14 @@
     android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primaryLightGrey"
     tools:context=".views.storeViews.storeMainActivity.fragments.StorePreviewFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/storePreviewRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,19 +24,30 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="My Services"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="@string/my_services"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/FABaddService"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
         android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/primaryGreen"
+        android:textColor="@color/primaryBackground"
         android:clickable="true"
-        android:src="@android:drawable/ic_input_add"
+        android:focusable="true"
+        android:paddingStart="20dp"
+        android:text="@string/add_service"
+        app:icon="@drawable/ic_baseline_add_white_24"
+        app:iconTint="@color/primaryBackground"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

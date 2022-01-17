@@ -4,8 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import androidx.activity.viewModels
-import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.databinding.ActivityAppointmentDetailsBinding
 import org.tuwaiq.carwash.model.Order
 import org.tuwaiq.carwash.util.TimeSlotsHelperFunctions
@@ -25,7 +23,7 @@ class AppointmentDetailsActivity : AppCompatActivity() {
         order = intent.getSerializableExtra("order") as Order
 
         // link views
-        initailizeViews()
+        initializeViews()
         setViewsWithData()
 
         binding.textViewReschedule.setOnClickListener {
@@ -49,7 +47,7 @@ class AppointmentDetailsActivity : AppCompatActivity() {
 
     }
 
-    private fun initailizeViews() {
+    private fun initializeViews() {
         tvStoreName = binding.textViewStoreNameDetails
         tvDateAndTime = binding.textViewDateTime
         tvServiceTitle = binding.textViewServiceTitleDetails
@@ -58,13 +56,13 @@ class AppointmentDetailsActivity : AppCompatActivity() {
 
 
     private fun setViewsWithData() {
+        val day = order.day.day
+        val time = TimeSlotsHelperFunctions.convertIndexToTime(order.day.slot.index)
         order.storeId?.let {
             tvStoreName.text = it.name
         }
         tvDateAndTime.text =
-            "${order.day.day} | ${
-                TimeSlotsHelperFunctions.convertIndexToTime(order.day.slot.index)
-            }"
+            "$day | $time"
         order.serviceId?.let {
             tvServiceTitle.text = it.title
             tvServicePrice.text = it.price.toString()

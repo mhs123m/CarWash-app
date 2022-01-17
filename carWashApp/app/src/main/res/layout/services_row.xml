@@ -15,6 +15,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:cardCornerRadius="30dp"
+        app:cardElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,11 +38,11 @@
 
             <LinearLayout
                 android:id="@+id/constraintLayout"
-                android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="1dp"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -59,53 +60,65 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <LinearLayout
+                <View
+                    android:id="@+id/divider9"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/primaryLightGrey" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textViewRowServicePrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="10dp"
-                    android:layout_marginEnd="3dp"
-                    android:fontFamily="@font/quicksand_bold"
-                    android:text="30.00"
-                    android:layout_weight="0"
-                    android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/textViewRowServicePrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="0"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:paddingStart="10dp"
+                        android:text="30.00"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/quicksand"
-                    android:layout_weight="1"
-                    android:text="SAR" />
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/quicksand"
+                        android:text="SAR"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textViewRowServicePrice" />
 
-                <TextView
-                    android:id="@+id/textViewServicesRowDuration"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="@font/quicksand_bold"
-                    android:text="30.0"
-                    android:textSize="20sp"
-                    android:gravity="end"
-                    android:layout_weight="1"/>
+                    <TextView
+                        android:id="@+id/textViewServicesRowDuration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:gravity="end"
+                        android:text="30.0"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView13"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginBottom="8dp"
-                    android:paddingEnd="10dp"
-                    android:fontFamily="@font/quicksand"
-                    android:text="minutes"
-                    android:layout_weight="0" />
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="0"
+                        android:fontFamily="@font/quicksand"
+                        android:paddingEnd="10dp"
+                        android:text="min"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

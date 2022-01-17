@@ -16,6 +16,9 @@
         android:theme="@style/Theme.CarWashApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".views.storeViews.storeMainActivity.fragments.storeAppointments.StorePastOrderActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.userViews.userMainActivity.ordersFragment.AppointmentDetailsActivity"
             android:exported="false" />
         <activity

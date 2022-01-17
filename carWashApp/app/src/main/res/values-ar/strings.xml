@@ -45,4 +45,8 @@
     <string name="previous">السابق</string>
     <string name="reschedule">إعادة جدولة</string>
     <string name="back">Back</string>
+    <string name="my_services">My Services</string>
+    <string name="client_name">Client Name:</string>
+    <string name="appointment_details">Appointment Details</string>
+    <string name="ali_alatyeah">Ali Alatyeah</string>
 </resources>

@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.util.Globals
 import org.tuwaiq.carwash.views.ServiceViewModel
@@ -37,7 +37,7 @@ class StorePreviewFragment : Fragment() {
         // link recyclerView
         val storePrevRecyclerView = v.findViewById<RecyclerView>(R.id.storePreviewRecyclerView)
         storePrevRecyclerView.layoutManager =
-            StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL)
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
 //         initialize adapter
         adapter = StorePreviewAdapter()
@@ -52,7 +52,7 @@ class StorePreviewFragment : Fragment() {
         }
 
         //link fab btn -> on click, open add activity
-        v.findViewById<FloatingActionButton>(R.id.FABaddService).setOnClickListener {
+        v.findViewById<ExtendedFloatingActionButton>(R.id.FABaddService).setOnClickListener {
             startActivity(Intent(v.context, AddServiceActivity::class.java))
         }
 
