@@ -4,6 +4,7 @@ package org.tuwaiq.carwash.views.storeViews.storeMainActivity
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -26,11 +27,15 @@ class StoreMainActivity : AppCompatActivity() {
         // get location permission
         getLastKnownLocation()
 
-        // retrieve saved data to share pref
-        Globals.sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE)
+//        // retrieve saved data to share pref
+//        Globals.sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE)
 
-        //link bottom navigation view
+        //link bottom navigation view and tool bar
         navigation = findViewById(R.id.storebottomNavigationView)
+        val mainStoreToolBar = findViewById<Toolbar>(R.id.mainStoreToolBar)
+        // set tool bar
+        setSupportActionBar(mainStoreToolBar)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
 
 
         // get instance of fragments

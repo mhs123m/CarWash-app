@@ -30,53 +30,62 @@ class AddServiceActivity : AppCompatActivity() {
 
         // upload picture
         binding.imageViewChangeServicePictureOnClick.setOnClickListener {
-            onActivityResult(0, 0, intent)
-            ImagePicker.with(this)
-                .crop()    //Crop image(Optional), Check Customization for more option
-                .compress(1024)//Final image size will be less than 1 MB(Optional)
-                .maxResultSize(
-                    1080,
-                    1080
-                )    //Final image resolution will be less than 1080 x 1080(Optional)
-                .start()
+           intentImagePicker()
+        }
+        // on btn clicked
+        binding.buttonAddService.setOnClickListener {
+            addService()
         }
 
+        binding.imageViewBackAdd.setOnClickListener {
+            finish()
+        }
+
+    }
+
+    private fun intentImagePicker() {
+        onActivityResult(0, 0, intent)
+        ImagePicker.with(this)
+            .crop()    //Crop image(Optional), Check Customization for more option
+            .compress(100)//Final image size will be less than 1 MB(Optional)
+            .maxResultSize(
+                1080,
+                1080
+            )    //Final image resolution will be less than 1080 x 1080(Optional)
+            .start()
+    }
+
+    private fun addService() {
+        val title = binding.editTextServiceTitle.text.toString()
+        val description = binding.editTextServiceDescription.text.toString()
+        val price = binding.textInputServicePrice.text.toString().toDouble()
+        val duration = binding.textInputServiceDuration.text.toString().toDouble()
+        var available = false
+        binding.switchServiceAvailable.setOnCheckedChangeListener { buttonView, isChecked ->
+            available = buttonView.isChecked
+        }
         // get token and store Id
         val xAuthHeader = Globals.sharedPreferences.getString("Token", null)
         val storeId = Globals.sharedPreferences.getString("ID", null)
+        serviceModel = ServiceModel(
+            null,
+            encodedPic,
+            title,
+            description,
+            price,
+            duration,
+            available,
+            null,
+            null,
+            storeId!!
+        )
 
-        // on btn clicked
-        binding.buttonAddService.setOnClickListener {
-            val title = binding.editTextServiceTitle.text.toString()
-            val description = binding.editTextServiceDescription.text.toString()
-            val price = binding.textInputServicePrice.text.toString().toDouble()
-            val duration = binding.textInputServiceDuration.text.toString().toDouble()
-            var available = false
-            binding.switchServiceAvailable.setOnCheckedChangeListener { buttonView, isChecked ->
-                available = buttonView.isChecked
-            }
-            serviceModel = ServiceModel(
-                null,
-                encodedPic,
-                title,
-                description,
-                price,
-                duration,
-                available,
-                null,
-                null,
-                storeId!!
-            )
-
-            viewModel.addNewService(xAuthHeader!!, serviceModel)
-            viewModel.newServiceLiveData.observe(this) {
-                Log.d("SERVICE", "ADDED?: $it")
-                // finis activity and TODO update service list with the new added service
-                finish()
-            }
+        viewModel.addNewService(xAuthHeader!!, serviceModel)
+        viewModel.newServiceLiveData.observe(this) {
+            Log.d("SERVICE", "ADDED?: $it")
+            // finis activity and TODO update service list with the new added service
+            finish()
         }
-
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

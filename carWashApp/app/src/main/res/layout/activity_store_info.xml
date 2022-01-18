@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2300979B"
+    android:background="@color/primaryLightGrey"
     tools:context=".views.storeViews.storeInfoActivity.StoreInfoActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="0dp"
         android:layout_height="200dp"
-        app:cardBackgroundColor="#02979a"
+        app:cardBackgroundColor="@color/primaryGreen"
         app:cardElevation="0dp"
         app:cardMaxElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,10 +30,10 @@
 
         <ImageView
             android:id="@+id/imageViewArrowBackStore"
-            android:layout_width="40dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
     </androidx.cardview.widget.CardView>
 
@@ -42,19 +42,20 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:startIconDrawable="@drawable/car_store_icon_grey"
         app:layout_constraintTop_toBottomOf="@+id/cardView">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputStoreName"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:hint="@string/store_name"
-            android:inputType="textPersonName"/>
+            android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -62,9 +63,10 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="50dp"
+        app:startIconDrawable="@drawable/email_icon_10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout8">
@@ -72,9 +74,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputStoreEmail"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:hint="@string/email"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -82,9 +84,10 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="50dp"
+        app:startIconDrawable="@drawable/phone_icon_10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
@@ -92,7 +95,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputStorePhone"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:hint="@string/phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,17 +104,18 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/cardViewPickLocation"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10"
+        app:startIconDrawable="@drawable/location_icon_10">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputStoreLocation"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:focusableInTouchMode="false"
             android:hint="@string/location" />
 
@@ -119,8 +123,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="145dp"
         android:elevation="10dp"
         app:cardBackgroundColor="#C8E4E4"
@@ -145,14 +149,34 @@
         android:layout_marginStart="60dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="60dp"
-        android:layout_marginBottom="85dp"
-        android:background="@drawable/btn_shape_rounded_corners"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/btn_enabled"
         android:text="@string/update_information"
-        android:textColor="#e5f8f9"
+        android:textAllCaps="false"
+        android:textColor="@color/primaryLightGrey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout11" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewPickLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/primaryLightGrey"
+        app:cardElevation="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textInputLayout11">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/pick_location_icon_24" />
+
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

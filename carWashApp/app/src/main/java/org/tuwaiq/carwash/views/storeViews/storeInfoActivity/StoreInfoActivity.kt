@@ -21,6 +21,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -59,7 +60,63 @@ class StoreInfoActivity : AppCompatActivity() {
         textInputStorePhone = findViewById(R.id.textInputStorePhone)
         textInputStoreLocation = findViewById(R.id.textInputStoreLocation)
         val btnUpdateInfo = findViewById<Button>(R.id.buttonStoreUpdateInfo)
+        val backBtn = findViewById<ImageView>(R.id.imageViewArrowBackStore)
+        val cvPickLocation = findViewById<CardView>(R.id.cardViewPickLocation)
+
+        backBtn.setOnClickListener {
+            finish()
+        }
         // call view model
+
+        setViewsWithDataFromServer()
+
+        // on img click open imgPicker
+        imgViewStoreLogo.setOnClickListener {
+            // once this intent to take a picture is done, onActivityResult would be have called, so
+            // encodedPic would be set to new taken picture encoded
+            onActivityResult(0, 0, intent)
+            ImagePicker.with(this)
+                .crop()    //Crop image(Optional), Check Customization for more option
+                .compress(500)//Final image size will be less than 1 MB(Optional)
+                .maxResultSize(
+                    1080,
+                    1080
+                )    //Final image resolution will be less than 1080 x 1080(Optional)
+                .start()
+        }
+
+        // on location card view  click, open map activity
+        cvPickLocation.setOnClickListener {
+            // get current location to set map view marker as the current.
+            val i = Intent(this, StoreMapsActivity::class.java)
+            startActivity(i)
+        }
+
+
+        // here we click the btn update
+        btnUpdateInfo.setOnClickListener {
+            updateInfo()
+        }
+
+    }
+
+    private fun updateInfo() {
+        val geometry = locationHelperFunctions.getGeometry()
+        // updated info
+        currentStore = Store(
+            loggedInStore?._id,
+            textInputStoreName.text.toString(),
+            textInputStoreEmail.text.toString(),
+            textInputStorePhone.text.toString(),
+            null, encodedPic, geometry
+        )
+        viewModel.updateStoreInfo(currentStore._id!!, currentStore)
+        viewModel.updatedStoreLiveData.observe(this) {
+            Log.d("STORE_UPDATE", "btn pressed: $it")
+        }
+    }
+
+    private fun setViewsWithDataFromServer() {
         viewModel.getStoreById(Globals.sharedPreferences.getString("ID", null)!!)
         viewModel.oneStoreLiveData.observe(this) { store ->
             loggedInStore = store
@@ -75,52 +132,6 @@ class StoreInfoActivity : AppCompatActivity() {
                 textInputStoreLocation.setText(it.formattedAddress)
             }
         }
-
-
-
-        // on img click open imgPicker
-        imgViewStoreLogo.setOnClickListener {
-            // once this intent to take a picture is done, onActivityResult would be have called, so
-            // encodedPic would be set to new taken picture encoded
-            onActivityResult(0, 0, intent)
-            ImagePicker.with(this)
-                .crop()    //Crop image(Optional), Check Customization for more option
-                .compress(1024)//Final image size will be less than 1 MB(Optional)
-                .maxResultSize(
-                    1080,
-                    1080
-                )    //Final image resolution will be less than 1080 x 1080(Optional)
-                .start()
-        }
-
-        // on location text input click, open map activity
-        textInputStoreLocation.setOnClickListener {
-
-            // get current location to set map view marker as the current.
-            val i = Intent(this, StoreMapsActivity::class.java)
-
-            startActivity(i)
-        }
-
-
-        // here we click the btn update
-        btnUpdateInfo.setOnClickListener {
-            val geometry = locationHelperFunctions.getGeometry()
-            // updated info
-            currentStore = Store(
-                loggedInStore?._id,
-                textInputStoreName.text.toString(),
-                textInputStoreEmail.text.toString(),
-                textInputStorePhone.text.toString(),
-                null, encodedPic, geometry
-            )
-            viewModel.updateStoreInfo(currentStore._id!!, currentStore)
-            viewModel.updatedStoreLiveData.observe(this) {
-                Log.d("STORE_UPDATE", "btn pressed: $it")
-            }
-        }
-
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -43,12 +43,7 @@ class EditServiceActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // initialize views
-        title = binding.editTextServiceTitleEdit
-        description = binding.editTextServiceDescriptionEdit
-        price = binding.textInputServicePriceEdit
-        duration = binding.textInputServiceDurationEdit
-        available = binding.switchServiceAvailableEdit
-        imgService = binding.imageViewServiceLogoEdit
+        initializeViews()
 
         service = intent.getSerializableExtra("service") as ServiceModel
 
@@ -60,7 +55,7 @@ class EditServiceActivity : AppCompatActivity() {
             onActivityResult(0, 0, intent)
             ImagePicker.with(this)
                 .crop()    //Crop image(Optional), Check Customization for more option
-                .compress(50)//Final image size will be less than 1 MB(Optional)
+                .compress(500)//Final image size will be less than 1 MB(Optional)
                 .maxResultSize(
                     1080,
                     1080
@@ -79,7 +74,20 @@ class EditServiceActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.imageViewBackEdit.setOnClickListener {
+            finish()
+        }
 
+
+    }
+
+    private fun initializeViews() {
+        title = binding.editTextServiceTitleEdit
+        description = binding.editTextServiceDescriptionEdit
+        price = binding.textInputServicePriceEdit
+        duration = binding.textInputServiceDurationEdit
+        available = binding.switchServiceAvailableEdit
+        imgService = binding.imageViewServiceLogoEdit
     }
 
     private fun deleteService() {

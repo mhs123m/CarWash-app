@@ -4,24 +4,30 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../layout/custom_preview.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/drawable-v24/selector_nav_appointments.xml" value="0.21851851851851853" />
+        <entry key="app/src/main/res/drawable-v24/selector_nav_car_wash.xml" value="0.21851851851851853" />
         <entry key="app/src/main/res/drawable/btn_cancel.xml" value="0.25885416666666666" />
         <entry key="app/src/main/res/drawable/btn_disabled.xml" value="0.25885416666666666" />
         <entry key="app/src/main/res/drawable/btn_enabled.xml" value="0.25885416666666666" />
         <entry key="app/src/main/res/drawable/btn_only_stroke.xml" value="0.25885416666666666" />
         <entry key="app/src/main/res/drawable/btn_previous.xml" value="0.25885416666666666" />
         <entry key="app/src/main/res/drawable/btn_shape_rounded_corners.xml" value="0.25885416666666666" />
+        <entry key="app/src/main/res/drawable/selector_nav_more.xml" value="0.21851851851851853" />
+        <entry key="app/src/main/res/drawable/selector_nav_preview.xml" value="0.21851851851851853" />
+        <entry key="app/src/main/res/drawable/selector_nav_stores.xml" value="0.21851851851851853" />
+        <entry key="app/src/main/res/drawable/store_nav_selector.xml" value="0.21851851851851853" />
         <entry key="app/src/main/res/layout-v23/activity_store_maps.xml" value="0.24270833333333333" />
-        <entry key="app/src/main/res/layout/activity_add_service.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_add_service.xml" value="0.2966101694915254" />
         <entry key="app/src/main/res/layout/activity_appointment_details.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_book_appointment.xml" value="0.36228287841191065" />
         <entry key="app/src/main/res/layout/activity_cancel_appointment.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_display_services.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_edit_service.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_edit_service.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1962962962962963" />
         <entry key="app/src/main/res/layout/activity_reschedule_appointment.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_signin.xml" value="0.1962962962962963" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1962962962962963" />
-        <entry key="app/src/main/res/layout/activity_store_info.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_store_info.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_store_main.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_store_maps.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_store_past_order.xml" value="0.375" />

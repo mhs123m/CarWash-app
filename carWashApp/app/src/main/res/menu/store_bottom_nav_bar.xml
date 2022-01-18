@@ -4,14 +4,17 @@
 
     <item
         android:id="@+id/storeHomeMenu"
-        android:title="home"
+        android:title="@string/appointments"
+        android:icon="@drawable/selector_nav_appointments"
         app:showAsAction="always" />
     <item
         android:id="@+id/storePreviewMenu"
-        android:title="preview"
+        android:title="@string/preview"
+        android:icon="@drawable/selector_nav_preview"
         app:showAsAction="always" />
     <item
         android:id="@+id/storeMoreMenu"
-        android:title="More"
+        android:title="@string/more"
+        android:icon="@drawable/selector_nav_more"
         app:showAsAction="always" />
 </menu>

@@ -23,7 +23,7 @@
     <string name="apply">Apply</string>
     <string name="store_profile">STORE PROFILE</string>
     <string name="location">Location</string>
-    <string name="update_information">Update information</string>
+    <string name="update_information">Update Information</string>
     <string name="title_activity_store_maps" translatable="false">StoreMapsActivity</string>
     <string name="log_out">Log out</string>
     <string name="more">More</string>
@@ -49,4 +49,7 @@
     <string name="appointment_details">Appointment Details</string>
     <string name="ali_alatyeah">Ali Alatyeah</string>
     <string name="received">RECEIVED</string>
+    <string name="appointments">Appointments</string>
+    <string name="stores">Stores</string>
+    <string name="preview">Preview</string>
 </resources>

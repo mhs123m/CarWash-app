@@ -13,11 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="@string/service_title"
         android:fontFamily="@font/quicksand_bold"
+        android:text="@string/service_title"
         android:textColor="@color/textAlmostBlack"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBackAdd" />
 
     <EditText
         android:id="@+id/editTextServiceTitle"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="7dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="50dp"
         android:autofillHints="Normal wash, Regular Wash, VIP Wash"
         android:ems="10"
         android:hint="@string/ex_waxing_regular_wash"
@@ -35,37 +35,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-    <ImageView
-        android:id="@+id/imageViewServiceLogo"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvPictureHolderAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        app:cardBackgroundColor="@color/primaryLightGrey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextServiceTitle"
-        app:srcCompat="@drawable/add_image" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextServiceTitle">
 
-    <ImageView
+        <ImageView
+            android:id="@+id/imageViewServiceLogo"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            app:srcCompat="@drawable/car_wash"
+            android:scaleType="fitXY"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/imageViewChangeServicePictureOnClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
         android:layout_marginTop="94dp"
-        app:layout_constraintStart_toStartOf="@+id/imageViewServiceLogo"
-        app:layout_constraintTop_toTopOf="@+id/imageViewServiceLogo"
-        app:srcCompat="@drawable/change_pic_icon" />
+        app:fabSize="mini"
+        app:layout_constraintStart_toStartOf="@+id/cvPictureHolderAdd"
+        app:layout_constraintTop_toTopOf="@+id/cvPictureHolderAdd"
+        app:srcCompat="@drawable/ic_baseline_add_white_24" />
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/quicksand_bold"
-        android:textColor="@color/textAlmostBlack"
         android:text="Service Description:"
+        android:textColor="@color/textAlmostBlack"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewServiceLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/cvPictureHolderAdd" />
 
     <EditText
         android:id="@+id/editTextServiceDescription"
@@ -73,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="50dp"
         android:ems="10"
         android:hint="@string/optional"
         android:inputType="text"
@@ -95,7 +106,8 @@
             android:id="@+id/textInputServicePrice"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/price" />
+            android:hint="@string/price"
+            android:inputType="phone"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -112,7 +124,9 @@
             android:id="@+id/textInputServiceDuration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/duration" />
+            android:hint="@string/duration"
+            android:inputType="phone"
+            android:autofillHints="30"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -120,8 +134,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="16dp"
         android:text="@string/sar"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout12"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout12"
         app:layout_constraintTop_toTopOf="@+id/textInputLayout12" />
 
@@ -130,8 +144,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="16dp"
         android:text="@string/minutes"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout13"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout13"
         app:layout_constraintTop_toTopOf="@+id/textInputLayout13" />
 
@@ -194,11 +208,20 @@
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:background="@drawable/btn_enabled"
-        android:textColor="@color/primaryBackground"
-        android:layout_marginBottom="24dp"
         android:text="@string/add_service"
+        android:textColor="@color/primaryBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+    <ImageView
+        android:id="@+id/imageViewBackAdd"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back_arrow_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

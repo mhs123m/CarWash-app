@@ -4,17 +4,17 @@
 
     <item
         android:id="@+id/CarWashStores"
-        android:icon="@drawable/carwash"
-        android:title="Stores"
+        android:icon="@drawable/selector_nav_car_wash"
+        android:title="@string/stores"
         app:showAsAction="always" />
     <item
         android:id="@+id/orders"
-        android:icon="@drawable/list"
-        android:title="Orders"
+        android:icon="@drawable/selector_nav_appointments"
+        android:title="@string/appointments"
         app:showAsAction="always" />
     <item
         android:id="@+id/more"
-        android:icon="@drawable/more"
-        android:title="More"
+        android:icon="@drawable/selector_nav_more"
+        android:title="@string/more"
         app:showAsAction="always" />
 </menu>

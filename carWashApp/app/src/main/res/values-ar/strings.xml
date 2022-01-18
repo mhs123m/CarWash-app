@@ -49,5 +49,8 @@
     <string name="client_name">اسم العميل</string>
     <string name="appointment_details">تفاصيل الموعد</string>
     <string name="ali_alatyeah">علي العطية</string>
-    <string name="received">RECEIVED</string>
+    <string name="received">انتهت</string>
+    <string name="appointments">مواعيد</string>
+    <string name="stores">المتاجر</string>
+    <string name="preview">خدماتي</string>
 </resources>

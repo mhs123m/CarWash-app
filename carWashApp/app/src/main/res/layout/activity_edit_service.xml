@@ -13,11 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="@string/service_title"
         android:fontFamily="@font/quicksand_bold"
+        android:text="@string/service_title"
         android:textColor="@color/textAlmostBlack"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBackEdit" />
 
     <EditText
         android:id="@+id/editTextServiceTitleEdit"
@@ -35,37 +35,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-    <ImageView
-        android:id="@+id/imageViewServiceLogoEdit"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvPictureHolderEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        app:cardBackgroundColor="@color/primaryLightGrey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextServiceTitleEdit"
-        app:srcCompat="@drawable/add_image" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextServiceTitleEdit">
 
-    <ImageView
+        <ImageView
+            android:id="@+id/imageViewServiceLogoEdit"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            app:srcCompat="@drawable/car_wash"
+            android:scaleType="fitXY"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/imageViewChangeServicePictureOnClickEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
         android:layout_marginTop="94dp"
-        app:layout_constraintStart_toStartOf="@+id/imageViewServiceLogoEdit"
-        app:layout_constraintTop_toTopOf="@+id/imageViewServiceLogoEdit"
-        app:srcCompat="@drawable/change_pic_icon" />
+        app:fabSize="mini"
+        app:layout_constraintStart_toStartOf="@+id/cvPictureHolderEdit"
+        app:layout_constraintTop_toTopOf="@+id/cvPictureHolderEdit"
+        app:srcCompat="@drawable/ic_baseline_add_white_24" />
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="38dp"
-        android:text="Service Description:"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/quicksand_bold"
+        android:text="Service Description:"
         android:textColor="@color/textAlmostBlack"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewServiceLogoEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/cvPictureHolderEdit" />
 
     <EditText
         android:id="@+id/editTextServiceDescriptionEdit"
@@ -96,7 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/price"
-            android:inputType="number"/>
+            android:inputType="phone"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -114,7 +125,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/duration"
-            android:inputType="number"/>
+            android:inputType="phone"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -201,7 +212,8 @@
         android:paddingEnd="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonUpdateService"
@@ -237,5 +249,15 @@
             android:textSize="18sp"
             android:translationZ="2dp" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageViewBackEdit"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back_arrow_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
