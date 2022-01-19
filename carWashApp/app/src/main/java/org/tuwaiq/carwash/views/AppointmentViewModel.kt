@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.tuwaiq.carwash.model.Appointment
 import org.tuwaiq.carwash.repository.AppointmentRepository
-import org.tuwaiq.carwash.util.HelperFunctions
+import org.tuwaiq.carwash.utils.HelperFunctions
 
 class AppointmentViewModel : ViewModel() {
 

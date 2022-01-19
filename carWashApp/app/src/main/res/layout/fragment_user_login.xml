@@ -5,7 +5,7 @@
     android:id="@+id/frameLayoutUserLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9A799E88"
+    android:background="@color/primaryLightGrey"
     tools:context=".views.userViews.userLoginAndRegister.UserLoginFragment">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -17,7 +17,8 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditTextUserEmail"
@@ -37,7 +38,8 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditTextUserPassword"
@@ -56,6 +58,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="40dp"
         android:text="@string/log_in"
+        android:background="@drawable/btn_enabled"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />

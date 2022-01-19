@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryLightGrey"
-    tools:context=".views.storeViews.serviceActivities.AddServiceActivity">
+    tools:context=".views.storeViews.storeMainActivity.servicesFragment.serviceActivities.AddServiceActivity">
 
     <TextView
         android:id="@+id/textView12"

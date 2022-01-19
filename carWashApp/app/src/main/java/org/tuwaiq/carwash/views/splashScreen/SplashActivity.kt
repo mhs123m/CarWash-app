@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import org.tuwaiq.carwash.R
-import org.tuwaiq.carwash.util.Globals
+import org.tuwaiq.carwash.utils.Globals
 import org.tuwaiq.carwash.views.storeViews.storeMainActivity.StoreMainActivity
 import org.tuwaiq.carwash.views.userViews.userLoginAndRegister.UserSignInActivity
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity

@@ -52,4 +52,31 @@
     <string name="appointments">Appointments</string>
     <string name="stores">Stores</string>
     <string name="preview">Preview</string>
+    <string name="ali" translatable="false">Ali</string>
+    <string name="confirm_store_location">Confirm store Location</string>
+    <string name="search">search</string>
+    <string name="profile">Profile</string>
+    <string name="darkMode">Dark Mode</string>
+    <string name="language">Change Language</string>
+    <string name="contact">Send Feedback</string>
+    <string name="shareApp">Share App</string>
+    <string name="logOut">Log Out</string>
+    <string name="log_outt">Log Out?</string>
+    <string name="share_app">Hey check out Shiny where you could schedule your appointments for your car wash, you could download it  at</string>
+    <string name="feedBack">Send Feedback</string>
+    <string name="night_mode">Night Mode</string>
+    <string name="log_out_message">Are you sure you want to log out?</string>
+    <string name="dark_mode_message">Choose app mode</string>
+    <string name="language_message">Choose app language</string>
+    <string name="arabic" translatable="false">العربية</string>
+    <string name="english" translatable="false">English</string>
+    <string name="day_mode">Day Mode</string>
+    <string name="pending">Pending</string>
+    <string name="done">Done</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="Shiny_support">Customer Service</string>
+    <string name="pick_slot">Pick Slot</string>
+    <string name="service">Service</string>
+
+
 </resources>

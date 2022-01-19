@@ -1,11 +1,13 @@
 package org.tuwaiq.carwash.views.userViews.userMainActivity
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.tuwaiq.carwash.R
+import org.tuwaiq.carwash.utils.Globals
 import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.UserHomeFragment
 import org.tuwaiq.carwash.views.userViews.userMainActivity.moreFragment.UserMoreFragment
 import org.tuwaiq.carwash.views.userViews.userMainActivity.ordersFragment.UserOrdersFragment
@@ -14,6 +16,9 @@ class UserMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_main)
+
+        // retrieve saved data to share pref
+        Globals.sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE)
 
         //link bottom navigation and tool bar
         val bNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavViewUser)

@@ -1,8 +1,6 @@
 package org.tuwaiq.carwash.views.userViews.userMainActivity.ordersFragment
 
 import android.content.Intent
-import android.icu.util.Calendar
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +8,6 @@ import android.widget.Button
 import android.widget.CalendarView
 import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,11 +16,9 @@ import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.databinding.ActivityRescheduleAppointmentBinding
 import org.tuwaiq.carwash.model.*
 import org.tuwaiq.carwash.model.enums.SlotStatus
-import org.tuwaiq.carwash.util.Globals
-import org.tuwaiq.carwash.util.TimeSlotsHelperFunctions
-import org.tuwaiq.carwash.views.AppointmentViewModel
+import org.tuwaiq.carwash.utils.TimeSlotsHelperFunctions
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
-import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.bookAppointmentActivity.TimeSlotsAdapter
+import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.stepTwoPickTime.TimeSlotsAdapter
 
 class RescheduleAppointmentActivity : AppCompatActivity() {
     private val viewModel: UserOrdersViewModel by viewModels()

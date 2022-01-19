@@ -5,7 +5,7 @@
     android:id="@+id/frameLayoutUserLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9A799E88"
+    android:background="@color/primaryLightGrey"
     tools:context=".views.storeViews.storeLoginAndRegister.StoreLogInFragment">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -17,6 +17,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintTop_toBottomOf="@+id/textViewLoginStore">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -37,6 +38,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutStoreEmail">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -55,6 +57,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="40dp"
+        android:background="@drawable/btn_enabled"
         android:text="@string/log_in_as_a_store"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +110,7 @@
         android:layout_marginTop="32dp"
         android:text="@string/log_in_as_a_store"
         android:textColor="@color/textAlmostBlack"
-        android:textSize="34sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

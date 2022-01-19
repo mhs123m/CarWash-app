@@ -13,29 +13,29 @@
         map:layout_constraintBottom_toBottomOf="parent"
         map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintStart_toStartOf="parent"
-        map:layout_constraintTop_toTopOf="parent"
-        tools:context=".views.storeViews.storeInfoActivity.StoreMapsActivity" />
+        map:layout_constraintTop_toBottomOf="@+id/mapToolbar"
+        tools:context=".views.storeViews.storeMainActivity.moreFragment.storeProfileActivity.StoreMapsActivity" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonConfirmStoreLocation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="16dp"
-        android:text="Confirm store Location"
+        android:text="@string/confirm_store_location"
+        android:background="@drawable/btn_enabled"
         map:layout_constraintBottom_toBottomOf="parent"
         map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintStart_toStartOf="parent" />
 
-    <SearchView
-        android:id="@+id/searchView"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/mapToolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:background="#6DDAC5C5"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
         map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintStart_toStartOf="parent"
         map:layout_constraintTop_toTopOf="parent" />

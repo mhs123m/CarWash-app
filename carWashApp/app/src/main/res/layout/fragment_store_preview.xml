@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryLightGrey"
-    tools:context=".views.storeViews.storeMainActivity.fragments.StorePreviewFragment">
+    tools:context=".views.storeViews.storeMainActivity.servicesFragment.StorePreviewFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/storePreviewRecyclerView"

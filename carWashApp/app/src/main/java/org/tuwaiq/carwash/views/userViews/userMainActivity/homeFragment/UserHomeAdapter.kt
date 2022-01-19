@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.maps.model.LatLng
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Store
-import org.tuwaiq.carwash.util.HelperFunctions
-import org.tuwaiq.carwash.util.LocationHelperFunctions
-import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.displayServices.DisplayServicesActivity
+import org.tuwaiq.carwash.utils.HelperFunctions
+import org.tuwaiq.carwash.utils.LocationHelperFunctions
+import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.stepOnePickService.DisplayServicesActivity
 import java.math.RoundingMode
 import java.text.DecimalFormat
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryLightGrey"
-    tools:context=".views.storeViews.storeMainActivity.fragments.storeHomeFragment.upcomingPast.UpcomingFragment">
+    tools:context=".views.storeViews.storeMainActivity.storeHomeFragment.upcomingPast.UpcomingFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/upcomingStoreRecyclerView"

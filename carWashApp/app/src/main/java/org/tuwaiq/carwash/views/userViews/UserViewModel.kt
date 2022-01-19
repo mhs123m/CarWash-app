@@ -9,9 +9,11 @@ import org.tuwaiq.carwash.repository.UserRepository
 class UserViewModel : ViewModel() {
 
     private val userRepository = UserRepository()
-
     var registerLiveData = MutableLiveData<User>()
     var loginLiveData = MutableLiveData<User>()
+    var oneUserLiveData = MutableLiveData<User>()
+    var updatedUserLiveData = MutableLiveData<User>()
+
     // get live data of user from repo to viewmodel
     fun registerNewUser(user: User) {
         registerLiveData = userRepository.registerNewUser(user)
@@ -20,5 +22,15 @@ class UserViewModel : ViewModel() {
     // get live data of user from repo to viewmodel
     fun userLogIn(loginModel: LoginModel){
        loginLiveData = userRepository.userLogIn(loginModel)
+    }
+
+    // one user
+    fun getUserById(userId: String){
+        oneUserLiveData = userRepository.getUserById(userId)
+    }
+
+    // updated user
+    fun updatedUser(userId: String, user: User){
+        updatedUserLiveData = userRepository.updateUser(userId, user)
     }
 }

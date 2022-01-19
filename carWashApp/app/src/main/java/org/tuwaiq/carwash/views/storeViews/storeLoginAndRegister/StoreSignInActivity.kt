@@ -1,10 +1,8 @@
 package org.tuwaiq.carwash.views.storeViews.storeLoginAndRegister
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import org.tuwaiq.carwash.R
-import org.tuwaiq.carwash.util.Globals
 
 class StoreSignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

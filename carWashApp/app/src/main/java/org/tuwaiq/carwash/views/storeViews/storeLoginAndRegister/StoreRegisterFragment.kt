@@ -1,6 +1,5 @@
 package org.tuwaiq.carwash.views.storeViews.storeLoginAndRegister
 
-import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -16,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Store
-import org.tuwaiq.carwash.util.HelperFunctions
+import org.tuwaiq.carwash.utils.HelperFunctions
 import org.tuwaiq.carwash.views.storeViews.StoreViewModel
 import org.tuwaiq.carwash.views.storeViews.storeMainActivity.StoreMainActivity
 

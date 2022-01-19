@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryLightGrey"
-    tools:context=".views.storeViews.storeInfoActivity.StoreInfoActivity">
+    tools:context=".views.storeViews.storeMainActivity.moreFragment.storeProfileActivity.StoreProfileActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="40dp"
-            android:text="@string/store_profile"
+            android:text="@string/profile"
             android:textColor="#DBF1F1"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -151,7 +151,7 @@
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/btn_enabled"
-        android:text="@string/update_information"
+        android:text="@string/update"
         android:textAllCaps="false"
         android:textColor="@color/primaryLightGrey"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -53,4 +53,26 @@
     <string name="appointments">مواعيد</string>
     <string name="stores">المتاجر</string>
     <string name="preview">خدماتي</string>
+    <string name="confirm_store_location">تأكيد الموقع</string>
+    <string name="search">بحث</string>
+    <string name="profile">الملف الشخصي</string>
+    <string name="darkMode">النمط الليلي</string>
+    <string name="language">تغير اللغة</string>
+    <string name="contact">تواصل معنا</string>
+    <string name="shareApp">شارك التطبيق</string>
+    <string name="logOut">تسجيل الخروج</string>
+    <string name="log_outt">تسجيل الخروج؟</string>
+    <string name="share_app">اطلع على برنامج Shiny حيث يمكنك جدولة مواعيدك لمغاسل السيارات, يمكنك تحميله على </string>
+    <string name="feedBack">اقتراحات</string>
+    <string name="night_mode">الوضع الليلي</string>
+    <string name="log_out_message">هل أنت متأكد بتسجيل الخروج؟</string>
+    <string name="dark_mode_message">اختر ثيم البرنامج</string>
+    <string name="language_message">اختر لغة البرنامج</string>
+    <string name="day_mode">الوضع النهاري</string>
+    <string name="pending">Pending</string>
+    <string name="done">Done</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="Shiny_support">Customer Service</string>
+    <string name="pick_slot">Pick Slot</string>
+    <string name="service">Srevice</string>
 </resources>

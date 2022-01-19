@@ -1,15 +1,14 @@
 package org.tuwaiq.carwash.views.userViews.userMainActivity.moreFragment
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import org.tuwaiq.carwash.R
-import org.tuwaiq.carwash.util.HelperFunctions
-import org.tuwaiq.carwash.views.userViews.userLoginAndRegister.UserSignInActivity
+import org.tuwaiq.carwash.model.MoreModel
 
 class UserMoreFragment : Fragment() {
 
@@ -25,16 +24,20 @@ class UserMoreFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val btnLogOut = view.findViewById<Button>(R.id.buttonLogOutUser)
-        btnLogOut.setOnClickListener {
-            HelperFunctions.clearPref()
-            val i = Intent(view.context, UserSignInActivity::class.java)
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                    or Intent.FLAG_ACTIVITY_CLEAR_TOP
-                    or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            startActivity(i)
-        }
+        val mRecyclerView = view.findViewById<RecyclerView>(R.id.moreUserRecyclerView)
+        mRecyclerView.layoutManager = LinearLayoutManager(view.context)
 
+        val moreModel = listOf(
+            MoreModel(R.drawable.more_user_icon, getString(R.string.profile)),
+            MoreModel(R.drawable.more_share_icon, getString(R.string.shareApp)),
+            MoreModel(R.drawable.more_send_feedback_icon, getString(R.string.feedBack)),
+            MoreModel(R.drawable.more_dark_mode_icon, getString(R.string.darkMode)),
+            MoreModel(R.drawable.more_language_icon, getString(R.string.language)),
+            MoreModel(R.drawable.more_log_out_icon, getString(R.string.logOut)),
+        )
+        mRecyclerView.adapter = UserMoreAdapter(moreModel)
     }
 
+
 }
+

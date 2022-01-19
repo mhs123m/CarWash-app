@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.tuwaiq.carwash" >
+    package="org.tuwaiq.carwash">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -14,12 +14,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CarWashApp"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
         <activity
-            android:name=".views.storeViews.storeMainActivity.fragments.storeHomeFragment.upcomingPast.UpcomingOrderDetailsActivity"
+            android:name=".views.userViews.userMainActivity.homeFragment.step4AppointmentBooked.AppointmentBookedActivity"
             android:exported="false" />
         <activity
-            android:name=".views.storeViews.storeMainActivity.fragments.storeHomeFragment.upcomingPast.PastOrderDetailsActivity"
+            android:name=".views.userViews.userMainActivity.homeFragment.stepThreeConfirm.ConfirmAppointmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.userViews.userMainActivity.moreFragment.userprofileActivity.UserProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.storeViews.storeMainActivity.storeHomeFragment.upcomingPast.UpcomingOrderDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.storeViews.storeMainActivity.storeHomeFragment.upcomingPast.PastOrderDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".views.userViews.userMainActivity.ordersFragment.AppointmentDetailsActivity"
@@ -31,16 +40,16 @@
             android:name=".views.userViews.userMainActivity.ordersFragment.RescheduleAppointmentActivity"
             android:exported="false" />
         <activity
-            android:name=".views.userViews.userMainActivity.homeFragment.bookAppointmentActivity.BookAppointmentActivity"
+            android:name=".views.userViews.userMainActivity.homeFragment.stepTwoPickTime.BookAppointmentActivity"
             android:exported="false" />
         <activity
-            android:name=".views.userViews.userMainActivity.homeFragment.displayServices.DisplayServicesActivity"
+            android:name=".views.userViews.userMainActivity.homeFragment.stepOnePickService.DisplayServicesActivity"
             android:exported="false" />
         <activity
-            android:name=".views.storeViews.serviceActivities.EditServiceActivity"
+            android:name=".views.storeViews.storeMainActivity.servicesFragment.serviceActivities.EditServiceActivity"
             android:exported="false" />
         <activity
-            android:name=".views.storeViews.serviceActivities.AddServiceActivity"
+            android:name=".views.storeViews.storeMainActivity.servicesFragment.serviceActivities.AddServiceActivity"
             android:exported="false" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -58,14 +67,14 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".views.storeViews.storeInfoActivity.StoreMapsActivity"
+            android:name=".views.storeViews.storeMainActivity.moreFragment.storeProfileActivity.StoreMapsActivity"
             android:exported="false"
             android:label="@string/title_activity_store_maps" />
         <activity
             android:name=".views.storeViews.storeMainActivity.StoreMainActivity"
             android:exported="false" />
         <activity
-            android:name=".views.storeViews.storeInfoActivity.StoreInfoActivity"
+            android:name=".views.storeViews.storeMainActivity.moreFragment.storeProfileActivity.StoreProfileActivity"
             android:exported="true" />
         <activity
             android:name=".views.userViews.userMainActivity.UserMainActivity"
@@ -75,7 +84,7 @@
             android:exported="false" />
         <activity
             android:name=".views.splashScreen.SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

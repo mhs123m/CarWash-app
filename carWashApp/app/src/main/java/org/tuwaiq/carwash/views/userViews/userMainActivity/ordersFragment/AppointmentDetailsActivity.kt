@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.TextView
 import org.tuwaiq.carwash.databinding.ActivityAppointmentDetailsBinding
 import org.tuwaiq.carwash.model.Order
-import org.tuwaiq.carwash.util.TimeSlotsHelperFunctions
+import org.tuwaiq.carwash.utils.TimeSlotsHelperFunctions
 
 class AppointmentDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAppointmentDetailsBinding

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.enums.SlotStatus
-import org.tuwaiq.carwash.util.Globals
+import org.tuwaiq.carwash.utils.Globals
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
 
 class UserOrdersFragment : Fragment() {

@@ -23,6 +23,10 @@ class CancelAppointmentActivity : AppCompatActivity() {
         val btnCancel = binding.buttonCancel
 
         setSupportActionBar(mToolBar)
+        mToolBar.setNavigationIcon(R.drawable.back_arrow_icon)
+        mToolBar.setNavigationOnClickListener {
+            finish()
+        }
 
         btnPrevious.setOnClickListener { finish() }
 

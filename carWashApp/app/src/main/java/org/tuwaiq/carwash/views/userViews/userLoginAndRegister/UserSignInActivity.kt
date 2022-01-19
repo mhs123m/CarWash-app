@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.gms.maps.model.LatLng
 import org.tuwaiq.carwash.R
-import org.tuwaiq.carwash.util.LocationHelperFunctions
+import org.tuwaiq.carwash.utils.LocationHelperFunctions
 
 
 class UserSignInActivity : AppCompatActivity() {

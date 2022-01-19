@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryLightGrey"
-    tools:context=".views.storeViews.storeMainActivity.fragments.storeHomeFragment.upcomingPast.PastOrderDetailsActivity">
+    tools:context=".views.storeViews.storeMainActivity.storeHomeFragment.upcomingPast.PastOrderDetailsActivity">
 
     <ImageView
         android:id="@+id/imageView3"

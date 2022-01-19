@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryLightGrey"
-    tools:context=".views.storeViews.serviceActivities.EditServiceActivity">
+    tools:context=".views.storeViews.storeMainActivity.servicesFragment.serviceActivities.EditServiceActivity">
 
     <TextView
         android:id="@+id/textView12"
@@ -216,7 +216,7 @@
         app:layout_constraintTop_toBottomOf="@+id/divider2">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonUpdateService"
+            android:id="@+id/buttonDeleteService"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -233,7 +233,7 @@
             android:translationZ="2dp" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonDeleteService"
+            android:id="@+id/buttonUpdateService"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="2.5dp"

@@ -1,9 +1,8 @@
 package org.tuwaiq.carwash
 
 import junit.framework.Assert.assertEquals
-import org.junit.Assert
 import org.junit.Test
-import org.tuwaiq.carwash.util.HelperFunctions
+import org.tuwaiq.carwash.utils.HelperFunctions
 
 class EmailValidatorUnitTest {
 

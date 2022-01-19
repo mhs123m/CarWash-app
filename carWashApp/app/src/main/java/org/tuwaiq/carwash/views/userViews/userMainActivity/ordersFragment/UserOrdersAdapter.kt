@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Order
 import org.tuwaiq.carwash.model.enums.SlotStatus
-import org.tuwaiq.carwash.util.TimeSlotsHelperFunctions
+import org.tuwaiq.carwash.utils.TimeSlotsHelperFunctions
 
 class UserOrdersAdapter(var data: List<Order> = mutableListOf()) :
     RecyclerView.Adapter<UserOrdersHolder>() {
@@ -41,7 +41,7 @@ class UserOrdersAdapter(var data: List<Order> = mutableListOf()) :
 
             when (status) {
                 SlotStatus.Done -> {
-                    appointmentStatus.text = SlotStatus.Done.toString()
+                    appointmentStatus.text = context.getString(R.string.done)
                     constraintLayout.setBackgroundColor(
                         ContextCompat
                             .getColor(itemView.context, R.color.primaryGreen)
@@ -50,7 +50,7 @@ class UserOrdersAdapter(var data: List<Order> = mutableListOf()) :
 
                 }
                 SlotStatus.Cancelled -> {
-                    appointmentStatus.text = SlotStatus.Cancelled.toString()
+                    appointmentStatus.text = context.getString(R.string.cancelled)
                     constraintLayout.setBackgroundColor(
                         ContextCompat
                             .getColor(itemView.context, R.color.primaryRed)

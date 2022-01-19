@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
-                    android:text="Pending"
+                    android:text="@string/pending"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -67,11 +67,10 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/quicksand_bold"
-                android:text="store Name"
+                android:text="@string/store_name"
                 android:textColor="@color/textAlmostBlack"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/imageViewNavigationRow"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="@+id/imageView" />
 
@@ -159,15 +158,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawableStart="@drawable/icon_reschedule_10"
                     android:drawablePadding="10dp"
                     android:fontFamily="@font/quicksand_bold"
                     android:paddingStart="40dp"
+                    android:paddingEnd="20dp"
                     android:paddingTop="20dp"
                     android:paddingBottom="20dp"
-                    android:text="RESCHEDULE"
+                    android:text="@string/reschedule"
                     android:textColor="@color/primaryGreen"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:drawableStartCompat="@drawable/icon_reschedule_10" />
 
                 <View
                     android:id="@+id/divider3"
@@ -181,15 +181,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawableStart="@drawable/icon_cancelled_10"
                     android:drawablePadding="10dp"
                     android:fontFamily="@font/quicksand_bold"
                     android:paddingStart="40dp"
+                    android:paddingEnd="40dp"
                     android:paddingTop="20dp"
                     android:paddingBottom="20dp"
-                    android:text="CANCEL"
+                    android:text="@string/action_cancel"
                     android:textColor="@color/primaryRed"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:drawableStartCompat="@drawable/icon_cancelled_10" />
             </LinearLayout>
 
             <View

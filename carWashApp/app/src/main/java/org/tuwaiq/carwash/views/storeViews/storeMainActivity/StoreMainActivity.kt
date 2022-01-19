@@ -9,11 +9,11 @@ import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.tuwaiq.carwash.R
-import org.tuwaiq.carwash.util.Globals
-import org.tuwaiq.carwash.util.LocationHelperFunctions
-import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.storeHomeFragment.StoreHomeFragment
-import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.StoreMoreFragment
-import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.StorePreviewFragment
+import org.tuwaiq.carwash.utils.Globals
+import org.tuwaiq.carwash.utils.LocationHelperFunctions
+import org.tuwaiq.carwash.views.storeViews.storeMainActivity.storeHomeFragment.StoreHomeFragment
+import org.tuwaiq.carwash.views.storeViews.storeMainActivity.moreFragment.StoreMoreFragment
+import org.tuwaiq.carwash.views.storeViews.storeMainActivity.servicesFragment.StorePreviewFragment
 
 
 class StoreMainActivity : AppCompatActivity() {
@@ -27,8 +27,8 @@ class StoreMainActivity : AppCompatActivity() {
         // get location permission
         getLastKnownLocation()
 
-//        // retrieve saved data to share pref
-//        Globals.sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE)
+        // retrieve saved data to share pref
+        Globals.sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE)
 
         //link bottom navigation view and tool bar
         navigation = findViewById(R.id.storebottomNavigationView)

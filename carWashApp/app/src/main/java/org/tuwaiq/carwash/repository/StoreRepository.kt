@@ -1,16 +1,12 @@
 package org.tuwaiq.carwash.repository
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import org.tuwaiq.carwash.model.LoginModel
 import org.tuwaiq.carwash.model.Store
-import org.tuwaiq.carwash.model.User
 import org.tuwaiq.carwash.network.Api
 import org.tuwaiq.carwash.network.StoreServices
-import org.tuwaiq.carwash.network.UserServices
-import org.tuwaiq.carwash.util.Globals
-import org.tuwaiq.carwash.util.HelperFunctions
+import org.tuwaiq.carwash.utils.HelperFunctions
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

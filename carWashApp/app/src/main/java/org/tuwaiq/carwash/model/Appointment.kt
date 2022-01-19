@@ -1,5 +1,7 @@
 package org.tuwaiq.carwash.model
 
+import java.io.Serializable
+
 data class Appointment(
     val _id: String? = null,
     val day: Day,
@@ -8,4 +10,4 @@ data class Appointment(
     val userId: String,
     val createdAt: String?,
     val updatedAt: String?,
-)
+) : Serializable

@@ -42,7 +42,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/storefragmentContainerView"
-        android:name="org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.storeHomeFragment.StoreHomeFragment"
+        android:name="org.tuwaiq.carwash.views.storeViews.storeMainActivity.storeHomeFragment.StoreHomeFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/storebottomNavigationView"
