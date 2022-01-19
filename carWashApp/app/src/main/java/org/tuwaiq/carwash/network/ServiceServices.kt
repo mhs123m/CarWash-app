@@ -1,6 +1,7 @@
 package org.tuwaiq.carwash.network
 
 import org.tuwaiq.carwash.model.ServiceModel
+import org.tuwaiq.carwash.model.ServiceStore
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -12,7 +13,7 @@ interface ServiceServices {
     @GET("/stores/{storeId}/services")
     suspend fun getAllServicesOfStore(
         @Path("storeId") storeId: String
-    ): Response<List<ServiceModel>>
+    ): Response<List<ServiceStore>>
 
     // POST new service by store
     // /services/new

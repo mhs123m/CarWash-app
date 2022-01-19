@@ -9,10 +9,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.ServiceModel
+import org.tuwaiq.carwash.model.ServiceStore
 import org.tuwaiq.carwash.utils.HelperFunctions
 import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.stepTwoPickTime.BookAppointmentActivity
 
-class DisplayAdapter(private var data: List<ServiceModel>) : RecyclerView.Adapter<DisplayHolder>() {
+class DisplayAdapter(private var data: List<ServiceStore>) : RecyclerView.Adapter<DisplayHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DisplayHolder {
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.services_row, parent, false)

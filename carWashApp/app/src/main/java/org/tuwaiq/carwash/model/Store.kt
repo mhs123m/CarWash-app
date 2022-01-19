@@ -4,7 +4,7 @@ import java.io.Serializable
 
 data class Store(
     val _id: String?,
-    val name: String,
+    val name: String?,
     val email: String?,
     val phone: String?,
     val password: String?,
@@ -21,5 +21,7 @@ data class Store(
         null,
         geometry
     )
+
+    constructor(_id: String?) : this(_id, null, null, null, null, null, null)
 
 }

@@ -2,6 +2,7 @@ package org.tuwaiq.carwash.repository
 
 import androidx.lifecycle.MutableLiveData
 import org.tuwaiq.carwash.model.ServiceModel
+import org.tuwaiq.carwash.model.ServiceStore
 import org.tuwaiq.carwash.network.Api
 import org.tuwaiq.carwash.network.ServiceServices
 import retrofit2.Response
@@ -13,7 +14,7 @@ class ServiceRepository {
     // get all services of one store
     suspend fun getAllServicesOfStore(
         storeId: String
-    ): Response<List<ServiceModel>> {
+    ): Response<List<ServiceStore>> {
 
         return serviceServices.getAllServicesOfStore(storeId)
     }

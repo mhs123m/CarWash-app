@@ -14,23 +14,20 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import org.tuwaiq.carwash.databinding.ActivityBookAppointmentBinding
-import org.tuwaiq.carwash.model.Appointment
-import org.tuwaiq.carwash.model.Day
-import org.tuwaiq.carwash.model.ServiceModel
-import org.tuwaiq.carwash.model.Slot
 import org.tuwaiq.carwash.model.enums.SlotStatus
 import org.tuwaiq.carwash.utils.Globals
 import org.tuwaiq.carwash.views.AppointmentViewModel
 import android.content.Intent
 import androidx.appcompat.content.res.AppCompatResources
 import org.tuwaiq.carwash.R
+import org.tuwaiq.carwash.model.*
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
 import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.stepThreeConfirm.ConfirmAppointmentActivity
 
 
 class BookAppointmentActivity : AppCompatActivity() {
 
-    private lateinit var service: ServiceModel
+    private lateinit var service: ServiceStore
     private lateinit var binding: ActivityBookAppointmentBinding
     private lateinit var calendarView: CalendarView
     private lateinit var tvSelectedTime: TextView
@@ -50,7 +47,7 @@ class BookAppointmentActivity : AppCompatActivity() {
         binding = ActivityBookAppointmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        service = intent.getSerializableExtra("serviceToBook") as ServiceModel
+        service = intent.getSerializableExtra("serviceToBook") as ServiceStore
 
         // link views
         val btnPrevious = binding.buttonAppPrevious
@@ -66,9 +63,6 @@ class BookAppointmentActivity : AppCompatActivity() {
         loadTimeSlots()
         calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
             date = "$year-${month+1}-$dayOfMonth"
-//            val firstApiFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-//            val date = LocalDate.parse(d, firstApiFormat)
-//            Log.d("date testing", "${date.dayOfMonth}")
         }
 
         btnPrevious.setOnClickListener { finish() }
@@ -77,6 +71,7 @@ class BookAppointmentActivity : AppCompatActivity() {
             getAppointmentInfo()
 
             val i = Intent(this, ConfirmAppointmentActivity::class.java)
+            i.putExtra("serviceToBook",service)
             i.putExtra("appointment",appointment)
             startActivity(i)
              // fill appointment info
@@ -127,7 +122,7 @@ class BookAppointmentActivity : AppCompatActivity() {
             null,
             day,
             service._id!!,
-            service.storeId!!,
+            service.storeId!!._id!!,
             userId!!,
             null,
             null

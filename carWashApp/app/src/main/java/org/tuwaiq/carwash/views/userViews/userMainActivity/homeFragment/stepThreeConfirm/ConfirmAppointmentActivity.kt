@@ -11,6 +11,9 @@ import org.tuwaiq.carwash.databinding.ActivityConfirmAppointmentBinding
 import org.tuwaiq.carwash.databinding.ActivityUserProfileBinding
 import org.tuwaiq.carwash.model.Appointment
 import org.tuwaiq.carwash.model.Order
+import org.tuwaiq.carwash.model.ServiceModel
+import org.tuwaiq.carwash.model.ServiceStore
+import org.tuwaiq.carwash.utils.Globals
 import org.tuwaiq.carwash.utils.TimeSlotsHelperFunctions
 import org.tuwaiq.carwash.views.AppointmentViewModel
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
@@ -19,7 +22,7 @@ import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.step4App
 class ConfirmAppointmentActivity : AppCompatActivity() {
     private val viewModel: AppointmentViewModel by viewModels()
     private lateinit var binding: ActivityConfirmAppointmentBinding
-    private lateinit var order: Order
+    private lateinit var service: ServiceStore
     private lateinit var appointment: Appointment
     private lateinit var tvStoreName: TextView
     private lateinit var tvDateAndTime: TextView
@@ -28,18 +31,12 @@ class ConfirmAppointmentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityConfirmAppointmentBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_confirm_appointment)
+        setContentView(binding.root)
 
-        order = intent.getSerializableExtra("appointment") as Order
-        appointment = Appointment(
-            order._id,
-            order.day,
-            order.serviceId._id!!,
-            order.storeId._id!!,
-            order.userId._id!!,
-            null,
-            null
-        )
+        appointment = intent.getSerializableExtra("appointment") as Appointment
+        service = intent.getSerializableExtra("serviceToBook") as ServiceStore
+//        val userId = Globals.sharedPreferences.getString("ID",null)
+
 
         // link views
         initializeViews()
@@ -47,10 +44,12 @@ class ConfirmAppointmentActivity : AppCompatActivity() {
 
         binding.textViewBack.setOnClickListener {
             finish()
+            println("back")
         }
 
         binding.textViewConfirm.setOnClickListener {
             bookAppointment(appointment)
+            println("confirm")
         }
     }
 
@@ -63,14 +62,14 @@ class ConfirmAppointmentActivity : AppCompatActivity() {
 
 
     private fun setViewsWithData() {
-        val day = order.day.day
-        val time = TimeSlotsHelperFunctions.convertIndexToTime(order.day.slot.index)
-        order.storeId?.let {
+        val day = appointment.day.day
+        val time = TimeSlotsHelperFunctions.convertIndexToTime(appointment.day.slot.index)
+        service.storeId?.let {
             tvStoreName.text = it.name
         }
         tvDateAndTime.text =
             "$day | $time"
-        order.serviceId?.let {
+        service?.let {
             tvServiceTitle.text = it.title
             tvServicePrice.text = it.price.toString()
         }
@@ -80,8 +79,9 @@ class ConfirmAppointmentActivity : AppCompatActivity() {
         viewModel.newAppointment(appointment)
         viewModel.newAppointmentLiveData.observe(this) {
             val intent = Intent(this, AppointmentBookedActivity::class.java)
-            intent.putExtra("order", order)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.putExtra("serviceToBook", service)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(intent)
             finish()
             Log.d("APPOINTMENT", "$it")

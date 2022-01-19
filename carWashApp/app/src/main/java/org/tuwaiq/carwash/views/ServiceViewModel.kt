@@ -6,13 +6,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.tuwaiq.carwash.model.ServiceModel
+import org.tuwaiq.carwash.model.ServiceStore
 import org.tuwaiq.carwash.repository.ServiceRepository
 import org.tuwaiq.carwash.utils.HelperFunctions
 
 class ServiceViewModel : ViewModel() {
 
     private val serviceRepository = ServiceRepository()
-    val allServicesOfStoreLiveData = MutableLiveData<List<ServiceModel>>()
+    val allServicesOfStoreLiveData = MutableLiveData<List<ServiceStore>>()
     val newServiceLiveData = MutableLiveData<ServiceModel>()
     val editedServiceLiveData = MutableLiveData<ServiceModel>()
     val deletedServiceLiveData = MutableLiveData<ServiceModel>()

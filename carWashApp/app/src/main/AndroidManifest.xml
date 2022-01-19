@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
 
     <application
         android:allowBackup="true"
@@ -15,6 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarWashApp"
         android:usesCleartextTraffic="true">
+        <receiver android:name=".views.userViews.userMainActivity.homeFragment.step4AppointmentBooked.NotifyUser"
+            android:enabled="true"/>
         <activity
             android:name=".views.userViews.userMainActivity.homeFragment.step4AppointmentBooked.AppointmentBookedActivity"
             android:exported="false" />
@@ -75,7 +78,7 @@
             android:exported="false" />
         <activity
             android:name=".views.storeViews.storeMainActivity.moreFragment.storeProfileActivity.StoreProfileActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".views.userViews.userMainActivity.UserMainActivity"
             android:exported="false" />
@@ -96,7 +99,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="false" />
     </application>
 
 </manifest>

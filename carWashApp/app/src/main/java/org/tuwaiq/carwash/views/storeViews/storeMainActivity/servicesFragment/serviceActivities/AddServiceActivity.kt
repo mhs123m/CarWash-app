@@ -14,6 +14,7 @@ import androidx.activity.viewModels
 import com.github.dhaval2404.imagepicker.ImagePicker
 import org.tuwaiq.carwash.databinding.ActivityAddServiceBinding
 import org.tuwaiq.carwash.model.ServiceModel
+import org.tuwaiq.carwash.model.Store
 import org.tuwaiq.carwash.utils.Globals
 import org.tuwaiq.carwash.views.ServiceViewModel
 import java.io.ByteArrayOutputStream
@@ -74,7 +75,7 @@ class AddServiceActivity : AppCompatActivity() {
             available,
             null,
             null,
-            storeId!!
+            storeId
         )
 
         viewModel.addNewService(xAuthHeader!!, serviceModel)

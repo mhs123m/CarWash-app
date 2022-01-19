@@ -18,6 +18,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
 import org.tuwaiq.carwash.databinding.ActivityEditServiceBinding
 import org.tuwaiq.carwash.model.ServiceModel
+import org.tuwaiq.carwash.model.ServiceStore
 import org.tuwaiq.carwash.utils.Globals
 import org.tuwaiq.carwash.utils.HelperFunctions
 import org.tuwaiq.carwash.views.ServiceViewModel
@@ -26,7 +27,7 @@ import java.io.ByteArrayOutputStream
 class EditServiceActivity : AppCompatActivity() {
     val viewModel: ServiceViewModel by viewModels()
     private lateinit var binding: ActivityEditServiceBinding
-    private lateinit var service: ServiceModel
+    private lateinit var service: ServiceStore
     private lateinit var title: EditText
     private lateinit var description: EditText
     private lateinit var price: TextInputEditText
@@ -45,7 +46,7 @@ class EditServiceActivity : AppCompatActivity() {
         // initialize views
         initializeViews()
 
-        service = intent.getSerializableExtra("service") as ServiceModel
+        service = intent.getSerializableExtra("service") as ServiceStore
 
         // set views with data
         setViewsWithServerInfo()
@@ -107,7 +108,7 @@ class EditServiceActivity : AppCompatActivity() {
             state,
             null,
             null,
-            service.storeId
+            service.storeId?._id
         )
         println("$xAuthHeader")
         viewModel.editService(xAuthHeader!!, service._id!!, updatedService!!)

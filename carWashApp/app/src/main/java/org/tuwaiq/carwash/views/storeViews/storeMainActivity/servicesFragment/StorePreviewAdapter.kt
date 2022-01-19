@@ -9,12 +9,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.ServiceModel
+import org.tuwaiq.carwash.model.ServiceStore
 import org.tuwaiq.carwash.utils.HelperFunctions
 import org.tuwaiq.carwash.views.storeViews.storeMainActivity.servicesFragment.serviceActivities.EditServiceActivity
 
 class StorePreviewAdapter :
     RecyclerView.Adapter<StorePreviewHolder>() {
-    private var data: List<ServiceModel>
+    private var data: List<ServiceStore>
 
     init {
         data = listOf()
@@ -49,7 +50,7 @@ class StorePreviewAdapter :
         return data.size
     }
 
-    fun setData(list: List<ServiceModel>) {
+    fun setData(list: List<ServiceStore>) {
         data = list
         notifyDataSetChanged()
     }

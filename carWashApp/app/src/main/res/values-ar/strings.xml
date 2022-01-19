@@ -75,4 +75,6 @@
     <string name="Shiny_support">Customer Service</string>
     <string name="pick_slot">Pick Slot</string>
     <string name="service">Srevice</string>
+    <string name="notify_me">Notify me</string>
+    <string name="notification_alert_title">Notification Scheduled</string>
 </resources>

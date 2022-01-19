@@ -87,19 +87,20 @@
             android:background="?android:attr/listDivider" />
 
         <TextView
-            android:id="@+id/textViewCancel"
+            android:id="@+id/textViewMapRoute"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawablePadding="10dp"
             android:fontFamily="@font/quicksand_bold"
             android:paddingStart="40dp"
+            android:paddingEnd="20dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:text="@string/action_cancel"
+            android:text="Location"
             android:textColor="@color/primaryRed"
             android:textSize="16sp"
-            app:drawableStartCompat="@drawable/icon_cancelled_10" />
+            app:drawableStartCompat="@drawable/map_icon_red" />
     </LinearLayout>
 
     <View
@@ -151,4 +152,58 @@
         android:text="Please attend 5 minutes earlier"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateNotification"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider4">
+
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            android:layout_gravity="center"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:layout_marginHorizontal="-30dp"/>
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:timePickerMode="spinner"
+            android:layout_gravity="center"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:layout_marginHorizontal="-30dp"/>
+
+
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonCreateNotification"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_enabled"
+        android:text="@string/notify_me"
+        android:textColor="@color/primaryBackground"
+        app:layout_constraintBottom_toTopOf="@+id/divider6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
