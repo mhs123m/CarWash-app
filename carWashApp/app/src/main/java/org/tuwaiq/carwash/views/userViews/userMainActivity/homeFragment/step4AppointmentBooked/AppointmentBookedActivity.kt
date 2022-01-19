@@ -3,6 +3,7 @@ package org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.step4Ap
 import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +15,7 @@ import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.databinding.ActivityAppointmentBookedBinding
 import org.tuwaiq.carwash.model.ServiceStore
 import org.tuwaiq.carwash.utils.TimeSlotsHelperFunctions
+import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
 import java.text.DateFormat
 import java.util.*
 
@@ -33,24 +35,60 @@ class AppointmentBookedActivity : AppCompatActivity() {
         binding = ActivityAppointmentBookedBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        serviceStore = intent.getSerializableExtra("serviceToBook") as ServiceStore
-//        val timeOfAppointment = TimeSlotsHelperFunctions.getStartTime(serviceStore.)
+        serviceStore = intent.getSerializableExtra("serviceToBook") as ServiceStore
+
         initializeViews()
 
         createNotificationChannel()
         binding.buttonCreateNotification.setOnClickListener {
             scheduleNotification()
         }
+        tvRouteMap.setOnClickListener {
+            val lat = serviceStore.storeId?.geometry?.coordinates?.get(1).toString()
+            val lng = serviceStore.storeId?.geometry?.coordinates?.get(0).toString()
+
+            val gmmIntentUri = Uri.parse("http://maps.google.com/maps?daddr=$lat,$lng")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            startActivity(mapIntent)
+        }
+
+        btnDone.setOnClickListener {
+           goToUserMain()
+        }
+        tvAppointments.setOnClickListener {
+            goToUserMain()
+        }
+        imgBack.setOnClickListener {
+            goToUserMain()
+        }
+
+    }
+
+    private fun goToUserMain() {
+        val intent = Intent(this, UserMainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or
+                Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, UserMainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or
+                Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+        finish()
 
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun scheduleNotification() {
-        val title = "CarWash"
-            val message = "Hey you have an upcoming appointment"
+
+            val message = getString(R.string.notification_message)
         val intent = Intent(applicationContext,NotifyUser::class.java)
-        intent.putExtra(titleExtra, "CarWash")
-        intent.putExtra(messageExtra,"Hey you have an upcoming appointment")
+        intent.putExtra(titleExtra, R.string.SHINY)
+        intent.putExtra(messageExtra,R.string.notification_message)
 
         val pendingIntent = PendingIntent.getBroadcast(
             applicationContext,
