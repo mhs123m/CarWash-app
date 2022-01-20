@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/customer_service" android:state_checked="false" />
-    <item android:drawable="@drawable/customer_service__1_" android:state_checked="true" />
+    <item android:drawable="@drawable/category_empty" android:state_checked="false" />
+    <item android:drawable="@drawable/category" android:state_checked="true" />
 </selector>

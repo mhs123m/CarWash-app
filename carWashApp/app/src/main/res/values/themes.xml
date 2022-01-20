@@ -20,6 +20,7 @@
         <item name="android:textColor">@color/textAlmostBlack</item>
     </style>
 
+
     <style name="toolBarAppearancequicksand_bold">
         <item name="android:fontFamily">@font/quicksand_bold</item>
         <item name="android:textColor">@color/primaryBackground</item>

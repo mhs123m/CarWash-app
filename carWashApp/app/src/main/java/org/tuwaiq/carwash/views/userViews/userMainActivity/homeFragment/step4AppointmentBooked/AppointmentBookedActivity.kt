@@ -14,9 +14,7 @@ import androidx.annotation.RequiresApi
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.databinding.ActivityAppointmentBookedBinding
 import org.tuwaiq.carwash.model.ServiceStore
-import org.tuwaiq.carwash.utils.TimeSlotsHelperFunctions
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
-import java.text.DateFormat
 import java.util.*
 
 class AppointmentBookedActivity : AppCompatActivity() {

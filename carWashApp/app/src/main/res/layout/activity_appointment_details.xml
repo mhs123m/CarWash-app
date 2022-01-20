@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/quicksand_bold"
-        android:text="Appointment Details"
+        android:text="@string/appointment_details"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -194,15 +194,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableStart="@drawable/icon_reschedule_10"
             android:drawablePadding="10dp"
             android:fontFamily="@font/quicksand_bold"
             android:paddingStart="40dp"
+            android:paddingEnd="20dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:text="RESCHEDULE"
+            android:text="@string/reschedule"
             android:textColor="@color/primaryGreen"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/icon_reschedule_10" />
 
         <View
             android:id="@+id/divider3"
@@ -216,15 +217,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableStart="@drawable/icon_cancelled_10"
             android:drawablePadding="10dp"
             android:fontFamily="@font/quicksand_bold"
             android:paddingStart="40dp"
+            android:paddingEnd="20dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:text="CANCEL"
+            android:text="@string/action_cancel"
             android:textColor="@color/primaryRed"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/icon_cancelled_10" />
     </LinearLayout>
 
     <View

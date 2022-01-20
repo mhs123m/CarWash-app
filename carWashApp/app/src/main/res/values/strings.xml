@@ -81,6 +81,9 @@
     <string name="notification_alert_title">Notification Scheduled</string>
     <string name="notification_message">Hey you have an upcoming appointment</string>
     <string name="SHINY">shiny_app</string>
+    <string name="mark_done">MARK DONE</string>
+    <string name="change_status">Change Status</string>
+    <string name="map_action_bar">Choose Location</string>
 
 
 </resources>

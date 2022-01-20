@@ -5,7 +5,6 @@
     android:id="@+id/frameLayoutUserLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryLightGrey"
     tools:context=".views.userViews.userLoginAndRegister.UserSignInActivity">
 
     <FrameLayout

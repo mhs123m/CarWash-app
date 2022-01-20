@@ -20,7 +20,6 @@
         android:name="org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.UserHomeFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/primaryLightGrey"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavViewUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

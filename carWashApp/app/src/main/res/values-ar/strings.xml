@@ -69,14 +69,17 @@
     <string name="dark_mode_message">اختر ثيم البرنامج</string>
     <string name="language_message">اختر لغة البرنامج</string>
     <string name="day_mode">الوضع النهاري</string>
-    <string name="pending">Pending</string>
-    <string name="done">Done</string>
-    <string name="cancelled">Cancelled</string>
-    <string name="Shiny_support">Customer Service</string>
-    <string name="pick_slot">Pick Slot</string>
-    <string name="service">Srevice</string>
-    <string name="notify_me">Notify me</string>
-    <string name="notification_alert_title">Notification Scheduled</string>
-    <string name="notification_message">Hey you have an upcoming appointment</string>
-    <string name="SHINY">shiny_app</string>
+    <string name="pending">جاري</string>
+    <string name="done">انتهى</string>
+    <string name="cancelled">ملغي</string>
+    <string name="Shiny_support">خدمة العملاء</string>
+    <string name="pick_slot">اختر وقت</string>
+    <string name="service">الخدمة</string>
+    <string name="notify_me">نبهني</string>
+    <string name="notification_alert_title">تم جدولة التنبيه</string>
+    <string name="notification_message">لديك موعد قريب</string>
+    <string name="SHINY">تطبيق SHINY</string>
+    <string name="mark_done">غير الحالة</string>
+    <string name="change_status">غير حالة الموعد</string>
+    <string name="map_action_bar">اختر الموقع</string>
 </resources>

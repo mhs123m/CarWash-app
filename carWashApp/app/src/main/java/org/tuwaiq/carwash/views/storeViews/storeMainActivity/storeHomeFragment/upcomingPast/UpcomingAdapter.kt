@@ -34,16 +34,6 @@ class UpcomingAdapter (var data: List<Order> = mutableListOf()) : RecyclerView.A
             i.putExtra("order", order)
             context.startActivity(i)
         }
-
-        holder.remindUser.setOnClickListener {
-            // TODO send notification to user with firebase token key which to be registered and pushded to server
-        }
-//        holder.markDone.setOnClickListener {
-//            val i = Intent(context, UpcomingOrderDetailsActivity::class.java)
-//            i.putExtra("order", order)
-//            context.startActivity(i)
-//        }
-
     }
 
     override fun getItemCount(): Int = data.size
@@ -53,6 +43,4 @@ class UpcomingHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val userName = itemView.findViewById<TextView>(R.id.textViewUserNameRow)
     val serviceTime = itemView.findViewById<TextView>(R.id.textViewUpcomingTimeRow)
     val serviceTitle = itemView.findViewById<TextView>(R.id.textViewUpcomingServiceTitleRow)
-    val markDone = itemView.findViewById<TextView>(R.id.textViewMarkDoneRow)
-    val remindUser = itemView.findViewById<TextView>(R.id.textViewRemindRow)
 }
