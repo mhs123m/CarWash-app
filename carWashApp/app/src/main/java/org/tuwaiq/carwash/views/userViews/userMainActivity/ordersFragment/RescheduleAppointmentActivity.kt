@@ -56,11 +56,11 @@ class RescheduleAppointmentActivity : AppCompatActivity() {
 
 
         loadTimeSlots()
-        calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            date = "$year-${month + 1}-$dayOfMonth"
-//            val firstApiFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-//            val date = LocalDate.parse(d, firstApiFormat)
-//            Log.d("date testing", "${date.dayOfMonth}")
+        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            date = when (month) {
+                0 - 8 -> "$year-0${month + 1}-$dayOfMonth"
+                else -> "$year-${month + 1}-$dayOfMonth"
+            }
         }
 
         btnPrevious.setOnClickListener { finish() }

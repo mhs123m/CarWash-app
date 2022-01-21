@@ -62,7 +62,10 @@ class BookAppointmentActivity : AppCompatActivity() {
 
         loadTimeSlots()
         calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            date = "$year-${month+1}-$dayOfMonth"
+            date = when (month) {
+                0 - 8 -> "$year-0${month + 1}-$dayOfMonth"
+                else -> "$year-${month + 1}-$dayOfMonth"
+            }
         }
 
         btnPrevious.setOnClickListener { finish() }

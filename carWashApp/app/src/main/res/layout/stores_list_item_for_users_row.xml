@@ -56,12 +56,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/primaryBackground"
-                    android:drawableStart="@drawable/car_store_icon_grey"
                     android:drawablePadding="10dp"
                     android:fontFamily="@font/quicksand_bold"
                     android:gravity="center_vertical"
                     android:paddingStart="10dp"
-                    android:text="@string/store_name" />
+                    android:paddingEnd="10dp"
+                    android:text="@string/store_name"
+                    app:drawableStartCompat="@drawable/car_store_icon_grey" />
 
                 <View
                     android:id="@+id/divider8"

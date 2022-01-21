@@ -53,16 +53,15 @@
                     android:id="@+id/textViewRowServiceTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/service_icon"
                     android:drawablePadding="5dp"
                     android:fontFamily="@font/quicksand_bold"
                     android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
                     android:text="regular wash"
                     android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:drawableStartCompat="@drawable/service_icon" />
 
                 <View
                     android:id="@+id/divider9"
