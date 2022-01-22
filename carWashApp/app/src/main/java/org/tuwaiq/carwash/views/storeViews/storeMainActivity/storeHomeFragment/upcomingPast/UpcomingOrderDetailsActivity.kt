@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
+import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.databinding.ActivityUpcomingOrderDetailsBinding
 import org.tuwaiq.carwash.model.Appointment
 import org.tuwaiq.carwash.model.Day
@@ -34,18 +36,38 @@ class UpcomingOrderDetailsActivity : AppCompatActivity() {
         setViewsWithData()
 
 
-        binding.imageViewBackBtn.setOnClickListener {
-            finish()
-        }
+        binding.imageViewBackBtn.setOnClickListener { finish() }
 
         binding.textViewReceived.setOnClickListener {
-            isReceived(true)
-            finish()
+            AlertDialog.Builder(this)
+                .setTitle(getString(R.string.mark_done))
+                .setIcon(R.drawable.done_icon_green)
+                .setMessage(R.string.received_message)
+                .setPositiveButton(R.string.Yes){ _ , _ ->
+                    isReceived(true)
+                    finish()
+                }
+                .setNegativeButton(R.string.No){ dialog , _ ->
+                    dialog.dismiss()
+                }
+                .create()
+                .show()
         }
 
         binding.textViewUnattended.setOnClickListener {
-            isReceived(false)
-            finish()
+            AlertDialog.Builder(this)
+                .setTitle(getString(R.string.mark_done))
+                .setIcon(R.drawable.icon_cancelled_10)
+                .setMessage(R.string.not_received_message)
+                .setPositiveButton(R.string.Yes){ _ , _ ->
+                    isReceived(false)
+                    finish()
+                }
+                .setNegativeButton(R.string.No){ dialog , _ ->
+                    dialog.dismiss()
+                }
+                .create()
+                .show()
         }
 
 
@@ -98,4 +120,5 @@ class UpcomingOrderDetailsActivity : AppCompatActivity() {
             Log.d("updated?", "yes: $it")
         }
     }
+
 }

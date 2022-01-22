@@ -18,6 +18,7 @@ import org.tuwaiq.carwash.model.enums.SlotStatus
 import org.tuwaiq.carwash.utils.Globals
 import org.tuwaiq.carwash.views.AppointmentViewModel
 import android.content.Intent
+import android.widget.ImageButton
 import androidx.appcompat.content.res.AppCompatResources
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.*
@@ -39,7 +40,8 @@ class BookAppointmentActivity : AppCompatActivity() {
     private lateinit var slot: Slot
     private lateinit var date: String
     private lateinit var btnConfirm: Button
-
+    private lateinit var btnPrevious: Button
+    private lateinit var imgBtnBack: ImageButton
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,15 +52,7 @@ class BookAppointmentActivity : AppCompatActivity() {
         service = intent.getSerializableExtra("serviceToBook") as ServiceStore
 
         // link views
-        val btnPrevious = binding.buttonAppPrevious
-        btnConfirm = binding.buttonAppConfirm
-        calendarView = binding.calendarView
-        tvSelectedTime = binding.textViewSelectedTime
-        tvSelectedTimeResult = binding.textViewTimeSelectedResult
-        timeSlotRecyclerView = binding.timeSlotsrecyclerView
-        timeSlotRecyclerView.layoutManager =
-            StaggeredGridLayoutManager(3, GridLayoutManager.VERTICAL)
-
+        linkViews()
 
         loadTimeSlots()
         calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
@@ -69,18 +63,32 @@ class BookAppointmentActivity : AppCompatActivity() {
         }
 
         btnPrevious.setOnClickListener { finish() }
+        imgBtnBack.setOnClickListener { finish() }
 
         btnConfirm.setOnClickListener {
             getAppointmentInfo()
 
             val i = Intent(this, ConfirmAppointmentActivity::class.java)
-            i.putExtra("serviceToBook",service)
-            i.putExtra("appointment",appointment)
+            i.putExtra("serviceToBook", service)
+            i.putExtra("appointment", appointment)
             startActivity(i)
-             // fill appointment info
+            // fill appointment info
 //            bookAppointment(appointment) TODO
         }
 
+
+    }
+
+    private fun linkViews() {
+        imgBtnBack = binding.imageButtonBackBtn
+        btnPrevious = binding.buttonAppPrevious
+        btnConfirm = binding.buttonAppConfirm
+        calendarView = binding.calendarView
+        tvSelectedTime = binding.textViewSelectedTime
+        tvSelectedTimeResult = binding.textViewTimeSelectedResult
+        timeSlotRecyclerView = binding.timeSlotsrecyclerView
+        timeSlotRecyclerView.layoutManager =
+            StaggeredGridLayoutManager(3, GridLayoutManager.VERTICAL)
 
     }
 
@@ -117,7 +125,7 @@ class BookAppointmentActivity : AppCompatActivity() {
             val y = d.get(Calendar.YEAR)
             val m = d.get(Calendar.MONTH)
             val day = d.get(Calendar.DAY_OF_MONTH)
-            date = "$y-${m+1}-$day"
+            date = "$y-${m + 1}-$day"
         }
         day = Day(null, date, slot)
 

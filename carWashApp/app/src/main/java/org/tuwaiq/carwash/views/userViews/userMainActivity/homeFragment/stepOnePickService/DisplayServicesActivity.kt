@@ -2,6 +2,7 @@ package org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.stepOne
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -18,8 +19,10 @@ class DisplayServicesActivity : AppCompatActivity() {
 
         store = intent.getSerializableExtra("store") as Store
 
+        // backBtn
+        findViewById<ImageButton>(R.id.imageButtonBB).setOnClickListener { finish() }
         // link recyclerView
-        val displayRecyclerView = findViewById<RecyclerView>(R.id.DisplayrecyclerView)
+        val displayRecyclerView = findViewById<RecyclerView>(R.id.DisplayRecyclerView)
         displayRecyclerView.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 

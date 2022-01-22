@@ -1,4 +1,4 @@
-package org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.step4AppointmentBooked
+package org.tuwaiq.carwash.views.userViews.userMainActivity.ordersFragment.reschedule
 
 import android.app.*
 import android.content.Context
@@ -7,18 +7,20 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.format.DateFormat.getDateFormat
-import android.text.format.DateFormat.getTimeFormat
+import android.text.format.DateFormat
 import android.widget.*
 import androidx.annotation.RequiresApi
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.databinding.ActivityAppointmentBookedBinding
+import org.tuwaiq.carwash.databinding.ActivityAppointmentRescheduledBinding
+import org.tuwaiq.carwash.model.Order
 import org.tuwaiq.carwash.model.ServiceStore
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
+import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.step4AppointmentBooked.*
 import java.util.*
 
-class AppointmentBookedActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityAppointmentBookedBinding
+class AppointmentRescheduledActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityAppointmentRescheduledBinding
     private lateinit var datePicker: DatePicker
     private lateinit var timePicker: TimePicker
     private lateinit var imgBack: ImageView
@@ -26,14 +28,14 @@ class AppointmentBookedActivity : AppCompatActivity() {
     private lateinit var tvAppointments: TextView
     private lateinit var tvRouteMap: TextView
     private lateinit var btnNotifyMe: Button
-    private lateinit var serviceStore: ServiceStore
+    private lateinit var order: Order
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAppointmentBookedBinding.inflate(layoutInflater)
+        binding = ActivityAppointmentRescheduledBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        serviceStore = intent.getSerializableExtra("serviceToBook") as ServiceStore
+        order = intent.getSerializableExtra("order") as Order
 
         initializeViews()
 
@@ -42,8 +44,8 @@ class AppointmentBookedActivity : AppCompatActivity() {
             scheduleNotification()
         }
         tvRouteMap.setOnClickListener {
-            val lat = serviceStore.storeId?.geometry?.coordinates?.get(1).toString()
-            val lng = serviceStore.storeId?.geometry?.coordinates?.get(0).toString()
+            val lat = order.storeId?.geometry?.coordinates?.get(1).toString()
+            val lng = order.storeId?.geometry?.coordinates?.get(0).toString()
 
             val gmmIntentUri = Uri.parse("http://maps.google.com/maps?daddr=$lat,$lng")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
@@ -51,7 +53,7 @@ class AppointmentBookedActivity : AppCompatActivity() {
         }
 
         btnDone.setOnClickListener {
-           goToUserMain()
+            goToUserMain()
         }
         tvAppointments.setOnClickListener {
             goToUserMain()
@@ -64,8 +66,10 @@ class AppointmentBookedActivity : AppCompatActivity() {
 
     private fun goToUserMain() {
         val intent = Intent(this, UserMainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or
-                Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.addFlags(
+            Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK
+        )
         startActivity(intent)
         finish()
     }
@@ -73,8 +77,10 @@ class AppointmentBookedActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         val intent = Intent(this, UserMainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or
-                Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.addFlags(
+            Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK
+        )
         startActivity(intent)
         finish()
 
@@ -83,9 +89,10 @@ class AppointmentBookedActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     private fun scheduleNotification() {
 
-        val intent = Intent(applicationContext,NotifyUser::class.java)
+
+        val intent = Intent(applicationContext, NotifyUser::class.java)
         intent.putExtra(titleExtra, R.string.SHINY)
-        intent.putExtra(messageExtra,R.string.notification_message)
+        intent.putExtra(messageExtra, R.string.notification_message)
 
         val pendingIntent = PendingIntent.getBroadcast(
             applicationContext,
@@ -106,8 +113,8 @@ class AppointmentBookedActivity : AppCompatActivity() {
 
     private fun showAlert(time: Long) {
         val date = Date(time)
-        val dateFormat = getDateFormat(applicationContext)
-        val timeFormat = getTimeFormat(applicationContext)
+        val dateFormat = DateFormat.getDateFormat(applicationContext)
+        val timeFormat = DateFormat.getTimeFormat(applicationContext)
 
         AlertDialog.Builder(this)
             .setTitle(getString(R.string.notification_alert_title))
@@ -115,7 +122,7 @@ class AppointmentBookedActivity : AppCompatActivity() {
                 "Notification is scheduled" +
                         "\nAt: " + dateFormat.format(date) + " " + timeFormat.format(time)
             )
-            .setPositiveButton("okay"){_, _ ->}
+            .setPositiveButton("okay") { _, _ -> }
             .show()
 
     }
@@ -130,7 +137,7 @@ class AppointmentBookedActivity : AppCompatActivity() {
         val year = datePicker.year
 
         val calender = Calendar.getInstance()
-        calender.set(year,month,day,hour,minutes)
+        calender.set(year, month, day, hour, minutes)
         return calender.timeInMillis
     }
 
@@ -144,7 +151,7 @@ class AppointmentBookedActivity : AppCompatActivity() {
         } else {
             TODO("VERSION.SDK_INT < N")
         }
-        val channel = NotificationChannel(channelId,name, importance)
+        val channel = NotificationChannel(channelId, name, importance)
         channel.description = desc
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(channel)
@@ -160,4 +167,5 @@ class AppointmentBookedActivity : AppCompatActivity() {
         tvRouteMap = binding.textViewMapRoute
         btnNotifyMe = binding.buttonCreateNotification
     }
+
 }

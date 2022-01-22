@@ -82,4 +82,18 @@
     <string name="mark_done">غير الحالة</string>
     <string name="change_status">غير حالة الموعد</string>
     <string name="map_action_bar">اختر الموقع</string>
+    <string name="min">دقيقة</string>
+    <string name="regular_wash">regular wash</string>
+    <string name="next">Next</string>
+    <string name="select_service">Select Service:</string>
+    <string name="back_button">Back Button</string>
+    <string name="uncompleted_task">uncompleted task</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="received_message">Do you want to mark this appointment as Done?</string>
+    <string name="not_received_message">Do you want to mark this appointment as Unattended?</string>
+    <string name="Delete_Service">Delete Service</string>
+    <string name="delete_service_message">Do you want to delete this service? You colud make it unavialeble instead.</string>
+    <string name="appointment_is_confirmed">Appointment Is Confirmed</string>
+    <string name="appointment_is_rescheduled">Appointment Is Rescheduled</string>
 </resources>

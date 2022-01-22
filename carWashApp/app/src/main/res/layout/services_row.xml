@@ -23,7 +23,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="280dp">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imageViewRowServiceLogo"
@@ -39,7 +39,7 @@
             <LinearLayout
                 android:id="@+id/constraintLayout"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="@color/primaryBackground"
@@ -59,7 +59,7 @@
                     android:paddingEnd="10dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
-                    android:text="regular wash"
+                    android:text="@string/regular_wash"
                     android:textSize="20sp"
                     app:drawableStartCompat="@drawable/service_icon" />
 
@@ -95,7 +95,7 @@
                         android:layout_marginBottom="2dp"
                         android:layout_weight="1"
                         android:fontFamily="@font/quicksand"
-                        android:text="SAR"
+                        android:text="@string/sar"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textViewRowServicePrice" />
 
@@ -121,7 +121,7 @@
                         android:layout_weight="0"
                         android:fontFamily="@font/quicksand"
                         android:paddingEnd="10dp"
-                        android:text="min"
+                        android:text="@string/min"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>

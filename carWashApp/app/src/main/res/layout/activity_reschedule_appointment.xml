@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryLightGrey"
-    tools:context=".views.userViews.userMainActivity.ordersFragment.RescheduleAppointmentActivity">
+    tools:context=".views.userViews.userMainActivity.ordersFragment.reschedule.RescheduleAppointmentActivity">
 
     <CalendarView
         android:id="@+id/calendarViewReschedule"
@@ -96,7 +96,7 @@
             android:enabled="false"
             android:fontFamily="@font/quicksand_medium"
             android:stateListAnimator="@null"
-            android:text="@string/reschedule"
+            android:text="@string/next"
             android:textAllCaps="false"
             android:textColor="#A6ADB3"
             android:textSize="18sp"

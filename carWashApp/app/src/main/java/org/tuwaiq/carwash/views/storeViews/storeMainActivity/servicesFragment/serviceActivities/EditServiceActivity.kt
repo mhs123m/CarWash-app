@@ -1,6 +1,7 @@
 package org.tuwaiq.carwash.views.storeViews.storeMainActivity.servicesFragment.serviceActivities
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -16,6 +17,7 @@ import androidx.activity.viewModels
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
+import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.databinding.ActivityEditServiceBinding
 import org.tuwaiq.carwash.model.ServiceModel
 import org.tuwaiq.carwash.model.ServiceStore
@@ -36,6 +38,7 @@ class EditServiceActivity : AppCompatActivity() {
     private lateinit var imgService: ImageView
     private var encodedPic: String? = null
     private var updatedService: ServiceModel? = null
+
     // get token
     private val xAuthHeader = Globals.sharedPreferences.getString("Token", null)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +56,7 @@ class EditServiceActivity : AppCompatActivity() {
 
         // change picture
         binding.imageViewChangeServicePictureOnClickEdit.setOnClickListener {
-            onActivityResult(0, 0, intent)
+//            onActivityResult(0, 0, intent)
             ImagePicker.with(this)
                 .crop()    //Crop image(Optional), Check Customization for more option
                 .compress(500)//Final image size will be less than 1 MB(Optional)
@@ -71,13 +74,23 @@ class EditServiceActivity : AppCompatActivity() {
         }
 
         binding.buttonDeleteService.setOnClickListener {
-            deleteService()
-            finish()
+            AlertDialog.Builder(this)
+                .setTitle(R.string.Delete_Service)
+                .setIcon(R.drawable.icon_cancelled_10)
+                .setMessage(R.string.delete_service_message)
+                .setPositiveButton(R.string.delete){_ , _ ->
+                    deleteService()
+                    finish()
+                }
+                .setNegativeButton(R.string.action_cancel){ dialog , _ ->
+                    dialog.dismiss()
+                }
+                .create()
+                .show()
+
         }
 
-        binding.imageViewBackEdit.setOnClickListener {
-            finish()
-        }
+        binding.imageViewBackEdit.setOnClickListener { finish() }
 
 
     }
@@ -92,7 +105,7 @@ class EditServiceActivity : AppCompatActivity() {
     }
 
     private fun deleteService() {
-        viewModel.deleteService(xAuthHeader!!,service._id!!)
+        viewModel.deleteService(xAuthHeader!!, service._id!!)
     }
 
     private fun updateService() {

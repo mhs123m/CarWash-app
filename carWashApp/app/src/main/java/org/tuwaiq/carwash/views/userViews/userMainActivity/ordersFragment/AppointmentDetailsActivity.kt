@@ -7,6 +7,7 @@ import android.widget.TextView
 import org.tuwaiq.carwash.databinding.ActivityAppointmentDetailsBinding
 import org.tuwaiq.carwash.model.Order
 import org.tuwaiq.carwash.utils.TimeSlotsHelperFunctions
+import org.tuwaiq.carwash.views.userViews.userMainActivity.ordersFragment.reschedule.RescheduleAppointmentActivity
 
 class AppointmentDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAppointmentDetailsBinding
@@ -27,7 +28,7 @@ class AppointmentDetailsActivity : AppCompatActivity() {
         setViewsWithData()
 
         binding.textViewReschedule.setOnClickListener {
-            val i = Intent(this,RescheduleAppointmentActivity::class.java)
+            val i = Intent(this, RescheduleAppointmentActivity::class.java)
             i.putExtra("order", order)
             startActivity(i)
         }

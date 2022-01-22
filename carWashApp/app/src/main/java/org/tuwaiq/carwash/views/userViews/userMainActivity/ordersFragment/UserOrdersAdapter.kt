@@ -14,6 +14,7 @@ import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Order
 import org.tuwaiq.carwash.model.enums.SlotStatus
 import org.tuwaiq.carwash.utils.TimeSlotsHelperFunctions
+import org.tuwaiq.carwash.views.userViews.userMainActivity.ordersFragment.reschedule.RescheduleAppointmentActivity
 
 class UserOrdersAdapter(var data: List<Order> = mutableListOf()) :
     RecyclerView.Adapter<UserOrdersHolder>() {

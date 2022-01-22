@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryLightGrey"
-    tools:context=".views.userViews.userMainActivity.homeFragment.stepThreeConfirm.ConfirmAppointmentActivity">
+    tools:context=".views.userViews.userMainActivity.ordersFragment.reschedule.RescheduleDetailsActivity">
+
+
 
     <ImageView
         android:id="@+id/imageView7"
@@ -269,7 +270,7 @@
             android:paddingTop="20dp"
             android:paddingEnd="30dp"
             android:paddingBottom="20dp"
-            android:text="@string/confirm"
+            android:text="@string/reschedule"
             android:textColor="@color/primaryGreen"
             android:textSize="16sp"
             app:drawableStartCompat="@drawable/icon_reschedule_10" />
@@ -306,5 +307,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24_green" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

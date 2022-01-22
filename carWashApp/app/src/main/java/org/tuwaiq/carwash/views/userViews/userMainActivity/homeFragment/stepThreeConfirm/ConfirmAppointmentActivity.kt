@@ -35,22 +35,16 @@ class ConfirmAppointmentActivity : AppCompatActivity() {
 
         appointment = intent.getSerializableExtra("appointment") as Appointment
         service = intent.getSerializableExtra("serviceToBook") as ServiceStore
-//        val userId = Globals.sharedPreferences.getString("ID",null)
 
 
         // link views
         initializeViews()
         setViewsWithData()
 
-        binding.textViewBack.setOnClickListener {
-            finish()
-            println("back")
-        }
+        binding.textViewBack.setOnClickListener { finish() }
+        binding.imageViewBackBtnn.setOnClickListener { finish() }
 
-        binding.textViewConfirm.setOnClickListener {
-            bookAppointment(appointment)
-            println("confirm")
-        }
+        binding.textViewConfirm.setOnClickListener { bookAppointment(appointment) }
     }
 
     private fun initializeViews() {
@@ -80,8 +74,10 @@ class ConfirmAppointmentActivity : AppCompatActivity() {
         viewModel.newAppointmentLiveData.observe(this) {
             val intent = Intent(this, AppointmentBookedActivity::class.java)
             intent.putExtra("serviceToBook", service)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or
-                    Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            intent.addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK
+            )
             startActivity(intent)
             finish()
             Log.d("APPOINTMENT", "$it")

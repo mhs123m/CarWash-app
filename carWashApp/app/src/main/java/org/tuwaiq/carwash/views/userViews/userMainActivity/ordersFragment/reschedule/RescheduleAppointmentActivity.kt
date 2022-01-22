@@ -1,9 +1,7 @@
-package org.tuwaiq.carwash.views.userViews.userMainActivity.ordersFragment
+package org.tuwaiq.carwash.views.userViews.userMainActivity.ordersFragment.reschedule
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.CalendarView
 import android.widget.TextView
@@ -17,8 +15,8 @@ import org.tuwaiq.carwash.databinding.ActivityRescheduleAppointmentBinding
 import org.tuwaiq.carwash.model.*
 import org.tuwaiq.carwash.model.enums.SlotStatus
 import org.tuwaiq.carwash.utils.TimeSlotsHelperFunctions
-import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
 import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.stepTwoPickTime.TimeSlotsAdapter
+import org.tuwaiq.carwash.views.userViews.userMainActivity.ordersFragment.UserOrdersViewModel
 
 class RescheduleAppointmentActivity : AppCompatActivity() {
     private val viewModel: UserOrdersViewModel by viewModels()
@@ -67,7 +65,6 @@ class RescheduleAppointmentActivity : AppCompatActivity() {
 
         btnConfirm.setOnClickListener {
             getAppointmentInfo() // fill appointment info
-            rescheduleAppointment(appointment)
         }
     }
 
@@ -92,17 +89,6 @@ class RescheduleAppointmentActivity : AppCompatActivity() {
         }
     }
 
-    private fun rescheduleAppointment(appointment: Appointment) {
-        viewModel.updateAppointment(order._id, appointment)
-        viewModel.updatedAppointment.observe(this) {
-            val intent = Intent(this, UserMainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            finish()
-            Log.d("APPOINTMENT", "$it")
-        }
-
-    }
 
 
     private fun getAppointmentInfo() {
