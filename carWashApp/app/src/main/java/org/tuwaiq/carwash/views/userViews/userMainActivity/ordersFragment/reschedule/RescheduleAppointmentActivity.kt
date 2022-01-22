@@ -1,11 +1,11 @@
 package org.tuwaiq.carwash.views.userViews.userMainActivity.ordersFragment.reschedule
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CalendarView
 import android.widget.TextView
-import androidx.activity.viewModels
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,10 +16,8 @@ import org.tuwaiq.carwash.model.*
 import org.tuwaiq.carwash.model.enums.SlotStatus
 import org.tuwaiq.carwash.utils.TimeSlotsHelperFunctions
 import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.stepTwoPickTime.TimeSlotsAdapter
-import org.tuwaiq.carwash.views.userViews.userMainActivity.ordersFragment.UserOrdersViewModel
 
 class RescheduleAppointmentActivity : AppCompatActivity() {
-    private val viewModel: UserOrdersViewModel by viewModels()
     private lateinit var order: Order
     private lateinit var binding: ActivityRescheduleAppointmentBinding
     private lateinit var calendarView: CalendarView
@@ -32,7 +30,7 @@ class RescheduleAppointmentActivity : AppCompatActivity() {
     private lateinit var slot: Slot
     private lateinit var date: String
     private lateinit var btnConfirm: Button
-
+    private lateinit var btnPrevious: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRescheduleAppointmentBinding.inflate(layoutInflater)
@@ -40,18 +38,7 @@ class RescheduleAppointmentActivity : AppCompatActivity() {
 
         order = intent.getSerializableExtra("order") as Order
 
-        // link views
-        val btnPrevious = binding.buttonAppPreviousReschedule
-        btnConfirm = binding.buttonAppConfirmReschedule
-        calendarView = binding.calendarViewReschedule
-        tvSelectedTime = binding.textViewSelectedTimeReschedule
-        tvSelectedTimeResult = binding.textViewTimeSelectedResultReschedule
-        timeSlotRecyclerView = binding.timeSlotsrecyclerViewReschedule
-        timeSlotRecyclerView.layoutManager =
-            StaggeredGridLayoutManager(3, GridLayoutManager.VERTICAL)
-        tvSelectedTimeResult.text =
-            TimeSlotsHelperFunctions.convertIndexToTime(order.day.slot.index)
-
+        linkViews()
 
         loadTimeSlots()
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
@@ -66,6 +53,26 @@ class RescheduleAppointmentActivity : AppCompatActivity() {
         btnConfirm.setOnClickListener {
             getAppointmentInfo() // fill appointment info
         }
+        // btn next
+        btnConfirm.setOnClickListener {
+            val i = Intent(this, RescheduleDetailsActivity::class.java)
+            i.putExtra("order", order)
+            startActivity(i)
+        }
+    }
+
+    private fun linkViews() {
+        // link views
+       btnPrevious = binding.buttonAppPreviousReschedule
+        btnConfirm = binding.buttonAppConfirmReschedule
+        calendarView = binding.calendarViewReschedule
+        tvSelectedTime = binding.textViewSelectedTimeReschedule
+        tvSelectedTimeResult = binding.textViewTimeSelectedResultReschedule
+        timeSlotRecyclerView = binding.timeSlotsrecyclerViewReschedule
+        timeSlotRecyclerView.layoutManager =
+            StaggeredGridLayoutManager(3, GridLayoutManager.VERTICAL)
+        tvSelectedTimeResult.text =
+            TimeSlotsHelperFunctions.convertIndexToTime(order.day.slot.index)
     }
 
     private fun loadTimeSlots() {
@@ -88,7 +95,6 @@ class RescheduleAppointmentActivity : AppCompatActivity() {
 
         }
     }
-
 
 
     private fun getAppointmentInfo() {

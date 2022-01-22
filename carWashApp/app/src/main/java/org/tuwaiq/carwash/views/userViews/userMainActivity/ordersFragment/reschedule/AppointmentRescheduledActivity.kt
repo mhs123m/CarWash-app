@@ -11,10 +11,8 @@ import android.text.format.DateFormat
 import android.widget.*
 import androidx.annotation.RequiresApi
 import org.tuwaiq.carwash.R
-import org.tuwaiq.carwash.databinding.ActivityAppointmentBookedBinding
 import org.tuwaiq.carwash.databinding.ActivityAppointmentRescheduledBinding
 import org.tuwaiq.carwash.model.Order
-import org.tuwaiq.carwash.model.ServiceStore
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
 import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.step4AppointmentBooked.*
 import java.util.*
@@ -44,8 +42,8 @@ class AppointmentRescheduledActivity : AppCompatActivity() {
             scheduleNotification()
         }
         tvRouteMap.setOnClickListener {
-            val lat = order.storeId?.geometry?.coordinates?.get(1).toString()
-            val lng = order.storeId?.geometry?.coordinates?.get(0).toString()
+            val lat = order.storeId.geometry?.coordinates?.get(1).toString()
+            val lng = order.storeId.geometry?.coordinates?.get(0).toString()
 
             val gmmIntentUri = Uri.parse("http://maps.google.com/maps?daddr=$lat,$lng")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
@@ -144,7 +142,7 @@ class AppointmentRescheduledActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannel() {
-        val name = "Notif Channel"
+        val name = "Notify Channel"
         val desc = "A description of the Channel"
         val importance = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             NotificationManager.IMPORTANCE_DEFAULT

@@ -46,6 +46,15 @@ class RescheduleDetailsActivity : AppCompatActivity() {
         tvDateAndTime = binding.textViewDateTimeConfirm
         tvServiceTitle = binding.textViewServiceTitleConfirm
         tvServicePrice = binding.textViewServicePriceConfirm
+        appointment = Appointment(
+            order._id,
+            order.day,
+            order.serviceId._id!!,
+            order.storeId._id!!,
+            order.userId._id!!,
+            null,
+            null
+        )
     }
 
 
