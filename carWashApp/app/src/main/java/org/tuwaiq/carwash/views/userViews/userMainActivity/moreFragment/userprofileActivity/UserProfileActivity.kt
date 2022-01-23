@@ -91,8 +91,9 @@ class UserProfileActivity : AppCompatActivity() {
                 textInputUserEmail.setText(it?.email)
                 textInputUserPhone.setText(it?.phone)
                 cpb.visibility = View.GONE
+                Toast.makeText(this, getString(R.string.info_updated), Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Error, try later please", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.err_mssge), Toast.LENGTH_SHORT).show()
                 cpb.visibility = View.GONE
             }
 

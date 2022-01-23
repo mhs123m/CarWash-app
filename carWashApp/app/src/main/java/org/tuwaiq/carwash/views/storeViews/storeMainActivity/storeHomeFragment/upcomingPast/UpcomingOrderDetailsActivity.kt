@@ -56,7 +56,7 @@ class UpcomingOrderDetailsActivity : AppCompatActivity() {
 
         binding.textViewUnattended.setOnClickListener {
             AlertDialog.Builder(this)
-                .setTitle(getString(R.string.mark_done))
+                .setTitle(getString(R.string.mark_unattended))
                 .setIcon(R.drawable.icon_cancelled_10)
                 .setMessage(R.string.not_received_message)
                 .setPositiveButton(R.string.Yes){ _ , _ ->

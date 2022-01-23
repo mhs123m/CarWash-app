@@ -84,12 +84,12 @@
     <string name="map_action_bar">اختر الموقع</string>
     <string name="min">دقيقة</string>
     <string name="regular_wash">regular wash</string>
-    <string name="next">Next</string>
+    <string name="next">التالي</string>
     <string name="select_service">Select Service:</string>
     <string name="back_button">Back Button</string>
     <string name="uncompleted_task">uncompleted task</string>
-    <string name="Yes">Yes</string>
-    <string name="No">No</string>
+    <string name="Yes">نعم</string>
+    <string name="No">لا</string>
     <string name="received_message">هل تريد تغيرالموعد الى منتهي؟</string>
     <string name="not_received_message">هل تريد تغير الموعد الى ملغي؟</string>
     <string name="Delete_Service">حذف خدمة</string>
@@ -97,7 +97,7 @@
     <string name="appointment_is_confirmed">تم تأكيد الموعد</string>
     <string name="appointment_is_rescheduled">تمت إعادة جدولة الموعد</string>
     <string name="login_fail_message">ايميل او كلمة مرور غير صحيحة</string>
-    <string name="unattended">Unattended</string>
+    <string name="unattended">لم يحضر</string>
     <string name="empty_state_user_orders_message">لا توجد مواعيد لديك, تصفح المتاجر لحجز موعد</string>
     <string name="no_upcoming_appointments">لا توجد مواعيد قادمة</string>
     <string name="no_past_appointments">لا توجد مواعيد ماضية</string>
@@ -105,4 +105,6 @@
     <string name="no_stores_message">لا توجد متاجر حولك, الرجاء المحاولة لاحقاً</string>
     <string name="services">الخدمات</string>
     <string name="info_updated">تم تحديث البيانات بنجاح</string>
+    <string name="err_mssge">خطأ, الرجاء المحاولة لاحقاً</string>
+    <string name="mark_unattended">لم يحضر؟</string>
 </resources>

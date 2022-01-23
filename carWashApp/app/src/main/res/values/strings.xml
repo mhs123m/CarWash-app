@@ -107,6 +107,8 @@
     <string name="no_stores_message">No stores around you, please try later</string>
     <string name="services">Services</string>
     <string name="info_updated">Info Updated Successfully</string>
+    <string name="err_mssge">Error, try later please</string>
+    <string name="mark_unattended">Mark Unattended</string>
 
 
 </resources>

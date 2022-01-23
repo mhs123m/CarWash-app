@@ -21,12 +21,12 @@
         <entry key="app/src/main/res/drawable/store_nav_selector.xml" value="0.21851851851851853" />
         <entry key="app/src/main/res/layout-v23/activity_store_maps.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_add_service.xml" value="0.2966101694915254" />
-        <entry key="app/src/main/res/layout/activity_appointment_booked.xml" value="0.1859504132231405" />
+        <entry key="app/src/main/res/layout/activity_appointment_booked.xml" value="0.3349875930521092" />
         <entry key="app/src/main/res/layout/activity_appointment_details.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_appointment_rescheduled.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_book_appointment.xml" value="0.2850509010935702" />
         <entry key="app/src/main/res/layout/activity_cancel_appointment.xml" value="0.1655605311759723" />
-        <entry key="app/src/main/res/layout/activity_confirm_appointment.xml" value="0.1939655172413793" />
+        <entry key="app/src/main/res/layout/activity_confirm_appointment.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_display_services.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_edit_service.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1962962962962963" />
