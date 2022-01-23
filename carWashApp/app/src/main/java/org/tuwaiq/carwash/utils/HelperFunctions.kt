@@ -11,8 +11,12 @@ import org.tuwaiq.carwash.model.Store
 import org.tuwaiq.carwash.model.User
 import retrofit2.Response
 import android.content.Intent
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
+import androidx.recyclerview.widget.RecyclerView
 import org.tuwaiq.carwash.views.userViews.userLoginAndRegister.UserSignInActivity
 import java.time.Duration
 
@@ -93,6 +97,24 @@ class HelperFunctions {
             val imageBytes = Base64.decode(encodedString, Base64.DEFAULT)
 
             return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+        }
+
+        fun <T> checkEmptyState(
+            imgEmptyState: ImageView,
+            tvEmptyState: TextView,
+            mRecyclerView: RecyclerView,
+            displayedList: List<T>
+            ){
+
+            if (displayedList.isEmpty()){
+                imgEmptyState.visibility = View.VISIBLE
+                tvEmptyState.visibility = View.VISIBLE
+                mRecyclerView.visibility = View.GONE
+            } else{
+                imgEmptyState.visibility = View.GONE
+                tvEmptyState.visibility = View.GONE
+                mRecyclerView.visibility = View.VISIBLE
+            }
         }
 
     }

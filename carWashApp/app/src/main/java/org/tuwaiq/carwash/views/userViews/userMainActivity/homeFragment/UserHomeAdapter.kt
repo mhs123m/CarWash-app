@@ -18,13 +18,9 @@ import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.stepOneP
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-class UserHomeAdapter(var activity: Activity) : RecyclerView.Adapter<UserHomeHolder>() {
+class UserHomeAdapter(var activity: Activity, var data: List<Store>) : RecyclerView.Adapter<UserHomeHolder>() {
     private lateinit var locationHelperFunctions: LocationHelperFunctions
-    private var data: List<Store>
 
-    init {
-        data = listOf()
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserHomeHolder {
         val v = LayoutInflater.from(parent.context)
@@ -62,10 +58,6 @@ class UserHomeAdapter(var activity: Activity) : RecyclerView.Adapter<UserHomeHol
         return data.size
     }
 
-    fun setData(list: List<Store>) {
-        data = list
-        notifyDataSetChanged()
-    }
     private fun getLastKnownLocation(activity: Activity): LatLng {
         val lastKnownLocation = locationHelperFunctions.getLastKnownLocation(activity)
         return LatLng(lastKnownLocation.latitude, lastKnownLocation.longitude)

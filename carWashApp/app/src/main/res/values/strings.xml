@@ -100,6 +100,11 @@
     <string name="appointment_is_rescheduled">Appointment Is Rescheduled</string>
     <string name="login_fail_message">incorrect email or password</string>
     <string name="unattended">Unattended</string>
+    <string name="empty_state_user_orders_message">You have no appointments, browse stores to schedule an appointment</string>
+    <string name="no_upcoming_appointments">No upcoming appointments</string>
+    <string name="no_past_appointments">No past appointments</string>
+    <string name="no_service_message">You have no services, press the add button below to add new service</string>
+    <string name="no_stores_message">No stores around you, please try later</string>
 
 
 </resources>

@@ -21,14 +21,6 @@ class LocationHelperFunctions {
         private var geometry = Geometry()
 
         var lastKnownLocation: LatLng? = null
-//            set(value) {
-//                field = value
-//                if (field != null) {
-//                    if (value != null) {
-//                        geometry.coordinates = Coordinates(value.longitude, value.latitude)
-//                    }
-//                }
-//            }
 
         fun getInstance(): LocationHelperFunctions {
             if (locationService == null) {

@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +15,7 @@ import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Order
 import org.tuwaiq.carwash.model.enums.SlotStatus
 import org.tuwaiq.carwash.utils.Globals
+import org.tuwaiq.carwash.utils.HelperFunctions
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
 
 class UserOrdersFragment : Fragment() {
@@ -20,6 +23,9 @@ class UserOrdersFragment : Fragment() {
     private lateinit var adapter: UserOrdersAdapter
     private val displayedList = mutableListOf<Order>()
     private lateinit var cpb: CircularProgressBar
+    private lateinit var imgEmptyState: ImageView
+    private lateinit var tvEmptyState: TextView
+    private lateinit var mRecyclerView: RecyclerView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,10 +40,12 @@ class UserOrdersFragment : Fragment() {
 
         adapter = UserOrdersAdapter(displayedList)
         // link recycler
-        val mRecyclerView = v.findViewById<RecyclerView>(R.id.userOrdersRecyclerView)
+        mRecyclerView = v.findViewById<RecyclerView>(R.id.userOrdersRecyclerView)
         mRecyclerView.layoutManager = LinearLayoutManager(v.context)
         mRecyclerView.adapter = adapter
         cpb = v.findViewById(R.id.circularProgressBar3)
+        imgEmptyState = v.findViewById(R.id.imageViewEmpUserOrders)
+        tvEmptyState = v.findViewById(R.id.textViewEmptUserOrders)
         return v
     }
 
@@ -64,6 +72,22 @@ class UserOrdersFragment : Fragment() {
             displayedList.addAll(sorted)
             adapter.notifyDataSetChanged()
             cpb.visibility = View.GONE
+
+//            if (displayedList.isEmpty()){
+//                imgEmptyState.visibility = View.VISIBLE
+//                tvEmptyState.visibility = View.VISIBLE
+//                mRecyclerView.visibility = View.GONE
+//            } else{
+//                imgEmptyState.visibility = View.GONE
+//                tvEmptyState.visibility = View.GONE
+//                mRecyclerView.visibility = View.VISIBLE
+//            }
+            HelperFunctions.checkEmptyState(
+                imgEmptyState,
+                tvEmptyState,
+                mRecyclerView,
+                displayedList
+            )
         }
 
     }

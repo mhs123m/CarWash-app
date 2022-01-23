@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -14,6 +16,7 @@ import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.ServiceStore
 import org.tuwaiq.carwash.utils.Globals
+import org.tuwaiq.carwash.utils.HelperFunctions
 import org.tuwaiq.carwash.views.ServiceViewModel
 import org.tuwaiq.carwash.views.storeViews.storeMainActivity.servicesFragment.serviceActivities.AddServiceActivity
 import org.tuwaiq.carwash.views.storeViews.storeMainActivity.StoreMainActivity
@@ -27,6 +30,8 @@ class StorePreviewFragment : Fragment() {
     private val displayedList = mutableListOf<ServiceStore>()
     private lateinit var cpb: CircularProgressBar
     private lateinit var storePrevRecyclerView: RecyclerView
+    private lateinit var imgEmptyState: ImageView
+    private lateinit var tvEmptyState: TextView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,13 +46,15 @@ class StorePreviewFragment : Fragment() {
             )[ServiceViewModel::class.java]
 
         // link recyclerView
-        storePrevRecyclerView = v.findViewById<RecyclerView>(R.id.storePreviewRecyclerView)
+        storePrevRecyclerView = v.findViewById(R.id.storePreviewRecyclerView)
         storePrevRecyclerView.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 //         initialize adapter
         adapter = StorePreviewAdapter(displayedList)
         storePrevRecyclerView.adapter = adapter
         cpb = v.findViewById(R.id.circularProgressBarPreview)
+        imgEmptyState = v.findViewById(R.id.imageViewEmpPast)
+        tvEmptyState = v.findViewById(R.id.textViewEmpPast)
 
 
         //link fab btn -> on click, open add activity
@@ -81,6 +88,12 @@ class StorePreviewFragment : Fragment() {
             adapter.notifyDataSetChanged()
             cpb.visibility = View.GONE
 
+            HelperFunctions.checkEmptyState(
+                imgEmptyState,
+                tvEmptyState,
+                storePrevRecyclerView,
+                displayedList
+            )
         }
     }
 

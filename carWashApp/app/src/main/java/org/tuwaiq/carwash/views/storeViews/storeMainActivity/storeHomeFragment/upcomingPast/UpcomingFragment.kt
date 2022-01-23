@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +15,7 @@ import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Order
 import org.tuwaiq.carwash.model.enums.SlotStatus
 import org.tuwaiq.carwash.utils.Globals
+import org.tuwaiq.carwash.utils.HelperFunctions
 import org.tuwaiq.carwash.views.storeViews.storeMainActivity.StoreMainActivity
 
 class UpcomingFragment : Fragment() {
@@ -21,6 +24,8 @@ class UpcomingFragment : Fragment() {
     private lateinit var adapter: UpcomingAdapter
     private val displayedList = mutableListOf<Order>()
     private lateinit var cpb: CircularProgressBar
+    private lateinit var imgEmptyState: ImageView
+    private lateinit var tvEmptyState: TextView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,6 +47,8 @@ class UpcomingFragment : Fragment() {
         adapter = UpcomingAdapter(displayedList)
         mRecyclerView.adapter = adapter
         cpb = view.findViewById(R.id.circularProgressBarUpcoming)
+        imgEmptyState = view.findViewById(R.id.imageViewEmpUpcoming)
+        tvEmptyState = view.findViewById(R.id.textViewEmpUpcoming)
 
     }
 
@@ -62,6 +69,13 @@ class UpcomingFragment : Fragment() {
             displayedList.addAll(upcomingList)
             adapter.notifyDataSetChanged()
             cpb.visibility = View.GONE
+
+            HelperFunctions.checkEmptyState(
+                imgEmptyState,
+                tvEmptyState,
+                mRecyclerView,
+                displayedList
+            )
         }
     }
 

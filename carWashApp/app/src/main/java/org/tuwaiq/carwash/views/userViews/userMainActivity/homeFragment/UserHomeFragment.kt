@@ -5,17 +5,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import org.tuwaiq.carwash.R
+import org.tuwaiq.carwash.model.Store
+import org.tuwaiq.carwash.utils.HelperFunctions
 import org.tuwaiq.carwash.views.storeViews.StoreViewModel
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
 
 class UserHomeFragment : Fragment() {
     lateinit var userHomeAdapter: UserHomeAdapter
+    private var displayedList = mutableListOf<Store>()
     lateinit var viewModel: StoreViewModel
+    private lateinit var userHomeRecyclerView: RecyclerView
+    private lateinit var imgEmptyState: ImageView
+    private lateinit var tvEmptyState: TextView
+    private lateinit var cpb: CircularProgressBar
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,22 +42,51 @@ class UserHomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        linkViews(view)
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setRecyclerViewData()
+    }
+
+    private fun linkViews(view: View) {
         //link recyclerview
-        val userHomeRecyclerView = view.findViewById<RecyclerView>(R.id.userHomeRecyclerView)
+        userHomeRecyclerView = view.findViewById<RecyclerView>(R.id.userHomeRecyclerView)
         userHomeRecyclerView.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
-        userHomeAdapter = UserHomeAdapter(activity!!)
+        userHomeAdapter = UserHomeAdapter(activity!!, displayedList)
+        userHomeRecyclerView.adapter = userHomeAdapter
 
-        val cpb = view.findViewById<CircularProgressBar>(R.id.circularProgressBar2)
+        cpb = view.findViewById(R.id.circularProgressBar2)
+        imgEmptyState = view.findViewById(R.id.imageViewEmpUserHome)
+        tvEmptyState = view.findViewById(R.id.textViewEmpUserHome)
+
+    }
+
+    private fun setRecyclerViewData() {
         cpb.visibility = View.VISIBLE
         // get data of stores and set to adapter
         viewModel.getAllStores()
         viewModel.allStoresLiveData.observe(this, {
-            userHomeAdapter.setData(it)
-            userHomeRecyclerView.adapter = userHomeAdapter
-            cpb.visibility = View.GONE
-        })
 
+            displayedList.clear()
+            displayedList.addAll(it)
+            userHomeAdapter.notifyDataSetChanged()
+            cpb.visibility = View.GONE
+
+
+            HelperFunctions.checkEmptyState(
+                imgEmptyState,
+                tvEmptyState,
+                userHomeRecyclerView,
+                displayedList
+            )
+
+
+        })
     }
 }
