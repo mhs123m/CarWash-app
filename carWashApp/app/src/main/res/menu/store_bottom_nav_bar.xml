@@ -9,7 +9,7 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/storePreviewMenu"
-        android:title="@string/preview"
+        android:title="@string/services"
         android:icon="@drawable/selector_nav_preview"
         app:showAsAction="always" />
     <item

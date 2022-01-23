@@ -45,7 +45,7 @@ class PastAdapter(var data: List<Order> = mutableListOf()) : RecyclerView.Adapte
 
                 }
                 else -> {
-                    appointmentStatus.text = context.getString(R.string.cancelled)
+                    appointmentStatus.text = context.getString(R.string.unattended)
                     constraintLayout.setBackgroundColor(
                         ContextCompat
                             .getColor(itemView.context, R.color.primaryRed)

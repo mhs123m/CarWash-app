@@ -64,13 +64,13 @@
     <string name="log_outt">Log Out?</string>
     <string name="share_app">Hey check out Shiny where you could schedule your appointments for your car wash, you could download it  at</string>
     <string name="feedBack">Send Feedback</string>
-    <string name="night_mode">Night Mode</string>
+    <string name="night_mode">Dark Mode</string>
     <string name="log_out_message">Are you sure you want to log out?</string>
     <string name="dark_mode_message">Choose app mode</string>
     <string name="language_message">Choose app language</string>
     <string name="arabic" translatable="false">العربية</string>
     <string name="english" translatable="false">English</string>
-    <string name="day_mode">Day Mode</string>
+    <string name="day_mode">Light Mode</string>
     <string name="pending">Pending</string>
     <string name="done">Done</string>
     <string name="cancelled">Cancelled</string>
@@ -105,6 +105,8 @@
     <string name="no_past_appointments">No past appointments</string>
     <string name="no_service_message">You have no services, press the add button below to add new service</string>
     <string name="no_stores_message">No stores around you, please try later</string>
+    <string name="services">Services</string>
+    <string name="info_updated">Info Updated Successfully</string>
 
 
 </resources>

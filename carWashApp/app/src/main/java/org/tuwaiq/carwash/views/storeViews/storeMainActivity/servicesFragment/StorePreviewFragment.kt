@@ -32,6 +32,7 @@ class StorePreviewFragment : Fragment() {
     private lateinit var storePrevRecyclerView: RecyclerView
     private lateinit var imgEmptyState: ImageView
     private lateinit var tvEmptyState: TextView
+    private lateinit var tvMyServices: TextView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,8 +54,9 @@ class StorePreviewFragment : Fragment() {
         adapter = StorePreviewAdapter(displayedList)
         storePrevRecyclerView.adapter = adapter
         cpb = v.findViewById(R.id.circularProgressBarPreview)
-        imgEmptyState = v.findViewById(R.id.imageViewEmpPast)
-        tvEmptyState = v.findViewById(R.id.textViewEmpPast)
+        imgEmptyState = v.findViewById(R.id.imageViewEmpPreview)
+        tvEmptyState = v.findViewById(R.id.textViewEmpPreview)
+        tvMyServices = v.findViewById(R.id.textViewMyServices)
 
 
         //link fab btn -> on click, open add activity
@@ -94,6 +96,10 @@ class StorePreviewFragment : Fragment() {
                 storePrevRecyclerView,
                 displayedList
             )
+
+            if (displayedList.isEmpty()) tvMyServices.visibility = View.GONE
+            else tvMyServices.visibility = View.VISIBLE
+
         }
     }
 

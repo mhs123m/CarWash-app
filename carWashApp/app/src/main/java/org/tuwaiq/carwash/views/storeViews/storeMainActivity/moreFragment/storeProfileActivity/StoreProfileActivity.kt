@@ -52,6 +52,8 @@ class StoreProfileActivity : AppCompatActivity() {
         // linkViews and set data
         linkViews()
 
+        setViewsWithDataFromServer()
+
 
         backBtn.setOnClickListener {
             finish()
@@ -60,8 +62,6 @@ class StoreProfileActivity : AppCompatActivity() {
 
         // on img click open imgPicker
         imgViewStoreLogo.setOnClickListener {
-            // once this intent to take a picture is done, onActivityResult would be have called, so
-            // encodedPic would be set to new taken picture encoded
             onActivityResult(0,0,intent)
             ImagePicker.with(this)
                 .crop()    //Crop image(Optional), Check Customization for more option
@@ -88,10 +88,6 @@ class StoreProfileActivity : AppCompatActivity() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        setViewsWithDataFromServer()
-    }
 
     private fun linkViews() {
         //link views
@@ -129,6 +125,7 @@ class StoreProfileActivity : AppCompatActivity() {
                 textInputStoreLocation.setText(geometry.formattedAddress)
             }
             cpb.visibility = View.GONE
+            Toast.makeText(this, getString(R.string.info_updated), Toast.LENGTH_SHORT).show()
         }
     }
 

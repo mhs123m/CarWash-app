@@ -140,6 +140,8 @@
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/car_wash" />
+
+
     </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatButton

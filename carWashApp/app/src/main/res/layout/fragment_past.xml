@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="144dp"
+        android:layout_marginBottom="100dp"
         android:gravity="center"
         android:text="@string/no_past_appointments"
         android:textColor="@color/primaryGreen"
