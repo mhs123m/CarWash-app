@@ -312,7 +312,7 @@
         android:id="@+id/circularProgressBarConfirm"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:cpb_background_progressbar_color="@color/primaryBackground"
         app:cpb_background_progressbar_width="5dp"
         app:cpb_indeterminate_mode="true"
