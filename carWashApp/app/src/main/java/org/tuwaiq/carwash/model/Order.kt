@@ -9,5 +9,5 @@ data class Order(
     val storeId: Store,
     val userId: User,
     val createdAt: String,
-    val updatedAt: String,
+    val updatedAt: String?,
 ) : Serializable

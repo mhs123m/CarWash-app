@@ -19,13 +19,14 @@ import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.stepTwoP
 
 class RescheduleAppointmentActivity : AppCompatActivity() {
     private lateinit var order: Order
+    private lateinit var newOrder: Order
     private lateinit var binding: ActivityRescheduleAppointmentBinding
     private lateinit var calendarView: CalendarView
     private lateinit var tvSelectedTime: TextView
     private lateinit var tvSelectedTimeResult: TextView
     private lateinit var timeSlotRecyclerView: RecyclerView
     private var indexOfAppointment: Int? = null
-    private lateinit var appointment: Appointment
+//    private lateinit var appointment: Appointment
     private lateinit var day: Day
     private lateinit var slot: Slot
     private lateinit var date: String
@@ -42,10 +43,11 @@ class RescheduleAppointmentActivity : AppCompatActivity() {
 
         loadTimeSlots()
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            println(month)
             date = when (month) {
                 9 -> "$year-${month + 1}-$dayOfMonth"
                 10 -> "$year-${month + 1}-$dayOfMonth"
-                10 -> "$year-${month + 1}-$dayOfMonth"
+                11 -> "$year-${month + 1}-$dayOfMonth"
                 else -> "$year-0${month + 1}-$dayOfMonth"
             }
         }
@@ -53,12 +55,13 @@ class RescheduleAppointmentActivity : AppCompatActivity() {
         btnPrevious.setOnClickListener { finish() }
 
         btnConfirm.setOnClickListener {
-            getAppointmentInfo() // fill appointment info
         }
         // btn next
         btnConfirm.setOnClickListener {
+            // fill appointment info
+            newOrderInfo()
             val i = Intent(this, RescheduleDetailsActivity::class.java)
-            i.putExtra("order", order)
+            i.putExtra("order", newOrder)
             startActivity(i)
         }
     }
@@ -99,7 +102,7 @@ class RescheduleAppointmentActivity : AppCompatActivity() {
     }
 
 
-    private fun getAppointmentInfo() {
+    private fun newOrderInfo() {
 
         slot = Slot(null, false, 30, indexOfAppointment!!, SlotStatus.Pending)
         if (!this::date.isInitialized) {
@@ -107,14 +110,17 @@ class RescheduleAppointmentActivity : AppCompatActivity() {
         }
         day = Day(null, date, slot)
 
-        appointment = Appointment(
-            null,
+
+        // set new order also
+        newOrder = Order(
+            order._id,
             day,
-            order.serviceId._id!!,
-            order.storeId._id!!,
-            order.userId._id!!,
+            order.serviceId,
+            order.storeId,
+            order.userId,
+            order.createdAt,
             null,
-            null
-        )
+            )
     }
+
 }

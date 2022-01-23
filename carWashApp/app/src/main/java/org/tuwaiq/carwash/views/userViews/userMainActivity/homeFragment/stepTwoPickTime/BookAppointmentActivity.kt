@@ -57,8 +57,10 @@ class BookAppointmentActivity : AppCompatActivity() {
         loadTimeSlots()
         calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
             date = when (month) {
-                0 - 8 -> "$year-0${month + 1}-$dayOfMonth"
-                else -> "$year-${month + 1}-$dayOfMonth"
+                9 -> "$year-${month + 1}-$dayOfMonth"
+                10 -> "$year-${month + 1}-$dayOfMonth"
+                11 -> "$year-${month + 1}-$dayOfMonth"
+                else -> "$year-0${month + 1}-$dayOfMonth"
             }
         }
 
@@ -125,7 +127,12 @@ class BookAppointmentActivity : AppCompatActivity() {
             val y = d.get(Calendar.YEAR)
             val m = d.get(Calendar.MONTH)
             val day = d.get(Calendar.DAY_OF_MONTH)
-            date = "$y-${m + 1}-$day"
+            date = when(m){
+               9 -> "$y-${m + 1}-$day"
+               10 -> "$y-${m + 1}-$day"
+               11 -> "$y-${m + 1}-$day"
+                else -> "$y-0${m + 1}-$day"
+            }
         }
         day = Day(null, date, slot)
 

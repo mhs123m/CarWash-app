@@ -59,8 +59,8 @@ class RescheduleDetailsActivity : AppCompatActivity() {
 
 
     private fun setViewsWithData() {
-        val day = appointment.day.day
-        val time = TimeSlotsHelperFunctions.convertIndexToTime(appointment.day.slot.index)
+        val day = order.day.day
+        val time = TimeSlotsHelperFunctions.convertIndexToTime(order.day.slot.index)
         order.storeId?.let {
             tvStoreName.text = it.name
         }
