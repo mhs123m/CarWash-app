@@ -38,7 +38,7 @@ class UserOrdersAdapter(var data: List<Order> = mutableListOf()) :
                 storeLocation.text = storeAddress
             }
             val dashIndex = time.indexOf('-')
-            appointmentTime.text = time.substring(0, dashIndex-1)
+            appointmentTime.text = time.substring(0, dashIndex - 1)
 
             when (status) {
                 SlotStatus.Done -> {
@@ -61,39 +61,49 @@ class UserOrdersAdapter(var data: List<Order> = mutableListOf()) :
                 }
                 else -> {
                     // pending is set by default (hard coded)
+
+                    appointmentStatus.text = context.getString(R.string.pending)
+                    constraintLayout.setBackgroundColor(
+                        ContextCompat
+                            .getColor(itemView.context, R.color.primaryPendingGrey)
+                    )
+                    imgStatusIcon.setImageResource(R.drawable.ic_baseline_white_time_24)
+
+
                 }
+
             }
 
-        }
-
-        holder.tvReschedule.setOnClickListener {
+            tvReschedule.setOnClickListener {
                 val i = Intent(context, RescheduleAppointmentActivity::class.java)
                 i.putExtra("order", order)
                 context.startActivity(i)
 
-        }
-        // start navigation to store
-        holder.imgNavigation.setOnClickListener {
-            val lat = order.storeId.geometry?.coordinates?.get(1).toString()
-            val lng = order.storeId.geometry?.coordinates?.get(0).toString()
+            }
+            // start navigation to store
+            imgNavigation.setOnClickListener {
+                val lat = order.storeId.geometry?.coordinates?.get(1).toString()
+                val lng = order.storeId.geometry?.coordinates?.get(0).toString()
 
-            val gmmIntentUri = Uri.parse("http://maps.google.com/maps?daddr=$lat,$lng")
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            context.startActivity(mapIntent)
-        }
+                val gmmIntentUri = Uri.parse("http://maps.google.com/maps?daddr=$lat,$lng")
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                context.startActivity(mapIntent)
+            }
 
-        holder.tvCancelled.setOnClickListener {
-            val i = Intent(context, CancelAppointmentActivity::class.java)
-            i.putExtra("order", order)
-            context.startActivity(i)
-        }
+            tvCancelled.setOnClickListener {
+                val i = Intent(context, CancelAppointmentActivity::class.java)
+                i.putExtra("order", order)
+                context.startActivity(i)
+            }
 
-        holder.itemView.setOnClickListener {
-            val i = Intent(context, AppointmentDetailsActivity::class.java)
-            i.putExtra("order", order)
-            context.startActivity(i)
-        }
+            itemView.setOnClickListener {
+                val i = Intent(context, AppointmentDetailsActivity::class.java)
+                i.putExtra("order", order)
+                context.startActivity(i)
+            }
 
+
+        }
 
     }
 

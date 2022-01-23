@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
@@ -16,6 +17,7 @@ import androidx.activity.viewModels
 import androidx.cardview.widget.CardView
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.textfield.TextInputEditText
+import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Store
 import org.tuwaiq.carwash.utils.Globals
@@ -40,6 +42,7 @@ class StoreProfileActivity : AppCompatActivity() {
     private lateinit var btnUpdateInfo: Button
     private lateinit var cvPickLocation: CardView
     private lateinit var currentStore: Store
+    private lateinit var cpb: CircularProgressBar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_store_info)
@@ -48,7 +51,7 @@ class StoreProfileActivity : AppCompatActivity() {
 
         // linkViews and set data
         linkViews()
-        setViewsWithDataFromServer()
+
 
         backBtn.setOnClickListener {
             finish()
@@ -59,7 +62,7 @@ class StoreProfileActivity : AppCompatActivity() {
         imgViewStoreLogo.setOnClickListener {
             // once this intent to take a picture is done, onActivityResult would be have called, so
             // encodedPic would be set to new taken picture encoded
-            onActivityResult(0, 0, intent)
+            onActivityResult(0,0,intent)
             ImagePicker.with(this)
                 .crop()    //Crop image(Optional), Check Customization for more option
                 .compress(500)//Final image size will be less than 1 MB(Optional)
@@ -85,6 +88,11 @@ class StoreProfileActivity : AppCompatActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        setViewsWithDataFromServer()
+    }
+
     private fun linkViews() {
         //link views
         imgViewStoreLogo = findViewById(R.id.imageViewStoreLogo)
@@ -95,9 +103,11 @@ class StoreProfileActivity : AppCompatActivity() {
         btnUpdateInfo = findViewById(R.id.buttonStoreUpdateInfo)
         backBtn = findViewById(R.id.imageViewArrowBackStore)
         cvPickLocation = findViewById(R.id.cardViewPickLocation)
+        cpb = findViewById(R.id.circularProgressBarStoreInfo)
     }
 
     private fun updateInfo() {
+        cpb.visibility = View.VISIBLE
         val geometry = locationHelperFunctions.getGeometry()
         // updated info
         currentStore = Store(
@@ -118,10 +128,12 @@ class StoreProfileActivity : AppCompatActivity() {
             it?.geometry?.let { geometry ->
                 textInputStoreLocation.setText(geometry.formattedAddress)
             }
+            cpb.visibility = View.GONE
         }
     }
 
     private fun setViewsWithDataFromServer() {
+        cpb.visibility = View.VISIBLE
         viewModel.getStoreById(Globals.sharedPreferences.getString("ID", null)!!)
         viewModel.oneStoreLiveData.observe(this) { store ->
             loggedInStore = store
@@ -136,16 +148,20 @@ class StoreProfileActivity : AppCompatActivity() {
             loggedInStore?.geometry?.let {
                 textInputStoreLocation.setText(it.formattedAddress)
             }
+            cpb.visibility = View.GONE
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
         if (resultCode == Activity.RESULT_OK) {
+            cpb.visibility = View.VISIBLE
             //Image Uri will not be null for RESULT_OK
             val uri: Uri = data?.data!!
             // set img view with taken or chosen picture
             imgViewStoreLogo.setImageURI(uri)
+            cpb.visibility = View.GONE
             encodedPic = encodePicture(uri)
 
 

@@ -29,7 +29,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:startIconDrawable="@drawable/more_user_icon"
+        app:startIconDrawable="@drawable/profile_sav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2">
@@ -52,7 +52,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:startIconDrawable="@drawable/more_send_feedback_icon"
+        app:startIconDrawable="@drawable/message_sav"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
@@ -72,7 +72,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:startIconDrawable="@drawable/phone_icon_10"
+        app:startIconDrawable="@drawable/ic_call_10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
@@ -94,7 +94,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:startIconDrawable="@drawable/password_icon_10"
+        app:startIconDrawable="@drawable/ic_lock_pass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout5"
@@ -116,7 +116,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:startIconDrawable="@drawable/password_icon_10"
+        app:startIconDrawable="@drawable/ic_lock_pass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout6"
@@ -130,6 +130,23 @@
             android:inputType="textPassword"
             android:text="1234567"/>
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/circularProgressBar1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:visibility="gone"
+        app:cpb_background_progressbar_color="@color/primaryBackground"
+        app:cpb_background_progressbar_width="5dp"
+        app:cpb_indeterminate_mode="true"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progressbar_color="@color/primaryGreen"
+        app:cpb_progressbar_width="3dp"
+        app:cpb_round_border="true"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegisterUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7" />
 
     <Button
         android:id="@+id/buttonRegisterUser"

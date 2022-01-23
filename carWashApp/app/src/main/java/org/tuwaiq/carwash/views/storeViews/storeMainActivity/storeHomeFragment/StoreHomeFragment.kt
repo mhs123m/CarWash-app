@@ -27,13 +27,13 @@ class StoreHomeFragment : Fragment() {
         var mTabLayout = view.findViewById<TabLayout>(R.id.mTabLayout)
 
         var titles = arrayOf("Upcoming", "Past")
-        var iconsofTabs = arrayOf(R.drawable.calendar_grey_icon,R.drawable.past_icon)
+        var iconsTabs = arrayOf(R.drawable.calendar_grey_icon,R.drawable.past_icon)
         viewPager2.adapter = ViewPagerAdapter(activity!!)
 
 
         TabLayoutMediator(mTabLayout, viewPager2) { tab, position ->
             tab.text = titles[position]
-            tab.setIcon(iconsofTabs[position])
+            tab.setIcon(iconsTabs[position])
         }.attach()
     }
     companion object {

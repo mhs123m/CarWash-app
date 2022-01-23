@@ -29,7 +29,7 @@
                 android:id="@+id/constraintBackGroundRow"
                 android:layout_width="100dp"
                 android:layout_height="0dp"
-                android:background="#CD7E878E"
+                android:background="@color/primaryPendingGrey"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -52,7 +52,7 @@
                 <ImageView
                     android:id="@+id/imageViewStatusIconRow"
                     android:layout_width="40dp"
-                    android:layout_height="39dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

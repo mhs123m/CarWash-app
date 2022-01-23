@@ -13,6 +13,7 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
+import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.User
 import org.tuwaiq.carwash.utils.HelperFunctions
@@ -42,9 +43,11 @@ class UserRegisterFragment : Fragment() {
             v.findViewById<TextInputEditText>(R.id.textInputUserRegistConfirmPassword)
         val registerUserBtn = v.findViewById<Button>(R.id.buttonRegisterUser)
         val tvSignIn = v.findViewById<TextView>(R.id.textViewUserRegistSignIn)
+        val cpb = v.findViewById<CircularProgressBar>(R.id.circularProgressBar1)
 
         // on click, register user
         registerUserBtn.setOnClickListener {
+            cpb.visibility = View.VISIBLE
             // get text from inputTexts
             val fullName = textInputFullName.text.toString()
             val email = textInputEmail.text.toString()
@@ -87,6 +90,7 @@ class UserRegisterFragment : Fragment() {
                 Log.d("USER_REGISTER", "fail $it")
                 // email or phone number might be already register.
             }
+                cpb.visibility = View.GONE
         })
         }
 

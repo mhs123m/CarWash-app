@@ -23,4 +23,5 @@
     <color name="primaryBackground">#f4f5f9</color>
     <color name="primaryRed">#b53958</color>
     <color name="primaryLightGrey">#dde7f0</color>
+    <color name="primaryPendingGrey">#CD7E878E</color>
 </resources>

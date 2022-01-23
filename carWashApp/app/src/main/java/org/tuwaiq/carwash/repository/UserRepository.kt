@@ -1,7 +1,10 @@
 package org.tuwaiq.carwash.repository
 
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
+import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.LoginModel
 import org.tuwaiq.carwash.model.User
 import org.tuwaiq.carwash.network.Api
@@ -72,7 +75,7 @@ class UserRepository {
         val userServices = Api.getInstance().create(UserServices::class.java)
         userServices.updateUser(userId, user).enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
-                HelperFunctions.ifResponseNotNullPostValue(mLiveData,response)
+                HelperFunctions.ifResponseNotNullPostValue(mLiveData, response)
                 if (response.isSuccessful) HelperFunctions.saveLoggedInUserData(response)
             }
 

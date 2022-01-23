@@ -10,17 +10,23 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import org.tuwaiq.carwash.R
+import org.tuwaiq.carwash.model.ServiceStore
 import org.tuwaiq.carwash.utils.Globals
 import org.tuwaiq.carwash.views.ServiceViewModel
 import org.tuwaiq.carwash.views.storeViews.storeMainActivity.servicesFragment.serviceActivities.AddServiceActivity
 import org.tuwaiq.carwash.views.storeViews.storeMainActivity.StoreMainActivity
 import org.tuwaiq.carwash.views.storeViews.storeMainActivity.fragments.StorePreviewAdapter
+import org.tuwaiq.carwash.views.userViews.userMainActivity.homeFragment.stepOnePickService.DisplayAdapter
 
 class StorePreviewFragment : Fragment() {
 
-    lateinit var viewModel: ServiceViewModel
-    lateinit var adapter: StorePreviewAdapter
+    private lateinit var viewModel: ServiceViewModel
+    private lateinit var adapter: StorePreviewAdapter
+    private val displayedList = mutableListOf<ServiceStore>()
+    private lateinit var cpb: CircularProgressBar
+    private lateinit var storePrevRecyclerView: RecyclerView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,21 +41,14 @@ class StorePreviewFragment : Fragment() {
             )[ServiceViewModel::class.java]
 
         // link recyclerView
-        val storePrevRecyclerView = v.findViewById<RecyclerView>(R.id.storePreviewRecyclerView)
+        storePrevRecyclerView = v.findViewById<RecyclerView>(R.id.storePreviewRecyclerView)
         storePrevRecyclerView.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-
 //         initialize adapter
-        adapter = StorePreviewAdapter()
-        // get   store Id
-        val storeId = Globals.sharedPreferences.getString("ID", null)
-        viewModel.getAllServicesOfStore(storeId!!)
+        adapter = StorePreviewAdapter(displayedList)
+        storePrevRecyclerView.adapter = adapter
+        cpb = v.findViewById(R.id.circularProgressBarPreview)
 
-        viewModel.allServicesOfStoreLiveData.observe(this) { serviceList ->
-
-            adapter.setData(serviceList)
-            storePrevRecyclerView.adapter = adapter
-        }
 
         //link fab btn -> on click, open add activity
         v.findViewById<ExtendedFloatingActionButton>(R.id.FABaddService).setOnClickListener {
@@ -59,10 +58,30 @@ class StorePreviewFragment : Fragment() {
         return v
     }
 
+    override fun onResume() {
+        super.onResume()
+        setRecyclerViewData()
+    }
 
     companion object {
         @JvmStatic
         fun newInstance() = StorePreviewFragment()
+    }
+
+    private fun setRecyclerViewData() {
+        cpb.visibility = View.VISIBLE
+        // get   store Id
+        val storeId = Globals.sharedPreferences.getString("ID", null)
+        viewModel.getAllServicesOfStore(storeId!!)
+
+        viewModel.allServicesOfStoreLiveData.observe(this) { serviceList ->
+
+            displayedList.clear()
+            displayedList.addAll(serviceList)
+            adapter.notifyDataSetChanged()
+            cpb.visibility = View.GONE
+
+        }
     }
 
 

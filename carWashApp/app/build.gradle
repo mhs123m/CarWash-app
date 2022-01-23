@@ -68,6 +68,9 @@ dependencies {
     implementation 'com.google.android.libraries.places:places:2.2.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
 
+    //progress bar
+    implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
+
     // coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"

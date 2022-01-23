@@ -9,9 +9,11 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import org.tuwaiq.carwash.databinding.ActivityAddServiceBinding
 import org.tuwaiq.carwash.model.ServiceModel
 import org.tuwaiq.carwash.model.Store
@@ -21,9 +23,10 @@ import java.io.ByteArrayOutputStream
 
 class AddServiceActivity : AppCompatActivity() {
     val viewModel: ServiceViewModel by viewModels()
-    lateinit var serviceModel: ServiceModel
+    private lateinit var serviceModel: ServiceModel
+    private lateinit var cpb: CircularProgressBar
     private var encodedPic: String? = null
-    lateinit var binding: ActivityAddServiceBinding
+    private lateinit var binding: ActivityAddServiceBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddServiceBinding.inflate(layoutInflater)
@@ -41,6 +44,7 @@ class AddServiceActivity : AppCompatActivity() {
         binding.imageViewBackAdd.setOnClickListener {
             finish()
         }
+        cpb = binding.circularProgressBarAdd
 
     }
 
@@ -57,6 +61,7 @@ class AddServiceActivity : AppCompatActivity() {
     }
 
     private fun addService() {
+        cpb.visibility = View.VISIBLE
         val title = binding.editTextServiceTitle.text.toString()
         val description = binding.editTextServiceDescription.text.toString()
         val price = binding.textInputServicePrice.text.toString().toDouble()
@@ -81,7 +86,7 @@ class AddServiceActivity : AppCompatActivity() {
         viewModel.addNewService(xAuthHeader!!, serviceModel)
         viewModel.newServiceLiveData.observe(this) {
             Log.d("SERVICE", "ADDED?: $it")
-            // finis activity and TODO update service list with the new added service
+            cpb.visibility = View.GONE
             finish()
         }
     }

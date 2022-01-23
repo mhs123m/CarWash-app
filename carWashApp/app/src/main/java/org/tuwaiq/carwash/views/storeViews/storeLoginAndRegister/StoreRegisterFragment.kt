@@ -13,6 +13,7 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
+import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.Store
 import org.tuwaiq.carwash.utils.HelperFunctions
@@ -43,9 +44,11 @@ class StoreRegisterFragment : Fragment() {
             v.findViewById<TextInputEditText>(R.id.textInputStoreRegistConfirmPassword)
         val registerStoreBtn = v.findViewById<Button>(R.id.buttonStoreApply)
         val tvSignIn = v.findViewById<TextView>(R.id.textViewStoreRegistSignIn)
+        val cpb = v.findViewById<CircularProgressBar>(R.id.circularProgressBarStore2)
 
         // on click, register store
         registerStoreBtn.setOnClickListener {
+            cpb.visibility = View.VISIBLE
             // get text from inputTexts
             val name = textInputName.text.toString()
             val email = textInputEmail.text.toString()
@@ -58,11 +61,13 @@ class StoreRegisterFragment : Fragment() {
             if (name.isEmpty()) {
                 textInputName.error = "Store Name is required"
                 textInputName.requestFocus()
+                cpb.visibility = View.GONE
                 return@setOnClickListener
             }
             if (!HelperFunctions.isValidEmail(email)) {
                 textInputEmail.error = "Invalid Email"
                 textInputEmail.requestFocus()
+                cpb.visibility = View.GONE
                 return@setOnClickListener
             }
             if (!HelperFunctions.isValidPhoneNumber(phone)) {
@@ -73,6 +78,7 @@ class StoreRegisterFragment : Fragment() {
             if (password != cPassword) {
                 textInputCPassword.error = "Password must match"
                 textInputCPassword.requestFocus()
+                cpb.visibility = View.GONE
                 return@setOnClickListener
             }
             viewModel.registerNewStore(store)
@@ -92,6 +98,7 @@ class StoreRegisterFragment : Fragment() {
                 } else {
                     Log.d("USER_REGISTER", "fail: $it")
                 }
+                cpb.visibility = View.GONE
             })
         }
 

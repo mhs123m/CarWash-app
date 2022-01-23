@@ -13,6 +13,7 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
+import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.LoginModel
 import org.tuwaiq.carwash.views.storeViews.StoreViewModel
@@ -42,9 +43,11 @@ class StoreLogInFragment : Fragment() {
         val logInBtn = v.findViewById<Button>(R.id.buttonStoreLogIn)
         val tvApply = v.findViewById<TextView>(R.id.textViewStoreApply)
         val tvNotProviderClickHere = v.findViewById<TextView>(R.id.textViewStoreClickHere)
+        val cpb = v.findViewById<CircularProgressBar>(R.id.circularProgressBarStore)
 
         // on click, (sign in store)
         logInBtn.setOnClickListener {
+            cpb.visibility = View.VISIBLE
             // get email and password
             val email = textInputEmail.text.toString()
             val password = textInputPassword.text.toString()
@@ -52,11 +55,13 @@ class StoreLogInFragment : Fragment() {
             if (email.isEmpty()) {
                 textInputEmail.error = "Please enter email"
                 textInputEmail.requestFocus()
+                cpb.visibility = View.GONE
                 return@setOnClickListener
             }
             if (password.isEmpty()) {
                 textInputPassword.error = "Please enter password"
                 textInputPassword.requestFocus()
+                cpb.visibility = View.GONE
                 return@setOnClickListener
             }
 
@@ -78,6 +83,7 @@ class StoreLogInFragment : Fragment() {
                     Log.d("USER_LOGIN", "fail: $it")
                     // go to ur mom he he he
                 }
+                cpb.visibility = View.GONE
             })
         }
 

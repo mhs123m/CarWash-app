@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.fragment.app.*
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
+import com.mikhaellopez.circularprogressbar.CircularProgressBar
 
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.model.LoginModel
@@ -42,9 +43,11 @@ class UserLoginFragment : Fragment() {
         val tvUserSignUp =
             v.findViewById<TextView>(R.id.textViewUserNoAccountSignUp)
         val tvStoreClickHere = v.findViewById<TextView>(R.id.textViewCarWashClickHere)
+        val cpb = v.findViewById<CircularProgressBar>(R.id.circularProgressBar)
 
         // on click, (sign in user)
         logInBtn.setOnClickListener {
+            cpb.visibility = View.VISIBLE
             // get email and password
             val email = textInputEmail.text.toString()
             val password = textInputPassword.text.toString()
@@ -52,11 +55,13 @@ class UserLoginFragment : Fragment() {
             if (email.isEmpty()){
                 textInputEmail.error = "Please enter email"
                 textInputEmail.requestFocus()
+                cpb.visibility = View.GONE
                 return@setOnClickListener
             }
             if (password.isEmpty()){
                 textInputPassword.error = "Please enter password"
                 textInputPassword.requestFocus()
+                cpb.visibility = View.GONE
                 return@setOnClickListener
             }
 
@@ -74,6 +79,7 @@ class UserLoginFragment : Fragment() {
                     Log.d("USER_LOGIN","fail: $it")
                     // go to ur mom he he he
                 }
+                cpb.visibility = View.GONE
             })
         }
 

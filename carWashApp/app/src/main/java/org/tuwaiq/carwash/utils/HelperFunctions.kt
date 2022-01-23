@@ -11,8 +11,10 @@ import org.tuwaiq.carwash.model.Store
 import org.tuwaiq.carwash.model.User
 import retrofit2.Response
 import android.content.Intent
+import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import org.tuwaiq.carwash.views.userViews.userLoginAndRegister.UserSignInActivity
+import java.time.Duration
 
 
 class HelperFunctions {

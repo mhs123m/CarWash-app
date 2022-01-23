@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.views.storeViews.StoreViewModel
 import org.tuwaiq.carwash.views.userViews.userMainActivity.UserMainActivity
@@ -39,11 +40,14 @@ class UserHomeFragment : Fragment() {
 
         userHomeAdapter = UserHomeAdapter(activity!!)
 
+        val cpb = view.findViewById<CircularProgressBar>(R.id.circularProgressBar2)
+        cpb.visibility = View.VISIBLE
         // get data of stores and set to adapter
         viewModel.getAllStores()
         viewModel.allStoresLiveData.observe(this, {
             userHomeAdapter.setData(it)
             userHomeRecyclerView.adapter = userHomeAdapter
+            cpb.visibility = View.GONE
         })
 
     }

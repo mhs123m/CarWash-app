@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
+import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.databinding.ActivityConfirmAppointmentBinding
 import org.tuwaiq.carwash.databinding.ActivityUserProfileBinding
@@ -28,6 +30,7 @@ class ConfirmAppointmentActivity : AppCompatActivity() {
     private lateinit var tvDateAndTime: TextView
     private lateinit var tvServiceTitle: TextView
     private lateinit var tvServicePrice: TextView
+    private lateinit var cpb: CircularProgressBar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityConfirmAppointmentBinding.inflate(layoutInflater)
@@ -52,10 +55,12 @@ class ConfirmAppointmentActivity : AppCompatActivity() {
         tvDateAndTime = binding.textViewDateTimeConfirm
         tvServiceTitle = binding.textViewServiceTitleConfirm
         tvServicePrice = binding.textViewServicePriceConfirm
+        cpb = binding.circularProgressBarConfirm
     }
 
 
     private fun setViewsWithData() {
+        cpb.visibility = View.VISIBLE
         val day = appointment.day.day
         val time = TimeSlotsHelperFunctions.convertIndexToTime(appointment.day.slot.index)
         service.storeId?.let {
@@ -67,9 +72,11 @@ class ConfirmAppointmentActivity : AppCompatActivity() {
             tvServiceTitle.text = it.title
             tvServicePrice.text = it.price.toString()
         }
+        cpb.visibility = View.GONE
     }
 
     private fun bookAppointment(appointment: Appointment) {
+        cpb.visibility = View.VISIBLE
         viewModel.newAppointment(appointment)
         viewModel.newAppointmentLiveData.observe(this) {
             val intent = Intent(this, AppointmentBookedActivity::class.java)
@@ -79,6 +86,7 @@ class ConfirmAppointmentActivity : AppCompatActivity() {
                         Intent.FLAG_ACTIVITY_CLEAR_TASK
             )
             startActivity(intent)
+            cpb.visibility = View.GONE
             finish()
             Log.d("APPOINTMENT", "$it")
         }

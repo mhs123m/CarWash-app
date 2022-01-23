@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import org.tuwaiq.carwash.R
+import org.tuwaiq.carwash.model.Order
 import org.tuwaiq.carwash.model.enums.SlotStatus
 import org.tuwaiq.carwash.utils.Globals
 import org.tuwaiq.carwash.views.storeViews.storeMainActivity.StoreMainActivity
@@ -16,6 +18,9 @@ import org.tuwaiq.carwash.views.storeViews.storeMainActivity.StoreMainActivity
 class UpcomingFragment : Fragment() {
     private lateinit var viewModel: StoreOrderViewModel
     private lateinit var mRecyclerView: RecyclerView
+    private lateinit var adapter: UpcomingAdapter
+    private val displayedList = mutableListOf<Order>()
+    private lateinit var cpb: CircularProgressBar
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,17 +39,29 @@ class UpcomingFragment : Fragment() {
 
         mRecyclerView = view.findViewById(R.id.upcomingStoreRecyclerView)
         mRecyclerView.layoutManager = LinearLayoutManager(view.context)
+        adapter = UpcomingAdapter(displayedList)
+        mRecyclerView.adapter = adapter
+        cpb = view.findViewById(R.id.circularProgressBarUpcoming)
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         setRecyclerViewWithData()
     }
 
     private fun setRecyclerViewWithData(){
+        cpb.visibility = View.VISIBLE
         val storeId = Globals.sharedPreferences.getString("ID",null)
         viewModel.getStoreOrders(storeId!!)
         viewModel.storeOrdersLiveData.observe(this){ ordersList ->
             val upcomingList =  ordersList.filter {
                 it.day.slot.status == SlotStatus.Pending
             }
-            mRecyclerView.adapter = UpcomingAdapter(upcomingList)
+            displayedList.clear()
+            displayedList.addAll(upcomingList)
+            adapter.notifyDataSetChanged()
+            cpb.visibility = View.GONE
         }
     }
 

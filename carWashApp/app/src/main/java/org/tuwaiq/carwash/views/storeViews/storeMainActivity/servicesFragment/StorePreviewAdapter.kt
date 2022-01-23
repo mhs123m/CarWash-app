@@ -13,13 +13,9 @@ import org.tuwaiq.carwash.model.ServiceStore
 import org.tuwaiq.carwash.utils.HelperFunctions
 import org.tuwaiq.carwash.views.storeViews.storeMainActivity.servicesFragment.serviceActivities.EditServiceActivity
 
-class StorePreviewAdapter :
+class StorePreviewAdapter(var data: List<ServiceStore>) :
     RecyclerView.Adapter<StorePreviewHolder>() {
-    private var data: List<ServiceStore>
 
-    init {
-        data = listOf()
-    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StorePreviewHolder {
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.services_row, parent, false)
@@ -31,7 +27,8 @@ class StorePreviewAdapter :
         val service = data[position]
         holder.apply {
             imgServiceLogo?.setImageBitmap(service.logo?.let {
-                HelperFunctions.decodePicFromApi(it) })
+                HelperFunctions.decodePicFromApi(it)
+            })
             tvServiceTitle?.text = service.title
             tvServicePrice?.text = service.price.toString()
             tvServiceDuration?.text = service.durationInMin.toString()
@@ -48,11 +45,6 @@ class StorePreviewAdapter :
 
     override fun getItemCount(): Int {
         return data.size
-    }
-
-    fun setData(list: List<ServiceStore>) {
-        data = list
-        notifyDataSetChanged()
     }
 
 }
