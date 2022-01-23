@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
+import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import org.tuwaiq.carwash.R
 import org.tuwaiq.carwash.databinding.ActivityAddServiceBinding.bind
 import org.tuwaiq.carwash.databinding.ActivityAddServiceBinding.inflate
@@ -24,6 +26,7 @@ class RescheduleDetailsActivity : AppCompatActivity() {
     private lateinit var tvDateAndTime: TextView
     private lateinit var tvServiceTitle: TextView
     private lateinit var tvServicePrice: TextView
+    private lateinit var cpb: CircularProgressBar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRescheduleDetailsBinding.inflate(layoutInflater)
@@ -46,6 +49,7 @@ class RescheduleDetailsActivity : AppCompatActivity() {
         tvDateAndTime = binding.textViewDateTimeConfirm
         tvServiceTitle = binding.textViewServiceTitleConfirm
         tvServicePrice = binding.textViewServicePriceConfirm
+        cpb = binding.circularProgressBarConfirm
         appointment = Appointment(
             order._id,
             order.day,
@@ -59,6 +63,7 @@ class RescheduleDetailsActivity : AppCompatActivity() {
 
 
     private fun setViewsWithData() {
+        cpb.visibility = View.VISIBLE
         val day = order.day.day
         val time = TimeSlotsHelperFunctions.convertIndexToTime(order.day.slot.index)
         order.storeId?.let {
@@ -69,15 +74,22 @@ class RescheduleDetailsActivity : AppCompatActivity() {
         order?.let {
             tvServiceTitle.text = it.serviceId.title
             tvServicePrice.text = it.serviceId.price.toString()
+            cpb.visibility = View.GONE
         }
     }
 
     private fun rescheduleAppointment(appointment: Appointment) {
+        cpb.visibility = View.VISIBLE
         viewModel.updateAppointment(order._id, appointment)
         viewModel.updatedAppointment.observe(this) {
             val intent = Intent(this, AppointmentRescheduledActivity::class.java)
             intent.putExtra("order", order)
+            intent.addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK
+            )
             startActivity(intent)
+            cpb.visibility = View.GONE
             Log.d("APPOINTMENT", "$it")
         }
 
