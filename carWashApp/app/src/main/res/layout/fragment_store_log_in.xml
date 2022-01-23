@@ -15,6 +15,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
+        app:startIconDrawable="@drawable/more_send_feedback_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -23,7 +24,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditTextStoreEmail"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:text="fast@gmail.com"/>
@@ -36,6 +37,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
+        app:startIconDrawable="@drawable/password_icon_10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -44,7 +46,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditTextStorePassword"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:text="1234567"/>

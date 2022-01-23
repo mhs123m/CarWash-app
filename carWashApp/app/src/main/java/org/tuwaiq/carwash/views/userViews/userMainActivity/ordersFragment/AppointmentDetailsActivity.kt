@@ -37,6 +37,7 @@ class AppointmentDetailsActivity : AppCompatActivity() {
             val i = Intent(this,CancelAppointmentActivity::class.java)
             i.putExtra("order", order)
             startActivity(i)
+            finish()
         }
 
         binding.buttonBackDetails.setOnClickListener {

@@ -43,8 +43,10 @@ class RescheduleAppointmentActivity : AppCompatActivity() {
         loadTimeSlots()
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             date = when (month) {
-                0 - 8 -> "$year-0${month + 1}-$dayOfMonth"
-                else -> "$year-${month + 1}-$dayOfMonth"
+                9 -> "$year-${month + 1}-$dayOfMonth"
+                10 -> "$year-${month + 1}-$dayOfMonth"
+                10 -> "$year-${month + 1}-$dayOfMonth"
+                else -> "$year-0${month + 1}-$dayOfMonth"
             }
         }
 
