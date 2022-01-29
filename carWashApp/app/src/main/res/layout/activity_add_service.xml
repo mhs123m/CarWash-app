@@ -14,7 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/quicksand_bold"
-        android:text="@string/service_title"
+        android:text="@string/service"
         android:textColor="@color/textAlmostBlack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewBackAdd" />
