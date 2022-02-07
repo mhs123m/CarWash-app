@@ -44,6 +44,9 @@ The application allows users to book from carwashes stores an appointment to rec
 
 ## Short Video Of The Application (user interface)
 
+![shinyAppClip](https://user-images.githubusercontent.com/64324346/152860403-8c27a349-0c18-4170-b4d6-b63efd4abfa2.gif)
+
+
 https://user-images.githubusercontent.com/64324346/152840112-ef59aa45-d700-433d-b61d-d39333361bd2.mp4
 
 
