@@ -6,7 +6,7 @@ The application allows users to book from carwashes stores an appointment to rec
 
 <img width="150" alt="Screen Shot 2022-01-24 at 00 47 57" src="https://user-images.githubusercontent.com/64324346/152831302-eee3a283-0093-4589-9a17-f9a597bf5421.png">
 
-The application has two interfaces: user interface and provider interface.
+# The application has two interfaces: user interface and provider interface.
 
 ## User Interface (customer):
 * user can sign in or register
@@ -48,8 +48,8 @@ https://user-images.githubusercontent.com/64324346/152840112-ef59aa45-d700-433d-
 
 ## Acknowledgments
 
-* [CircularProgressBar by: @lopspower](https://github.com/lopspower/CircularProgressBar)
-* [ImagePicker by: @Dhaval2404](https://github.com/Dhaval2404/ImagePicker)
+* [CircularProgressBar](https://github.com/lopspower/CircularProgressBar) by: @lopspower
+* [ImagePicker](https://github.com/Dhaval2404/ImagePicker)  by: @Dhaval2404
 
 
 
