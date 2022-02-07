@@ -48,8 +48,8 @@ https://user-images.githubusercontent.com/64324346/152840112-ef59aa45-d700-433d-
 
 ## Acknowledgments
 
-* [CircularProgressBar](https://github.com/lopspower/CircularProgressBar) by: @lopspower
-* [ImagePicker](https://github.com/Dhaval2404/ImagePicker)  by: @Dhaval2404
+* [CircularProgressBar by: @lopspower](https://github.com/lopspower/CircularProgressBar)
+* [ImagePicker by: @Dhaval2404](https://github.com/Dhaval2404/ImagePicker)  
 
 
 
