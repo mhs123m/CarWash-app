@@ -32,6 +32,7 @@ The application allows users to book from carwashes stores an appointment to rec
 #### Front End
 * Kotlin Programming Language
 * Android SDK v31
+* MVVM Structure
 
 #### [Back End](https://github.com/mhs123m/carWashServer)
 * Node.js
